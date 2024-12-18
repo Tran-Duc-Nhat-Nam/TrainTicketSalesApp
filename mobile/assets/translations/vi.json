@@ -1,0 +1,80 @@
+{
+  "en": "Tiếng Anh",
+  "vi": "Tiếng Việt",
+  "complete": "Hoàn thành",
+  "unexpectedError": "Đã xảy lỗi không xác định!",
+  "userName": "Email",
+  "password": "Mật khẩu",
+  "confirmPassword": "Nhập lại mật khẩu",
+  "remember": "Ghi nhớ",
+  "forgetPassword": "Quên mật khẩu?",
+  "signUpNow": "Đăng ký ngay",
+  "home": "Trang chủ",
+  "activity": "Hoạt động",
+  "account": "Tài khoản",
+  "search": "Tìm kiếm",
+  "journeyInformation": "Thông tin hành trình",
+  "yourJourney": "Chuyến đi của bạn",
+  "viewDetails": "Xem chi tiết",
+  "bookTickets": "Đặt vé",
+  "filter": "Bộ lọc",
+  "departureStation": "Ga đi",
+  "arrivalStation": "Ga đến",
+  "roundTrip": "Khứ hồi",
+  "station": "Ga {}",
+  "loginSucceed": "Đăng nhập thành công",
+  "logout": "Đăng xuất",
+  "changePassword": "Đổi mật khẩu",
+  "gender": "Giới tính",
+  "male": "Nam",
+  "female": "Nữ",
+  "continue": "Tiếp tục",
+  "quit": "Thoát",
+  "language": "Ngôn ngữ",
+  "changeLanguage": "Đổi ngôn ngữ",
+  "changeTheme": "Đổi màu nền",
+  "drawer": "Zusa",
+  "settings": "Cài đặt",
+  "fingerprintAuthentication": "Xác thực vân tay",
+  "selectedSeat": "Đã chọn {}/{} chỗ",
+  "totalCost": "Tổng tiền: {}",
+  "sessionEnded": {
+    "title": "Phiên đăng nhập đã kết thúc.",
+    "description": "Phiên đăng nhập của bạn đã kết thúc. Nhằm đảm bảo bảo mật, hãy đăng nhập lại để tiếp tục sử dụng ứng dụng."
+  },
+  "remainingTicket": {
+    "zero": "Hết vé",
+    "one": "Còn {} vé",
+    "many": "Còn {} vé",
+    "other": "Còn {} vé"
+  },
+  "email": {
+    "short" : "Email",
+    "long": "Địa chỉ email"
+  },
+  "idNumber": {
+    "short" : "CCCD",
+    "long": "CCCD"
+  },
+  "phone": {
+    "short" : "SĐT",
+    "long": "Số điện thoại"
+  },
+  "errorMessage": {
+    "required": "Vui lòng không để trống!",
+    "confirmPassword": "Mật khẩu nhập lại không trùng khớp!"
+  },
+  "title" : {
+    "login": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "createPassword": "Tạo mật khẩu",
+    "forgetPassword": "Quên mật khẩu"
+  },
+  "subtitle": {
+    "login": "Nhập thông tin tài khoản của bạn",
+    "signUp": "Nhập địa chỉ email của bạn",
+    "createPassword": "Nhập mật khẩu của bạn",
+    "forgetPassword": "Nhập địa chỉ email của bạn"
+  },
+  "Token verification failed": "Xác thực thất bại"
+}

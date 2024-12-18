@@ -1,0 +1,80 @@
+{
+  "en": "English",
+  "vi": "Vietnamese",
+  "complete": "Complete",
+  "unexpectedError": "Unexpected error happened!",
+  "userName": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "remember": "Remember me",
+  "forgetPassword": "Forget password?",
+  "signUpNow": "Sign up now",
+  "home": "Home page",
+  "activity": "Activity",
+  "account": "Account",
+  "search": "Search",
+  "journeyInformation": "Journey's information",
+  "yourJourney": "Your journey",
+  "viewDetails": "View details",
+  "bookTickets": "Book tickets",
+  "filter": "Filter",
+  "departureStation": "Departure station",
+  "arrivalStation": "Arrival station",
+  "roundTrip": "Round-trip",
+  "station": "{} Station",
+  "loginSucceed": "Login succeed",
+  "logout": "Logout",
+  "changePassword": "Change password",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "continue": "Continue",
+  "quit": "Quit",
+  "language": "Language",
+  "changeLanguage": "Change app language",
+  "changeTheme": "Change app theme",
+  "drawer": "Zusa",
+  "settings": "Settings",
+  "fingerprintAuthentication": "Fingerprint authentication",
+  "selectedSeat": "Selected {}/{} seat(s)",
+  "totalCost": "Total cost: {}",
+  "sessionEnded": {
+    "title": "Login session ended.",
+    "description": "Your login session has ended. For your security, please log in again to continue using the app."
+  },
+  "remainingTicket": {
+    "zero": "Sold out",
+    "one": "{} ticket remain",
+    "many": "{} tickets remain",
+    "other": "{} tickets remain"
+  },
+  "email": {
+    "short" : "Email",
+    "long": "Email address"
+  },
+  "idNumber": {
+    "short" : "ID",
+    "long": "ID Number"
+  },
+  "phone": {
+    "short" : "Phone",
+    "long": "Phone"
+  },
+  "errorMessage": {
+    "required": "Please do not leave blank!",
+    "confirmPassword": "Re-entered password does not match!"
+  },
+  "title": {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "createPassword": "Create Password",
+    "forgetPassword": "Forgot Password"
+  },
+  "subtitle": {
+    "login": "Enter your account information",
+    "signUp": "Enter your email address",
+    "createPassword": "Enter your password",
+    "forgetPassword": "Enter your email address"
+  },
+  "Token verification failed": "Verification failed"
+}
