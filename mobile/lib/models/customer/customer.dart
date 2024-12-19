@@ -11,6 +11,7 @@ class Customer with _$Customer {
     required int age,
     required bool isMale,
     required String phoneNumber,
+    required String email,
   }) = _Customer;
 
   factory Customer.fromJson(Map<String, Object?> json)

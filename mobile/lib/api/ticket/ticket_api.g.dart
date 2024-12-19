@@ -22,7 +22,7 @@ class _TicketAPI implements TicketAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Ticket>> getAll() async {
+  Future<List<Ticket>> getList() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

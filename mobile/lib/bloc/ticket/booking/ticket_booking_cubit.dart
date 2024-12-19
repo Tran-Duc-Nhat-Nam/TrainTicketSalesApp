@@ -18,7 +18,9 @@ class TicketBookingCubit extends Cubit<TicketBookingState> {
     await CarAPI(await ApiHelper.getDioInstance()).getSome({
       'trainId': id,
     }).then(
-          (value) => emit(TicketBookingState.loaded(value)),
+          (value) {
+           if (!isClosed) emit(TicketBookingState.loaded(value));
+          },
           onError: (error) => emit(
             TicketBookingState.failed(
               error is DioException

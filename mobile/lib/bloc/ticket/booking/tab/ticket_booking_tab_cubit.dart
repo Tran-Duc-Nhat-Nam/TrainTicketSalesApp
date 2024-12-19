@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile/api/seat/seat_api.dart';
+import 'package:mobile/core/shared_ref.dart';
 import 'package:mobile/models/ticket/ticket.dart';
 
 import '../../../../core/api/api_helper.dart';
@@ -13,24 +14,29 @@ part 'ticket_booking_tab_cubit.freezed.dart';
 class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
   TicketBookingTabCubit() : super(const TicketBookingTabState.initial());
 
-  Future<void> getSeats(int id) async {
+  Future<void> loadData(int id) async {
     emit(TicketBookingTabState.loading());
-    await SeatAPI(await ApiHelper.getDioInstance()).getList({
-      'carId': id,
-    }).then(
-      (value) => emit(TicketBookingTabState.loaded(value, {}, 0)),
-      onError: (error) => emit(
-        TicketBookingTabState.failed(
-          error is DioException
-              ? error.response.toString().replaceAll('"', '')
-              : "unexpectedError",
+    int? userId = await sharedPreferences.getInt("userId");
+    if (userId != null) {
+      await SeatAPI(await ApiHelper.getDioInstance()).getList({
+        'carId': id,
+      }).then(
+            (value) => emit(TicketBookingTabState.loaded(value, {}, userId, 0)),
+        onError: (error) => emit(
+          TicketBookingTabState.failed(
+            error is DioException
+                ? error.response.toString().replaceAll('"', '')
+                : "unexpectedError",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      emit(TicketBookingTabState.failed("unauthorized"));
+    }
   }
 
   void getTotalCost(
-      Map<int, bool> selectedSeat, List<Seat> seats, int carPrice) {
+      Map<int, bool> selectedSeat, List<Seat> seats, int userId, int carPrice) {
     int totalCost = 0;
     var temp = selectedSeat.entries.map((e) {
       Seat seat = seats.firstWhere(
@@ -40,10 +46,10 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
       return seat.seatType.id * carPrice;
     });
     if (temp.isNotEmpty) totalCost = temp.reduce((a, b) => a + b);
-    emit(TicketBookingTabState.loaded(seats, selectedSeat, totalCost));
+    emit(TicketBookingTabState.loaded(seats, selectedSeat, userId, totalCost));
   }
 
-  void selectSeat(Map<int, bool> selectedSeat, List<Seat> seats,
+  void selectSeat(Map<int, bool> selectedSeat, List<Seat> seats, int userId,
       List<Ticket> soldTickets, int carPrice, int seatId) {
     Map<int, bool> temp = Map.from(selectedSeat);
     if (temp[seatId] == true) {
@@ -53,6 +59,6 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
     )) {
       temp[seatId] = true;
     }
-    getTotalCost(temp, seats, carPrice);
+    getTotalCost(temp, seats, userId, carPrice);
   }
 }

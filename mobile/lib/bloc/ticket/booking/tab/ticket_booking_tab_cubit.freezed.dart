@@ -20,8 +20,8 @@ mixin _$TicketBookingTabState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)
+    required TResult Function(List<Seat> seats, Map<int, bool> selectedSeat,
+            int userId, int totalCost)
         loaded,
     required TResult Function(String message) failed,
   }) =>
@@ -30,8 +30,8 @@ mixin _$TicketBookingTabState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult? Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult? Function(String message)? failed,
   }) =>
@@ -40,8 +40,8 @@ mixin _$TicketBookingTabState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
@@ -139,8 +139,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)
+    required TResult Function(List<Seat> seats, Map<int, bool> selectedSeat,
+            int userId, int totalCost)
         loaded,
     required TResult Function(String message) failed,
   }) {
@@ -152,8 +152,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult? Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult? Function(String message)? failed,
   }) {
@@ -165,8 +165,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
@@ -262,8 +262,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)
+    required TResult Function(List<Seat> seats, Map<int, bool> selectedSeat,
+            int userId, int totalCost)
         loaded,
     required TResult Function(String message) failed,
   }) {
@@ -275,8 +275,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult? Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult? Function(String message)? failed,
   }) {
@@ -288,8 +288,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
@@ -348,7 +348,11 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Seat> seats, Map<int, bool> selectedSeat, int totalCost});
+  $Res call(
+      {List<Seat> seats,
+      Map<int, bool> selectedSeat,
+      int userId,
+      int totalCost});
 }
 
 /// @nodoc
@@ -366,6 +370,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? seats = null,
     Object? selectedSeat = null,
+    Object? userId = null,
     Object? totalCost = null,
   }) {
     return _then(_$LoadedImpl(
@@ -377,6 +382,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value._selectedSeat
           : selectedSeat // ignore: cast_nullable_to_non_nullable
               as Map<int, bool>,
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       null == totalCost
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
@@ -388,8 +397,8 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
-      final List<Seat> seats, final Map<int, bool> selectedSeat, this.totalCost)
+  const _$LoadedImpl(final List<Seat> seats, final Map<int, bool> selectedSeat,
+      this.userId, this.totalCost)
       : _seats = seats,
         _selectedSeat = selectedSeat;
 
@@ -410,11 +419,13 @@ class _$LoadedImpl implements _Loaded {
   }
 
   @override
+  final int userId;
+  @override
   final int totalCost;
 
   @override
   String toString() {
-    return 'TicketBookingTabState.loaded(seats: $seats, selectedSeat: $selectedSeat, totalCost: $totalCost)';
+    return 'TicketBookingTabState.loaded(seats: $seats, selectedSeat: $selectedSeat, userId: $userId, totalCost: $totalCost)';
   }
 
   @override
@@ -425,6 +436,7 @@ class _$LoadedImpl implements _Loaded {
             const DeepCollectionEquality().equals(other._seats, _seats) &&
             const DeepCollectionEquality()
                 .equals(other._selectedSeat, _selectedSeat) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost));
   }
@@ -434,6 +446,7 @@ class _$LoadedImpl implements _Loaded {
       runtimeType,
       const DeepCollectionEquality().hash(_seats),
       const DeepCollectionEquality().hash(_selectedSeat),
+      userId,
       totalCost);
 
   /// Create a copy of TicketBookingTabState
@@ -449,12 +462,12 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)
+    required TResult Function(List<Seat> seats, Map<int, bool> selectedSeat,
+            int userId, int totalCost)
         loaded,
     required TResult Function(String message) failed,
   }) {
-    return loaded(seats, selectedSeat, totalCost);
+    return loaded(seats, selectedSeat, userId, totalCost);
   }
 
   @override
@@ -462,12 +475,12 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult? Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult? Function(String message)? failed,
   }) {
-    return loaded?.call(seats, selectedSeat, totalCost);
+    return loaded?.call(seats, selectedSeat, userId, totalCost);
   }
 
   @override
@@ -475,14 +488,14 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(seats, selectedSeat, totalCost);
+      return loaded(seats, selectedSeat, userId, totalCost);
     }
     return orElse();
   }
@@ -526,11 +539,15 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements TicketBookingTabState {
-  const factory _Loaded(final List<Seat> seats,
-      final Map<int, bool> selectedSeat, final int totalCost) = _$LoadedImpl;
+  const factory _Loaded(
+      final List<Seat> seats,
+      final Map<int, bool> selectedSeat,
+      final int userId,
+      final int totalCost) = _$LoadedImpl;
 
   List<Seat> get seats;
   Map<int, bool> get selectedSeat;
+  int get userId;
   int get totalCost;
 
   /// Create a copy of TicketBookingTabState
@@ -610,8 +627,8 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)
+    required TResult Function(List<Seat> seats, Map<int, bool> selectedSeat,
+            int userId, int totalCost)
         loaded,
     required TResult Function(String message) failed,
   }) {
@@ -623,8 +640,8 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult? Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult? Function(String message)? failed,
   }) {
@@ -636,8 +653,8 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<Seat> seats, Map<int, bool> selectedSeat, int totalCost)?
+    TResult Function(List<Seat> seats, Map<int, bool> selectedSeat, int userId,
+            int totalCost)?
         loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),

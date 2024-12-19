@@ -26,6 +26,7 @@ mixin _$Customer {
   int get age => throw _privateConstructorUsedError;
   bool get isMale => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   /// Serializes this Customer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +49,8 @@ abstract class $CustomerCopyWith<$Res> {
       String name,
       int age,
       bool isMale,
-      String phoneNumber});
+      String phoneNumber,
+      String email});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
     Object? age = null,
     Object? isMale = null,
     Object? phoneNumber = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -98,6 +101,10 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -116,7 +123,8 @@ abstract class _$$CustomerImplCopyWith<$Res>
       String name,
       int age,
       bool isMale,
-      String phoneNumber});
+      String phoneNumber,
+      String email});
 }
 
 /// @nodoc
@@ -138,6 +146,7 @@ class __$$CustomerImplCopyWithImpl<$Res>
     Object? age = null,
     Object? isMale = null,
     Object? phoneNumber = null,
+    Object? email = null,
   }) {
     return _then(_$CustomerImpl(
       id: null == id
@@ -164,6 +173,10 @@ class __$$CustomerImplCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -177,7 +190,8 @@ class _$CustomerImpl implements _Customer {
       required this.name,
       required this.age,
       required this.isMale,
-      required this.phoneNumber});
+      required this.phoneNumber,
+      required this.email});
 
   factory _$CustomerImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerImplFromJson(json);
@@ -194,10 +208,12 @@ class _$CustomerImpl implements _Customer {
   final bool isMale;
   @override
   final String phoneNumber;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'Customer(id: $id, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber)';
+    return 'Customer(id: $id, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber, email: $email)';
   }
 
   @override
@@ -212,13 +228,14 @@ class _$CustomerImpl implements _Customer {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.isMale, isMale) || other.isMale == isMale) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, idNumber, name, age, isMale, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType, id, idNumber, name, age, isMale, phoneNumber, email);
 
   /// Create a copy of Customer
   /// with the given fields replaced by the non-null parameter values.
@@ -243,7 +260,8 @@ abstract class _Customer implements Customer {
       required final String name,
       required final int age,
       required final bool isMale,
-      required final String phoneNumber}) = _$CustomerImpl;
+      required final String phoneNumber,
+      required final String email}) = _$CustomerImpl;
 
   factory _Customer.fromJson(Map<String, dynamic> json) =
       _$CustomerImpl.fromJson;
@@ -260,6 +278,8 @@ abstract class _Customer implements Customer {
   bool get isMale;
   @override
   String get phoneNumber;
+  @override
+  String get email;
 
   /// Create a copy of Customer
   /// with the given fields replaced by the non-null parameter values.

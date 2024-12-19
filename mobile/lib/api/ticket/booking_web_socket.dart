@@ -8,13 +8,19 @@ class BookingWebSocket {
 
   BookingWebSocket._(this._channel);
 
-  static Future<BookingWebSocket> connect() async {
+  static Future<BookingWebSocket> connect(int tripId, int carId) async {
     final channel = WebSocketChannel.connect(
       Uri.parse('ws://192.168.30.172:7777/booking'),
     );
 
     await channel.ready.then(
-      (value) => log("Done", name: "Ready"),
+      (value) {
+        channel.sink.add(json.encode({
+          'tripId': tripId,
+          'carId': carId,
+        }));
+        log("Done", name: "Ready");
+      },
     );
     return BookingWebSocket._(channel);
   }
