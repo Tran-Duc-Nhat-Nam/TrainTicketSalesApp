@@ -9,6 +9,7 @@ import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../../../bloc/trip/trip_tab/trip_tab_cubit.dart';
 import '../../../../models/station/station.dart';
 import '../../../../widgets/app_loading_widget.dart';
+import '../../../../widgets/state/app_state.dart';
 
 class TripListTab extends StatefulWidget {
   const TripListTab(
@@ -22,10 +23,10 @@ class TripListTab extends StatefulWidget {
   final Station? arrivalStation;
 
   @override
-  State<TripListTab> createState() => _TripListTabState();
+  AppState<TripListTab> createState() => _TripListTabState();
 }
 
-class _TripListTabState extends State<TripListTab>
+class _TripListTabState extends AppState<TripListTab>
     with AutomaticKeepAliveClientMixin<TripListTab> {
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);

@@ -1,16 +1,26 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/widgets/app_error_widget.dart';
+import 'package:mobile/widgets/app_screen.dart';
 import 'package:mobile/widgets/state/app_state.dart';
 
-class TicketInfoScreen extends StatefulWidget {
-  const TicketInfoScreen({super.key});
+class TicketBookingTicketScreen extends StatefulWidget {
+  const TicketBookingTicketScreen({super.key});
 
   @override
-  AppState<TicketInfoScreen> createState() => _TicketInfoScreenState();
+  AppState<TicketBookingTicketScreen> createState() => _TicketBookingTicketScreenState();
 }
 
-class _TicketInfoScreenState extends AppState<TicketInfoScreen> {
+class _TicketBookingTicketScreenState extends AppState<TicketBookingTicketScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AppScreen(
+      title: context.tr("bookingInfo"),
+      child: AppErrorWidget(
+        message: "Test",
+        onPressed: () {},
+        buttonText: "Test",
+      ),
+    );
   }
 }

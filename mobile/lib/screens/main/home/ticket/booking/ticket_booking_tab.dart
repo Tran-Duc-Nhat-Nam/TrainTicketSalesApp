@@ -67,11 +67,19 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
       },
       child: BlocListener<TicketBookingTabCubit, TicketBookingTabState>(
         listener: (context, state) {
-          state.when(
-              initial: () {},
-              loading: () {},
-              loaded: (seats, selectedSeat, userId, totalCost) {},
-              failed: (message) {});
+          state.maybeWhen(
+            booking: (ticket) {
+              log("Check", name: "Booking");
+              context.push("/trip/booking/customer", extra: ticket).then((value) {
+                if (context.mounted) context.read<TicketBookingTabCubit>().loadData(widget.car.id);
+              });
+            },
+            bookingFailed: (message) {
+              log(message, name: "Booking");
+              context.read<TicketBookingTabCubit>().loadData(widget.car.id);
+            },
+            orElse: () {},
+          );
         },
         child: BlocBuilder<TicketBookingTabCubit, TicketBookingTabState>(
           builder: (context, state) => state.when(
@@ -251,10 +259,9 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                     right: 24,
                   ),
                   child: AppButton(
-                    onPressed: () => context.push(
-                      "/ticket/customer-info",
-                      extra: {selectedSeat, userId},
-                    ),
+                    onPressed: () {
+                      context.read<TicketBookingTabCubit>().startBooking(selectedSeat, userId, widget.tripId);
+                    },
                     text: context.tr("continue"),
                   ),
                 ),
@@ -266,6 +273,10 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                   context.read<TicketBookingTabCubit>().loadData(widget.car.id),
               buttonText: context.tr("reload"),
             ),
+            booking: (ticket) => Center(
+              child: Text(context.tr("moveToBooking")),
+            ),
+            bookingFailed: (message) => Container(),
           ),
         ),
       ),

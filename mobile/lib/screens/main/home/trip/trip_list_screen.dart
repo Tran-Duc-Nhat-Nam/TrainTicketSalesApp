@@ -8,15 +8,16 @@ import 'package:mobile/widgets/app_screen.dart';
 
 import '../../../../bloc/trip/trip_list/trip_list_cubit.dart';
 import '../../../../widgets/app_loading_widget.dart';
+import '../../../../widgets/state/app_state.dart';
 
 class TripListScreen extends StatefulWidget {
   const TripListScreen({super.key});
 
   @override
-  State<TripListScreen> createState() => _TripListScreenState();
+  AppState<TripListScreen> createState() => _TripListScreenState();
 }
 
-class _TripListScreenState extends State<TripListScreen> {
+class _TripListScreenState extends AppState<TripListScreen> {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> extras = GoRouterState.of(context).extra != null

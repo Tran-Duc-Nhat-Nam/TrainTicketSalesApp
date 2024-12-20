@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile/api/seat/seat_api.dart';
+import 'package:mobile/api/ticket/ticket_api.dart';
 import 'package:mobile/core/shared_ref.dart';
 import 'package:mobile/models/ticket/ticket.dart';
 
@@ -21,7 +24,7 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
       await SeatAPI(await ApiHelper.getDioInstance()).getList({
         'carId': id,
       }).then(
-            (value) => emit(TicketBookingTabState.loaded(value, {}, userId, 0)),
+        (value) => emit(TicketBookingTabState.loaded(value, {}, userId, 0)),
         onError: (error) => emit(
           TicketBookingTabState.failed(
             error is DioException
@@ -60,5 +63,40 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
       temp[seatId] = true;
     }
     getTotalCost(temp, seats, userId, carPrice);
+  }
+
+  Future<void> startBooking(
+      Map<int, bool> selectedSeat, int userId, int tripId) async {
+    log(
+        "Start booking: ${{
+          'selectedSeatId': selectedSeat.entries.map(
+            (e) => e.key,
+          ).toList(),
+          "customerId": userId,
+          "tripId": tripId,
+        }}",
+        name: "Booking");
+    await TicketAPI(await ApiHelper.getDioInstance()).create({
+      'selectedSeatId': selectedSeat.entries.map(
+            (e) => e.key,
+      ).toList(),
+      "customerId": userId,
+      "tripId": tripId,
+    }).then(
+      (value) {
+        log("Booking successfully", name: "Booking");
+        emit(TicketBookingTabState.booking(value));
+      },
+      onError: (error) {
+        log("Booking failed", name: "Booking", error: error);
+        emit(
+          TicketBookingTabState.bookingFailed(
+            error is DioException
+                ? error.response.toString().replaceAll('"', '')
+                : "unexpectedError",
+          ),
+        );
+      },
+    );
   }
 }

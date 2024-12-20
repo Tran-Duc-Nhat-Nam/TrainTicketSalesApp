@@ -8,20 +8,21 @@ import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_tab.dart'
 import '../../../../../common/styles/text_styles.dart';
 import '../../../../../widgets/app_loading_widget.dart';
 import '../../../../../widgets/app_screen.dart';
+import '../../../../../widgets/state/app_state.dart';
 
 class TicketBookingScreen extends StatefulWidget {
   const TicketBookingScreen({super.key});
 
   @override
-  State<TicketBookingScreen> createState() => _TicketBookingScreenState();
+  AppState<TicketBookingScreen> createState() => _TicketBookingScreenState();
 }
 
-class _TicketBookingScreenState extends State<TicketBookingScreen> {
+class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
   @override
   Widget build(BuildContext context) {
     var extra = GoRouterState.of(context).extra as Map<String, dynamic>;
     return BlocProvider<TicketBookingCubit>(
-      create: (context) => TicketBookingCubit()..getCars(extra['train_id']),
+      create: (context) => TicketBookingCubit()..getCars(context, extra['train_id']),
       child: AppScreen(
         title: extra['name'],
         isChildScrollView: true,

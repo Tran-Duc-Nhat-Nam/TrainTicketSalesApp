@@ -12,9 +12,9 @@ abstract class TicketAPI {
   @GET('/tickets')
   Future<List<Ticket>> getList();
 
-  @GET('/tickets/{id}')
-  Future<List<Ticket>> get(@Path('id') int id);
+  @GET('/ticket/{id}')
+  Future<Ticket> get(@Path('id') int id);
 
   @POST('/tickets')
-  Future<List<Ticket>> create(@Body() Ticket ticket);
+  Future<List<Ticket>> create(@Body() Map<String, dynamic> body);
 }

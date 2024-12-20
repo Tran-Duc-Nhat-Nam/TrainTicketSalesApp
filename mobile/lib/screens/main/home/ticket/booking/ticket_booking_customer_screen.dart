@@ -4,26 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/bloc/ticket/booking/customer/ticket_booking_customer_cubit.dart';
 import 'package:mobile/common/styles/text_styles.dart';
+import 'package:mobile/models/ticket/ticket.dart';
 import 'package:mobile/widgets/app_card.dart';
 import 'package:mobile/widgets/app_error_widget.dart';
 import 'package:mobile/widgets/app_loading_widget.dart';
 import 'package:mobile/widgets/app_screen.dart';
-import 'package:mobile/widgets/state/app_state.dart';
 
 import '../../../../../widgets/app_button.dart';
 
-class TicketBookingCustomerScreen extends StatefulWidget {
+class TicketBookingCustomerScreen extends StatelessWidget {
   const TicketBookingCustomerScreen({super.key});
 
   @override
-  AppState<TicketBookingCustomerScreen> createState() =>
-      _TicketBookingCustomerScreenState();
-}
-
-class _TicketBookingCustomerScreenState
-    extends AppState<TicketBookingCustomerScreen> {
-  @override
   Widget build(BuildContext context) {
+    var ticket = GoRouterState.of(context).extra != null
+        ? GoRouterState.of(context).extra as List<Ticket>
+        : null;
     return AppScreen(
       title: context.tr("customerInfo"),
       child: BlocProvider<TicketBookingCustomerCubit>(
@@ -117,6 +113,18 @@ class _TicketBookingCustomerScreenState
                                             .secondary,
                                       ),
                                     ),
+                                    Row(
+                                      children: [
+                                        Card(
+                                          child: Column(
+                                            children: [
+                                              Text("Chiều đi"),
+                                              Text("Ca 1 - ghế 11"),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )
                                   ],
                                 ),
                               ],
@@ -126,8 +134,10 @@ class _TicketBookingCustomerScreenState
                       ],
                     ),
                     AppButton(
-                      onPressed: () =>
-                          context.push("/ticket/customer-info", extra: 1),
+                      onPressed: () => context.push(
+                        "/trip/booking/ticket",
+                        extra: customer.id,
+                      ),
                       text: context.tr("continue"),
                     ),
                   ],

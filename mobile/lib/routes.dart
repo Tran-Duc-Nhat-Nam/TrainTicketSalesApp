@@ -10,6 +10,7 @@ import 'package:mobile/screens/main/account/account_screen.dart';
 import 'package:mobile/screens/main/activity/activity_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_customer_screen.dart';
+import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_ticket_screen.dart';
 import 'package:mobile/screens/main/home/trip/trip_screen.dart';
 import 'package:mobile/screens/main/home/trip/trip_list_screen.dart';
 import 'package:mobile/screens/main/home/ticket/ticket_detail.dart';
@@ -94,12 +95,24 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: 'trip',
                   pageBuilder: (context, state) =>
-                      fadingNavigation(context, state, TripListScreen()),
+                      fadingNavigation(context, state, const TripListScreen()),
                   routes: [
                     GoRoute(
                       path: 'booking',
                       pageBuilder: (context, state) =>
-                          fadingNavigation(context, state, TicketBookingScreen()),
+                          fadingNavigation(context, state, const TicketBookingScreen()),
+                      routes: [
+                        GoRoute(
+                          path: 'customer',
+                          pageBuilder: (context, state) =>
+                              fadingNavigation(context, state, const TicketBookingCustomerScreen()),
+                        ),
+                        GoRoute(
+                          path: 'ticket',
+                          pageBuilder: (context, state) =>
+                              fadingNavigation(context, state, const TicketBookingTicketScreen()),
+                        ),
+                      ]
                     ),
                   ],
                 ),
@@ -112,11 +125,6 @@ final GoRouter router = GoRouter(
                       path: 'detail',
                       pageBuilder: (context, state) =>
                           fadingNavigation(context, state, TicketDetail()),
-                    ),
-                    GoRoute(
-                      path: 'customer-info',
-                      pageBuilder: (context, state) =>
-                          fadingNavigation(context, state, TicketBookingCustomerScreen()),
                     ),
                   ],
                 ),
