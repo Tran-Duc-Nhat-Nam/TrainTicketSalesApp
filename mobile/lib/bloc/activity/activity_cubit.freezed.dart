@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'ticket_booking_customer_cubit.dart';
+part of 'activity_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TicketBookingCustomerState {
+mixin _$ActivityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function(String message) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$TicketBookingCustomerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function(String message)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$TicketBookingCustomerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function(List<Ticket> tickets)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) =>
@@ -69,25 +69,23 @@ mixin _$TicketBookingCustomerState {
 }
 
 /// @nodoc
-abstract class $TicketBookingCustomerStateCopyWith<$Res> {
-  factory $TicketBookingCustomerStateCopyWith(TicketBookingCustomerState value,
-          $Res Function(TicketBookingCustomerState) then) =
-      _$TicketBookingCustomerStateCopyWithImpl<$Res,
-          TicketBookingCustomerState>;
+abstract class $ActivityStateCopyWith<$Res> {
+  factory $ActivityStateCopyWith(
+          ActivityState value, $Res Function(ActivityState) then) =
+      _$ActivityStateCopyWithImpl<$Res, ActivityState>;
 }
 
 /// @nodoc
-class _$TicketBookingCustomerStateCopyWithImpl<$Res,
-        $Val extends TicketBookingCustomerState>
-    implements $TicketBookingCustomerStateCopyWith<$Res> {
-  _$TicketBookingCustomerStateCopyWithImpl(this._value, this._then);
+class _$ActivityStateCopyWithImpl<$Res, $Val extends ActivityState>
+    implements $ActivityStateCopyWith<$Res> {
+  _$ActivityStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -100,13 +98,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TicketBookingCustomerStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ActivityStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -117,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'TicketBookingCustomerState.initial()';
+    return 'ActivityState.initial()';
   }
 
   @override
@@ -134,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function(String message) failed,
   }) {
     return initial();
@@ -145,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return initial?.call();
@@ -156,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function(List<Ticket> tickets)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -204,7 +202,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements TicketBookingCustomerState {
+abstract class _Initial implements ActivityState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -217,13 +215,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TicketBookingCustomerStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ActivityStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -234,7 +232,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'TicketBookingCustomerState.loading()';
+    return 'ActivityState.loading()';
   }
 
   @override
@@ -251,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function(String message) failed,
   }) {
     return loading();
@@ -262,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return loading?.call();
@@ -273,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function(List<Ticket> tickets)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -321,7 +319,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements TicketBookingCustomerState {
+abstract class _Loading implements ActivityState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -331,56 +329,49 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Customer customer});
-
-  $CustomerCopyWith<$Res> get customer;
+  $Res call({List<Ticket> tickets});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$TicketBookingCustomerStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ActivityStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? customer = null,
+    Object? tickets = null,
   }) {
     return _then(_$LoadedImpl(
-      null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer,
+      null == tickets
+          ? _value._tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
+              as List<Ticket>,
     ));
-  }
-
-  /// Create a copy of TicketBookingCustomerState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CustomerCopyWith<$Res> get customer {
-    return $CustomerCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.customer);
+  const _$LoadedImpl(final List<Ticket> tickets) : _tickets = tickets;
 
+  final List<Ticket> _tickets;
   @override
-  final Customer customer;
+  List<Ticket> get tickets {
+    if (_tickets is EqualUnmodifiableListView) return _tickets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tickets);
+  }
 
   @override
   String toString() {
-    return 'TicketBookingCustomerState.loaded(customer: $customer)';
+    return 'ActivityState.loaded(tickets: $tickets)';
   }
 
   @override
@@ -388,14 +379,14 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.customer, customer) ||
-                other.customer == customer));
+            const DeepCollectionEquality().equals(other._tickets, _tickets));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, customer);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -408,10 +399,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function(String message) failed,
   }) {
-    return loaded(customer);
+    return loaded(tickets);
   }
 
   @override
@@ -419,10 +410,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function(String message)? failed,
   }) {
-    return loaded?.call(customer);
+    return loaded?.call(tickets);
   }
 
   @override
@@ -430,12 +421,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function(List<Ticket> tickets)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(customer);
+      return loaded(tickets);
     }
     return orElse();
   }
@@ -478,12 +469,12 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements TicketBookingCustomerState {
-  const factory _Loaded(final Customer customer) = _$LoadedImpl;
+abstract class _Loaded implements ActivityState {
+  const factory _Loaded(final List<Ticket> tickets) = _$LoadedImpl;
 
-  Customer get customer;
+  List<Ticket> get tickets;
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -501,13 +492,13 @@ abstract class _$$FailedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailedImplCopyWithImpl<$Res>
-    extends _$TicketBookingCustomerStateCopyWithImpl<$Res, _$FailedImpl>
+    extends _$ActivityStateCopyWithImpl<$Res, _$FailedImpl>
     implements _$$FailedImplCopyWith<$Res> {
   __$$FailedImplCopyWithImpl(
       _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -533,7 +524,7 @@ class _$FailedImpl implements _Failed {
 
   @override
   String toString() {
-    return 'TicketBookingCustomerState.failed(message: $message)';
+    return 'ActivityState.failed(message: $message)';
   }
 
   @override
@@ -547,7 +538,7 @@ class _$FailedImpl implements _Failed {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -560,7 +551,7 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function(String message) failed,
   }) {
     return failed(message);
@@ -571,7 +562,7 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return failed?.call(message);
@@ -582,7 +573,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function(List<Ticket> tickets)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -630,12 +621,12 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements TicketBookingCustomerState {
+abstract class _Failed implements ActivityState {
   const factory _Failed(final String message) = _$FailedImpl;
 
   String get message;
 
-  /// Create a copy of TicketBookingCustomerState
+  /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>

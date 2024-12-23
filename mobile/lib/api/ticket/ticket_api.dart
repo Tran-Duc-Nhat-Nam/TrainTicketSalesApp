@@ -10,7 +10,7 @@ abstract class TicketAPI {
       _TicketAPI;
 
   @GET('/tickets')
-  Future<List<Ticket>> getList();
+  Future<List<Ticket>> getList(@Queries() Map<String, dynamic>? queries);
 
   @GET('/ticket/{id}')
   Future<Ticket> get(@Path('id') int id);

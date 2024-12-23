@@ -66,31 +66,28 @@ class _AppScreenState extends State<AppScreen> {
                         Text(widget.subtitle!),
                       ],
                     )
-                  : Text(widget.title),
+                  : GestureDetector(
+                child: Text(widget.title),
+              ),
               titleTextStyle: AppTextStyles.appBarTitle,
-              leading: widget.isDrawer
-                  ? InkWell(
-                      overlayColor: WidgetStatePropertyAll(Colors.transparent),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Icon(Icons.menu, color: Colors.white),
-                      ),
-                      onTap: () {
-                        drawerKey.currentState!.openDrawer();
-                      },
-                    )
-                  : null,
+              automaticallyImplyLeading: false,
+              leading: context.canPop() ? Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.white,),
+                  iconSize: 28,
+                  onPressed: () => context.pop(),
+                ),
+              ) : null,
               actions: [
-                InkWell(
-                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Icon(Icons.qr_code, color: Colors.white),
-                  ),
-                  onTap: () {
-                    context.push("/qr");
+                IconButton(
+                  icon: Icon(Icons.menu, color: Colors.white,),
+                  iconSize: 28,
+                  onPressed: () {
+                    drawerKey.currentState!.openDrawer();
                   },
                 ),
+                const SizedBox(width: 12,)
               ],
             )
           : null,

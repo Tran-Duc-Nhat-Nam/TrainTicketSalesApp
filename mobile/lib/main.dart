@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:isolate';
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:background_locator_2/background_locator.dart';

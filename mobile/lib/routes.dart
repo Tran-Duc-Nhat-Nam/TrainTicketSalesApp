@@ -6,10 +6,12 @@ import 'package:mobile/screens/login/forget_password_screen.dart';
 import 'package:mobile/screens/login/login_screen.dart';
 import 'package:mobile/screens/login/otp_screen.dart';
 import 'package:mobile/screens/login/signup_screen.dart';
+import 'package:mobile/screens/main/activity/activity_history_screen.dart';
 import 'package:mobile/screens/main/account/account_screen.dart';
 import 'package:mobile/screens/main/activity/activity_screen.dart';
+import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_payment_screen.dart';
+import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_receipt_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_screen.dart';
-import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_customer_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_ticket_screen.dart';
 import 'package:mobile/screens/main/home/trip/trip_screen.dart';
 import 'package:mobile/screens/main/home/trip/trip_list_screen.dart';
@@ -20,7 +22,6 @@ import 'package:mobile/screens/splash_screen.dart';
 import 'package:mobile/widgets/app_drawer.dart';
 import 'package:mobile/widgets/app_nav_bar.dart';
 import 'package:mobile/widgets/transition/fade_transition.dart';
-
 
 final _parentKey = GlobalKey<NavigatorState>();
 final _shellKey = GlobalKey<NavigatorState>();
@@ -99,20 +100,31 @@ final GoRouter router = GoRouter(
                   routes: [
                     GoRoute(
                       path: 'booking',
-                      pageBuilder: (context, state) =>
-                          fadingNavigation(context, state, const TicketBookingScreen()),
+                      pageBuilder: (context, state) => fadingNavigation(
+                          context, state, const TicketBookingScreen()),
                       routes: [
                         GoRoute(
-                          path: 'customer',
-                          pageBuilder: (context, state) =>
-                              fadingNavigation(context, state, const TicketBookingCustomerScreen()),
+                          path: 'ticket',
+                          pageBuilder: (context, state) => fadingNavigation(
+                              context,
+                              state,
+                              const TicketBookingTicketScreen()),
                         ),
                         GoRoute(
-                          path: 'ticket',
-                          pageBuilder: (context, state) =>
-                              fadingNavigation(context, state, const TicketBookingTicketScreen()),
+                          path: 'payment',
+                          pageBuilder: (context, state) => fadingNavigation(
+                              context,
+                              state,
+                              const TicketBookingPaymentScreen()),
                         ),
-                      ]
+                        GoRoute(
+                          path: 'receipt',
+                          pageBuilder: (context, state) => fadingNavigation(
+                              context,
+                              state,
+                              const TicketBookingReceiptScreen()),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -120,13 +132,6 @@ final GoRouter router = GoRouter(
                   path: 'ticket',
                   pageBuilder: (context, state) =>
                       fadingNavigation(context, state, TicketDetail()),
-                  routes: [
-                    GoRoute(
-                      path: 'detail',
-                      pageBuilder: (context, state) =>
-                          fadingNavigation(context, state, TicketDetail()),
-                    ),
-                  ],
                 ),
               ],
             ),
@@ -138,6 +143,13 @@ final GoRouter router = GoRouter(
               path: '/activity',
               pageBuilder: (context, state) =>
                   fadingNavigation(context, state, const ActivityScreen()),
+              routes: [
+                GoRoute(
+                  path: 'history',
+                  pageBuilder: (context, state) =>
+                      fadingNavigation(context, state, const ActivityHistoryScreen()),
+                ),
+              ]
             ),
           ],
         ),

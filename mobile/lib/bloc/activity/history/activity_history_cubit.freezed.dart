@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'ticket_booking_ticket_cubit.dart';
+part of 'activity_history_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TicketBookingTicketState {
+mixin _$ActivityHistoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,24 +69,24 @@ mixin _$TicketBookingTicketState {
 }
 
 /// @nodoc
-abstract class $TicketBookingTicketStateCopyWith<$Res> {
-  factory $TicketBookingTicketStateCopyWith(TicketBookingTicketState value,
-          $Res Function(TicketBookingTicketState) then) =
-      _$TicketBookingTicketStateCopyWithImpl<$Res, TicketBookingTicketState>;
+abstract class $ActivityHistoryStateCopyWith<$Res> {
+  factory $ActivityHistoryStateCopyWith(ActivityHistoryState value,
+          $Res Function(ActivityHistoryState) then) =
+      _$ActivityHistoryStateCopyWithImpl<$Res, ActivityHistoryState>;
 }
 
 /// @nodoc
-class _$TicketBookingTicketStateCopyWithImpl<$Res,
-        $Val extends TicketBookingTicketState>
-    implements $TicketBookingTicketStateCopyWith<$Res> {
-  _$TicketBookingTicketStateCopyWithImpl(this._value, this._then);
+class _$ActivityHistoryStateCopyWithImpl<$Res,
+        $Val extends ActivityHistoryState>
+    implements $ActivityHistoryStateCopyWith<$Res> {
+  _$ActivityHistoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -99,13 +99,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ActivityHistoryStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -116,7 +116,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'TicketBookingTicketState.initial()';
+    return 'ActivityHistoryState.initial()';
   }
 
   @override
@@ -203,7 +203,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements TicketBookingTicketState {
+abstract class _Initial implements ActivityHistoryState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -216,13 +216,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ActivityHistoryStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -233,7 +233,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'TicketBookingTicketState.loading()';
+    return 'ActivityHistoryState.loading()';
   }
 
   @override
@@ -320,7 +320,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements TicketBookingTicketState {
+abstract class _Loading implements ActivityHistoryState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -335,13 +335,13 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ActivityHistoryStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -372,7 +372,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'TicketBookingTicketState.loaded(tickets: $tickets)';
+    return 'ActivityHistoryState.loaded(tickets: $tickets)';
   }
 
   @override
@@ -387,7 +387,7 @@ class _$LoadedImpl implements _Loaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -470,12 +470,12 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements TicketBookingTicketState {
+abstract class _Loaded implements ActivityHistoryState {
   const factory _Loaded(final List<Ticket> tickets) = _$LoadedImpl;
 
   List<Ticket> get tickets;
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -493,13 +493,13 @@ abstract class _$$FailedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailedImplCopyWithImpl<$Res>
-    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$FailedImpl>
+    extends _$ActivityHistoryStateCopyWithImpl<$Res, _$FailedImpl>
     implements _$$FailedImplCopyWith<$Res> {
   __$$FailedImplCopyWithImpl(
       _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -525,7 +525,7 @@ class _$FailedImpl implements _Failed {
 
   @override
   String toString() {
-    return 'TicketBookingTicketState.failed(message: $message)';
+    return 'ActivityHistoryState.failed(message: $message)';
   }
 
   @override
@@ -539,7 +539,7 @@ class _$FailedImpl implements _Failed {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -622,12 +622,12 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements TicketBookingTicketState {
+abstract class _Failed implements ActivityHistoryState {
   const factory _Failed(final String message) = _$FailedImpl;
 
   String get message;
 
-  /// Create a copy of TicketBookingTicketState
+  /// Create a copy of ActivityHistoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
