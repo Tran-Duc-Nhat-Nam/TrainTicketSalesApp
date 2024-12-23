@@ -70,7 +70,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
           state.maybeWhen(
             booking: (ticket) {
               log("Check", name: "Booking");
-              context.push("/trip/booking/customer", extra: ticket).then((value) {
+              context.push("/trip/booking/ticket", extra: ticket).then((value) {
                 if (context.mounted) context.read<TicketBookingTabCubit>().loadData(widget.car.id);
               });
             },

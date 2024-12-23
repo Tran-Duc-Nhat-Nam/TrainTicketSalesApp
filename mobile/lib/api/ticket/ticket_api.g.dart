@@ -22,9 +22,11 @@ class _TicketAPI implements TicketAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Ticket>> getList() async {
+  Future<List<Ticket>> getList(Map<String, dynamic>? queries) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries ?? <String, dynamic>{});
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<List<Ticket>>(Options(
