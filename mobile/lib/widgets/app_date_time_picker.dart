@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-// import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 
@@ -16,16 +16,16 @@ class AppDateTimePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<FormFieldValidator<DateTime>> validators = [];
-    // if (required) {
-    //   validators.add(
-    //     FormBuilderValidators.required(
-    //       errorText: context.tr("errorMessage.required"),
-    //     ),
-    //   );
-    // }
-    // if (customValidators != null) {
-    //   validators.addAll(customValidators as Iterable<FormFieldValidator<DateTime>>);
-    // }
+    if (required) {
+      validators.add(
+        FormBuilderValidators.required(
+          errorText: context.tr("errorMessage.required"),
+        ),
+      );
+    }
+    if (customValidators != null) {
+      validators.addAll(customValidators as Iterable<FormFieldValidator<DateTime>>);
+    }
     return FormBuilderField<DateTime?>(
       initialValue: DateTime.now(),
       builder: (field) => Container(
@@ -62,7 +62,7 @@ class AppDateTimePicker extends StatelessWidget {
         ),
       ),
       name: name,
-      // validator: FormBuilderValidators.compose(validators),
+      validator: FormBuilderValidators.compose(validators),
     );
   }
 }

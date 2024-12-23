@@ -2,7 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-// import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:mobile/common/styles/text_styles.dart';
 
 class AppTextField extends StatefulWidget {
@@ -43,19 +43,19 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    // validators = [];
-    // if (widget.required) {
-    //   validators.add(FormBuilderValidators.required(
-    //       errorText: context.tr("errorMessage.required"),),);
-    // }
-    // if (widget.validators != null) {
-    //   validators
-    //       .addAll(widget.validators as Iterable<FormFieldValidator<String>>);
-    // }
+    validators = [];
+    if (widget.required) {
+      validators.add(FormBuilderValidators.required(
+          errorText: context.tr("errorMessage.required"),),);
+    }
+    if (widget.validators != null) {
+      validators
+          .addAll(widget.validators as Iterable<FormFieldValidator<String>>);
+    }
 
     return FormBuilderTextField(
       name: widget.name,
-      // validator: FormBuilderValidators.compose(validators),
+      validator: FormBuilderValidators.compose(validators),
       obscureText: isPasswordVisible,
       style: AppTextStyles.placeHolderText,
       onChanged: widget.onChanged,

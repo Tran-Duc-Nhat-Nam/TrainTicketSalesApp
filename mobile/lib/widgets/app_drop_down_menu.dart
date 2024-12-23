@@ -2,7 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-// import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AppDropDownMenu<T> extends StatefulWidget {
   const AppDropDownMenu({
@@ -28,13 +28,13 @@ class _AppDropDownMenuState<T> extends State<AppDropDownMenu<T>> {
   @override
   Widget build(BuildContext context) {
     List<FormFieldValidator<T?>> validators = [];
-    // if (widget.required) {
-    //   validators.add(
-    //     FormBuilderValidators.required(
-    //       errorText: context.tr("errorMessage.required"),
-    //     ),
-    //   );
-    // }
+    if (widget.required) {
+      validators.add(
+        FormBuilderValidators.required(
+          errorText: context.tr("errorMessage.required"),
+        ),
+      );
+    }
     if (widget.customValidators != null) {
       validators.addAll(widget.customValidators as Iterable<FormFieldValidator<T?>>);
     }
