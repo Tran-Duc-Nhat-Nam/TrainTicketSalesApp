@@ -5,5 +5,6 @@ class TicketBookingTicketState with _$TicketBookingTicketState {
   const factory TicketBookingTicketState.initial() = _Initial;
   const factory TicketBookingTicketState.loading() = _Loading;
   const factory TicketBookingTicketState.loaded(List<Ticket> tickets) = _Loaded;
+  const factory TicketBookingTicketState.empty() = _Empty;
   const factory TicketBookingTicketState.failed(String message) = _Failed;
 }

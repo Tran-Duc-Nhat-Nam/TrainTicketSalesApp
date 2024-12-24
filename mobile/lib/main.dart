@@ -80,22 +80,22 @@ Future<void> main() async {
   await Permission.location.onDeniedCallback(() {
   }).onGrantedCallback(() async {
     log("Permission granted", name: "Background locator");
-    if (Platform.isAndroid) {
-      IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
-      port.listen((dynamic data) {
-        log("Port listened", name: "Background locator");
-        log("Data: ${data.toString()}", name: "Background locator");
-      });
-      initPlatformState();
-      startLocationService();
-    } else if (Platform.isIOS) {
-      l.Location location = l.Location();
-      location.enableBackgroundMode(enable: true);
-      location.onLocationChanged.listen((l.LocationData currentLocation) async {
-        log(currentLocation.longitude.toString(), name: "Background locator");
-        CustomerAPI(await ApiHelper.getDioInstance()).get(((currentLocation.longitude ?? 0) * 1000000).toInt());
-      });
-    }
+    // if (Platform.isAndroid) {
+    //   IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
+    //   port.listen((dynamic data) {
+    //     log("Port listened", name: "Background locator");
+    //     log("Data: ${data.toString()}", name: "Background locator");
+    //   });
+    //   initPlatformState();
+    //   startLocationService();
+    // } else if (Platform.isIOS) {
+    //   l.Location location = l.Location();
+    //   location.enableBackgroundMode(enable: true);
+    //   location.onLocationChanged.listen((l.LocationData currentLocation) async {
+    //     log(currentLocation.longitude.toString(), name: "Background locator");
+    //     CustomerAPI(await ApiHelper.getDioInstance()).get(((currentLocation.longitude ?? 0) * 1000000).toInt());
+    //   });
+    // }
   }).onPermanentlyDeniedCallback(() {
     log("Permission granted", name: "Background locator");
   }).onRestrictedCallback(() {

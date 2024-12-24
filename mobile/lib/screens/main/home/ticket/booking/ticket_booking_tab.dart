@@ -63,7 +63,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
     return BlocProvider<TicketBookingTabCubit>(
       create: (context) {
         connect();
-        return TicketBookingTabCubit()..loadData(widget.car.id);
+        return TicketBookingTabCubit()..loadData(context, widget.car.id);
       },
       child: BlocListener<TicketBookingTabCubit, TicketBookingTabState>(
         listener: (context, state) {
@@ -71,12 +71,12 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
             booking: (ticket) {
               log("Check", name: "Booking");
               context.push("/trip/booking/ticket", extra: ticket).then((value) {
-                if (context.mounted) context.read<TicketBookingTabCubit>().loadData(widget.car.id);
+                if (context.mounted) context.read<TicketBookingTabCubit>().loadData(context, widget.car.id);
               });
             },
             bookingFailed: (message) {
               log(message, name: "Booking");
-              context.read<TicketBookingTabCubit>().loadData(widget.car.id);
+              context.read<TicketBookingTabCubit>().loadData(context, widget.car.id);
             },
             orElse: () {},
           );
@@ -268,9 +268,9 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
               ],
             ),
             failed: (message) => AppErrorWidget(
-              message: message,
+              message: context.tr(message),
               onPressed: () =>
-                  context.read<TicketBookingTabCubit>().loadData(widget.car.id),
+                  context.read<TicketBookingTabCubit>().loadData(context, widget.car.id),
               buttonText: context.tr("reload"),
             ),
             booking: (ticket) => Center(

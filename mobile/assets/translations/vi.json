@@ -40,12 +40,14 @@
   "contactInfo": "Thông tin liên hệ",
   "customerInfo": "Thông tin khách hàng",
   "bookingInfo": "Thông tin đặt vé",
+  "note": "Ghi chú",
   "soldSeat": "Chỗ đã bán",
   "selectingSeat": "Chỗ đang chọn",
   "availableSeat": "Chỗ trống",
   "selectedSeat": "Đã chọn {}/{} chỗ",
   "totalCost": "Tổng tiền: {}",
   "car": "Toa {}: {}",
+  "seat": "Chỗ ngồi: {}{}",
   "sessionEnded": {
     "title": "Phiên đăng nhập đã kết thúc.",
     "description": "Phiên đăng nhập của bạn đã kết thúc. Nhằm đảm bảo bảo mật, hãy đăng nhập lại để tiếp tục sử dụng ứng dụng."
@@ -71,6 +73,10 @@
   "errorMessage": {
     "required": "Vui lòng không để trống!",
     "confirmPassword": "Mật khẩu nhập lại không trùng khớp!"
+  },
+  "noData": {
+    "search": "Không có dữ liệu",
+    "availableSeat": "Không còn chỗ trống"
   },
   "title" : {
     "login": "Đăng nhập",

@@ -27,6 +27,7 @@ mixin _$Ticket {
   Trip? get returnTrip => throw _privateConstructorUsedError;
   Seat? get returnSeat => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get note => throw _privateConstructorUsedError;
 
   /// Serializes this Ticket to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $TicketCopyWith<$Res> {
       Seat seat,
       Trip? returnTrip,
       Seat? returnSeat,
-      int price});
+      int price,
+      String note});
 
   $CustomerCopyWith<$Res> get customer;
   $TripCopyWith<$Res> get trip;
@@ -80,6 +82,7 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
     Object? returnTrip = freezed,
     Object? returnSeat = freezed,
     Object? price = null,
+    Object? note = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -110,6 +113,10 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -186,7 +193,8 @@ abstract class _$$TicketImplCopyWith<$Res> implements $TicketCopyWith<$Res> {
       Seat seat,
       Trip? returnTrip,
       Seat? returnSeat,
-      int price});
+      int price,
+      String note});
 
   @override
   $CustomerCopyWith<$Res> get customer;
@@ -220,6 +228,7 @@ class __$$TicketImplCopyWithImpl<$Res>
     Object? returnTrip = freezed,
     Object? returnSeat = freezed,
     Object? price = null,
+    Object? note = null,
   }) {
     return _then(_$TicketImpl(
       id: null == id
@@ -250,6 +259,10 @@ class __$$TicketImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -264,7 +277,8 @@ class _$TicketImpl implements _Ticket {
       required this.seat,
       required this.returnTrip,
       required this.returnSeat,
-      required this.price});
+      required this.price,
+      required this.note});
 
   factory _$TicketImpl.fromJson(Map<String, dynamic> json) =>
       _$$TicketImplFromJson(json);
@@ -283,10 +297,12 @@ class _$TicketImpl implements _Ticket {
   final Seat? returnSeat;
   @override
   final int price;
+  @override
+  final String note;
 
   @override
   String toString() {
-    return 'Ticket(id: $id, customer: $customer, trip: $trip, seat: $seat, returnTrip: $returnTrip, returnSeat: $returnSeat, price: $price)';
+    return 'Ticket(id: $id, customer: $customer, trip: $trip, seat: $seat, returnTrip: $returnTrip, returnSeat: $returnSeat, price: $price, note: $note)';
   }
 
   @override
@@ -303,13 +319,14 @@ class _$TicketImpl implements _Ticket {
                 other.returnTrip == returnTrip) &&
             (identical(other.returnSeat, returnSeat) ||
                 other.returnSeat == returnSeat) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, customer, trip, seat, returnTrip, returnSeat, price);
+  int get hashCode => Object.hash(runtimeType, id, customer, trip, seat,
+      returnTrip, returnSeat, price, note);
 
   /// Create a copy of Ticket
   /// with the given fields replaced by the non-null parameter values.
@@ -335,7 +352,8 @@ abstract class _Ticket implements Ticket {
       required final Seat seat,
       required final Trip? returnTrip,
       required final Seat? returnSeat,
-      required final int price}) = _$TicketImpl;
+      required final int price,
+      required final String note}) = _$TicketImpl;
 
   factory _Ticket.fromJson(Map<String, dynamic> json) = _$TicketImpl.fromJson;
 
@@ -353,6 +371,8 @@ abstract class _Ticket implements Ticket {
   Seat? get returnSeat;
   @override
   int get price;
+  @override
+  String get note;
 
   /// Create a copy of Ticket
   /// with the given fields replaced by the non-null parameter values.

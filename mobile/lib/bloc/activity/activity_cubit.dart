@@ -6,7 +6,6 @@ import 'package:mobile/api/ticket/ticket_api.dart';
 import '../../core/api/api_helper.dart';
 import '../../core/shared_ref.dart';
 import '../../models/ticket/ticket.dart';
-import '../ticket/booking/tab/ticket_booking_tab_cubit.dart';
 
 part 'activity_state.dart';
 part 'activity_cubit.freezed.dart';

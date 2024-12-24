@@ -193,7 +193,7 @@ class _TripScreenState extends AppState<TripScreen> {
               ),
             ),
             loadFailed: (message) => AppErrorWidget(
-              message: message,
+              message: context.tr(message),
               onPressed: () => context.read<TripCubit>().getStations(context),
               buttonText: context.tr("reload"),
             ),

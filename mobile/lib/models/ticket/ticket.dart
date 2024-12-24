@@ -16,6 +16,7 @@ class Ticket with _$Ticket {
     required Trip? returnTrip,
     required Seat? returnSeat,
     required int price,
+    required String note,
   }) = _Ticket;
 
   factory Ticket.fromJson(Map<String, Object?> json)

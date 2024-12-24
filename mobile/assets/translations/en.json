@@ -40,12 +40,14 @@
   "contactInfo": "Contact information",
   "customerInfo": "Customer information",
   "bookingInfo": "Booking information",
+  "note": "Note",
   "soldSeat": "Sold seat",
   "selectingSeat": "Selecting seat",
   "availableSeat": "Available seat",
   "selectedSeat": "Selected {}/{} seat(s)",
   "totalCost": "Total cost: {}",
   "car": "Car {}: {}",
+  "seat": "Seat: {}{}",
   "sessionEnded": {
     "title": "Login session ended.",
     "description": "Your login session has ended. For your security, please log in again to continue using the app."
@@ -71,6 +73,10 @@
   "errorMessage": {
     "required": "Please do not leave blank!",
     "confirmPassword": "Re-entered password does not match!"
+  },
+  "noData": {
+    "search": "No data found",
+    "availableSeat": "No available seats found"
   },
   "title": {
     "login": "Login",

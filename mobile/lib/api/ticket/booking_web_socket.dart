@@ -10,7 +10,7 @@ class BookingWebSocket {
 
   static Future<BookingWebSocket> connect(int tripId, int carId) async {
     final channel = WebSocketChannel.connect(
-      Uri.parse('ws://192.168.30.172:7777/booking'),
+      Uri.parse('ws://192.168.30.127:7777/booking'),
     );
 
     await channel.ready.then(

@@ -1,15 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/widgets/app_screen.dart';
+import 'package:mobile/widgets/state/app_state.dart';
 
 class ActivityHistoryScreen extends StatefulWidget {
-  const ActivityHistoryScreen({Key? key}) : super(key: key);
+  const ActivityHistoryScreen({super.key});
 
   @override
-  _ActivityHistoryScreenState createState() => _ActivityHistoryScreenState();
+  AppState<ActivityHistoryScreen> createState() => _ActivityHistoryScreenState();
 }
 
-class _ActivityHistoryScreenState extends State<ActivityHistoryScreen> {
+class _ActivityHistoryScreenState extends AppState<ActivityHistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AppScreen(title: context.tr("activityHistory"), child: Placeholder());
   }
 }

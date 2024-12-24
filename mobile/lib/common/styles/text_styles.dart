@@ -67,6 +67,11 @@ abstract class AppTextStyles { static const TextStyle bigTitle = TextStyle(
     fontWeight: FontWeight.w500,
   );
 
+static const TextStyle semiLabelText = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+);
+
   static const TextStyle mediumText = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,

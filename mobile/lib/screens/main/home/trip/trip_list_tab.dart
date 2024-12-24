@@ -71,7 +71,7 @@ class _TripListTabState extends AppState<TripListTab>
             ),
           ),
           failed: (message) => AppErrorWidget(
-            message: message,
+            message: context.tr(message),
             onPressed: () => context.read<TripTabCubit>().getTrips(
                   context,
                   widget.day,

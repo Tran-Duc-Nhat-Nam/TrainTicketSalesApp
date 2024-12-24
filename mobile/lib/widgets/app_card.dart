@@ -37,7 +37,7 @@ class AppCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       color: Theme.of(context).colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

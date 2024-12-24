@@ -18,6 +18,7 @@ _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => _$TicketImpl(
           ? null
           : Seat.fromJson(json['returnSeat'] as Map<String, dynamic>),
       price: (json['price'] as num).toInt(),
+      note: json['note'] as String,
     );
 
 Map<String, dynamic> _$$TicketImplToJson(_$TicketImpl instance) =>
@@ -29,4 +30,5 @@ Map<String, dynamic> _$$TicketImplToJson(_$TicketImpl instance) =>
       'returnTrip': instance.returnTrip,
       'returnSeat': instance.returnSeat,
       'price': instance.price,
+      'note': instance.note,
     };

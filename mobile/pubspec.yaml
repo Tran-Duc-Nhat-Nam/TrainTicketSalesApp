@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   go_router: ^14.6.2
   flutter_form_builder: ^9.6.0
-  form_builder_validators: ^11.1.0
+  form_builder_validators: ^11.1.1
   shared_preferences: ^2.3.4
   persistent_bottom_nav_bar_v2: ^5.3.1
   google_fonts: ^6.2.1
@@ -70,6 +70,7 @@ dependencies:
   permission_handler: ^11.3.1
   background_locator_2: ^2.0.6
   location: ^7.0.1
+  flutter_sticky_header: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -82,9 +83,17 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   build_runner: ^2.4.14
-  freezed: ^2.5.7
-  json_serializable: ^6.9.0
-  retrofit_generator: ^9.1.5
+  freezed:
+    git:
+      url: "https://github.com/Rexios80/freezed.git"
+      ref: "feature/dependency-upgrades-2024-12-20"
+      path: "packages/freezed"
+  json_serializable: ^6.9.2
+  retrofit_generator:
+    git:
+      url: "https://github.com/Carapacik/retrofit.dart.git"
+      ref: "master"
+      path: "generator/"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
