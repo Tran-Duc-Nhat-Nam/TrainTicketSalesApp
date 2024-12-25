@@ -40,6 +40,7 @@
   "contactInfo": "Contact information",
   "customerInfo": "Customer information",
   "bookingInfo": "Booking information",
+  "bookingInProgress": "Booking in progress...",
   "note": "Note",
   "soldSeat": "Sold seat",
   "selectingSeat": "Selecting seat",

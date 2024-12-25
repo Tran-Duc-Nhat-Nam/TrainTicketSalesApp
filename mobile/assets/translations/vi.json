@@ -40,6 +40,7 @@
   "contactInfo": "Thông tin liên hệ",
   "customerInfo": "Thông tin khách hàng",
   "bookingInfo": "Thông tin đặt vé",
+  "bookingInProgress": "Đang tiến hành đặt vé...",
   "note": "Ghi chú",
   "soldSeat": "Chỗ đã bán",
   "selectingSeat": "Chỗ đang chọn",
