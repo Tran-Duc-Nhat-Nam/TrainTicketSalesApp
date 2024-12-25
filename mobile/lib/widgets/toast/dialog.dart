@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -58,6 +59,27 @@ class AppDialog {
       useRootNavigator: true,
       headerAnimationLoop: false,
     ).show();
+  }
+
+  static Future<bool> showExitDialog(BuildContext context) async {
+    bool isClose = false;
+    var result = await AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      animType: AnimType.scale,
+      title: context.tr("exit.title"),
+      desc: context.tr("exit.description"),
+      btnCancelText: context.tr("back"),
+      btnCancelOnPress: () {},
+      btnCancelColor: Theme.of(context).colorScheme.primary,
+      btnOkText: context.tr("exit"),
+      btnOkOnPress: () => isClose = true,
+      btnOkColor: Colors.red,
+      useRootNavigator: true,
+      headerAnimationLoop: false,
+    ).show();
+    log(result.toString(), name: "Exit");
+    return isClose;
   }
 
   static Future<Object?> showQrCode(BuildContext context, String input) {

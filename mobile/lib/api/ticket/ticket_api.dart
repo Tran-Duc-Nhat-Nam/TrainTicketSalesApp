@@ -17,4 +17,7 @@ abstract class TicketAPI {
 
   @POST('/tickets')
   Future<List<Ticket>> create(@Body() Map<String, dynamic> body);
+
+  @DELETE('/tickets')
+  Future<Map<String, String>> delete(@Body() Map<String, dynamic> body);
 }

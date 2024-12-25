@@ -33,8 +33,8 @@ class _TripScreenState extends AppState<TripScreen> {
         title: context.tr('journeyInformation'),
         child: BlocBuilder<TripCubit, TripState>(
           builder: (context, state) => state.when(
-            initial: () => Container(),
-            loading: () => AppLoadingWidget(),
+            initial: () => const SizedBox(),
+            loading: () => const AppLoadingWidget(),
             loaded: (stations) => FormBuilder(
               key: _formKey,
               onChanged: () => setState(() {}),
@@ -197,7 +197,7 @@ class _TripScreenState extends AppState<TripScreen> {
               onPressed: () => context.read<TripCubit>().getStations(context),
               buttonText: context.tr("reload"),
             ),
-            searching: () => AppLoadingWidget(),
+            searching: () => const AppLoadingWidget(),
             searchFailed: (message) => Center(
               child: Text(
                 context.tr(message),

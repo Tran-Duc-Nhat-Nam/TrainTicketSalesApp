@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:mobile/environment.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class BookingWebSocket {
@@ -10,7 +11,7 @@ class BookingWebSocket {
 
   static Future<BookingWebSocket> connect(int tripId, int carId) async {
     final channel = WebSocketChannel.connect(
-      Uri.parse('ws://192.168.30.127:7777/booking'),
+      Uri.parse('${Environment.webSocketUrl}/booking'),
     );
 
     await channel.ready.then(
@@ -27,7 +28,7 @@ class BookingWebSocket {
 
   Future<void> reconnect() async {
     _channel = WebSocketChannel.connect(
-      Uri.parse('ws://192.168.30.171:7777/booking'),
+      Uri.parse('${Environment.webSocketUrl}/booking'),
     );
 
     await _channel.ready.onError(

@@ -30,8 +30,8 @@ class _AccountScreenState extends AppState<AccountScreen> {
         create: (context) => AccountCubit()..getCustomerInfo(context),
         child: BlocBuilder<AccountCubit, AccountState>(
           builder: (context, state) => state.when(
-            initial: () => Container(),
-            loading: () => AppLoadingWidget(),
+            initial: () => const SizedBox(),
+            loading: () => const AppLoadingWidget(),
             loaded: (customer) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

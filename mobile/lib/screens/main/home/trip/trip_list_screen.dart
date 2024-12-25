@@ -20,7 +20,7 @@ class TripListScreen extends StatefulWidget {
 class _TripListScreenState extends AppState<TripListScreen> {
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> extras = GoRouterState.of(context).extra != null
+    Map<String, dynamic> extras = GoRouterState.of(context).extra is Map<String, dynamic>
         ? GoRouterState.of(context).extra as Map<String, dynamic>
         : {};
     return BlocProvider<TripListCubit>(
@@ -33,7 +33,7 @@ class _TripListScreenState extends AppState<TripListScreen> {
           builder: (context, state) {
             return state.when(
               initial: () => Center(child: Text(context.tr("noData"))),
-              loading: () => AppLoadingWidget(),
+              loading: () => const AppLoadingWidget(),
               loaded: (days) => days.length > 1
                   ? DefaultTabController(
                       length: days.length,

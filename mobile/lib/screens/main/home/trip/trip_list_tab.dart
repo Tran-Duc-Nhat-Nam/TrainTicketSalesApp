@@ -47,8 +47,8 @@ class _TripListTabState extends AppState<TripListTab>
         ),
       child: BlocBuilder<TripTabCubit, TripTabState>(
         builder: (context, state) => state.when(
-          initial: () => Container(),
-          loading: () => AppLoadingWidget(),
+          initial: () => const SizedBox(),
+          loading: () => const AppLoadingWidget(),
           loaded: (trips) => SmartRefresher(
             controller: _refreshController,
             enablePullDown: true,
