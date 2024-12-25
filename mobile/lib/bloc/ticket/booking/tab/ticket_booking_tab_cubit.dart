@@ -119,7 +119,9 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
   void startBooking(int tripId) {
     state.maybeWhen(
         loaded: (seats, selectedSeat, soldTickets, userId, totalCost) async {
+          log("Starting Booking...", name: "Booking");
           emit(TicketBookingTabState.booking());
+          log("Calling API...", name: "Booking");
           await TicketAPI(await ApiHelper.getDioInstance()).create({
             'selectedSeatId': selectedSeat.entries
                 .map(

@@ -6,6 +6,8 @@ class TicketBookingPaymentState with _$TicketBookingPaymentState {
   const factory TicketBookingPaymentState.loading() = _Loading;
   const factory TicketBookingPaymentState.loaded(List<Ticket> tickets) = _Loaded;
   const factory TicketBookingPaymentState.empty() = _Empty;
-
   const factory TicketBookingPaymentState.failed(String message) = _Failed;
+  const factory TicketBookingPaymentState.paying() = _Paying;
+  const factory TicketBookingPaymentState.paySucceed() = _PaySucceed;
+  const factory TicketBookingPaymentState.payFailed(String message) = _PayFailed;
 }

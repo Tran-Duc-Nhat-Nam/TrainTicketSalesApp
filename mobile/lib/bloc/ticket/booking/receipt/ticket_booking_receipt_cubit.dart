@@ -11,6 +11,7 @@ part 'ticket_booking_receipt_cubit.freezed.dart';
 class TicketBookingReceiptCubit extends Cubit<TicketBookingReceiptState> {
   TicketBookingReceiptCubit() : super(const TicketBookingReceiptState.initial());
   void loadData(BuildContext context) {
+    emit(TicketBookingReceiptState.loading());
     List<Ticket> ticket = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
