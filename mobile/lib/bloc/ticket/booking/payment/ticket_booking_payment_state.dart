@@ -10,4 +10,5 @@ class TicketBookingPaymentState with _$TicketBookingPaymentState {
   const factory TicketBookingPaymentState.paying() = _Paying;
   const factory TicketBookingPaymentState.paySucceed() = _PaySucceed;
   const factory TicketBookingPaymentState.payFailed(String message) = _PayFailed;
+  const factory TicketBookingPaymentState.canceled() = _Canceled;
 }

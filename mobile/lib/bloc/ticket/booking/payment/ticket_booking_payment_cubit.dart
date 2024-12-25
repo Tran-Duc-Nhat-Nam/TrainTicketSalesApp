@@ -14,14 +14,17 @@ part 'ticket_booking_payment_state.dart';
 part 'ticket_booking_payment_cubit.freezed.dart';
 
 class TicketBookingPaymentCubit extends Cubit<TicketBookingPaymentState> {
-  TicketBookingPaymentCubit() : super(const TicketBookingPaymentState.initial());
+  TicketBookingPaymentCubit()
+      : super(const TicketBookingPaymentState.initial());
 
   void loadData(BuildContext context) {
     emit(TicketBookingPaymentState.loading());
     List<Ticket> ticket = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    emit(ticket.isEmpty ? TicketBookingPaymentState.empty() : TicketBookingPaymentState.loaded(ticket));
+    emit(ticket.isEmpty
+        ? TicketBookingPaymentState.empty()
+        : TicketBookingPaymentState.loaded(ticket));
   }
 
   void pay(int tripId) {
@@ -30,28 +33,38 @@ class TicketBookingPaymentCubit extends Cubit<TicketBookingPaymentState> {
           log("Starting Booking...", name: "Booking");
           emit(TicketBookingPaymentState.paying());
           log("Calling API...", name: "Booking");
-          await TicketAPI(await ApiHelper.getDioInstance()).pay({
-            'ticketIds': tickets
-                .map(
-                  (e) => e.id,
-            )
-                .toList(),
-          }).then(
-                (value) {
-              log("Booking successfully", name: "Booking");
-              emit(TicketBookingPaymentState.paySucceed());
-            },
-            onError: (error) {
-              log("Booking failed", name: "Booking", error: error);
-              emit(
-                TicketBookingPaymentState.payFailed(
-                  error is DioException
-                      ? error.response.toString().replaceAll('"', '')
-                      : "unexpectedError",
+          await TicketAPI(await ApiHelper.getDioInstance())
+              .get(
+                tickets[0].id,
+              )
+              .then(
+                (value) async =>
+                    await TicketAPI(await ApiHelper.getDioInstance()).pay({
+                  'ticketIds': tickets
+                      .map(
+                        (e) => e.id,
+                      )
+                      .toList(),
+                }).then(
+                  (value) {
+                    log("Booking successfully", name: "Booking");
+                    emit(TicketBookingPaymentState.paySucceed());
+                  },
+                  onError: (error) {
+                    log("Booking failed", name: "Booking", error: error);
+                    emit(
+                      TicketBookingPaymentState.payFailed(
+                        error is DioException
+                            ? error.response.toString().replaceAll('"', '')
+                            : "unexpectedError",
+                      ),
+                    );
+                  },
+                ),
+                onError: (e) => emit(
+                  TicketBookingPaymentState.canceled(),
                 ),
               );
-            },
-          );
         },
         orElse: () {});
   }
