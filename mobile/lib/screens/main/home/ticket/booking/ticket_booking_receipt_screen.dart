@@ -22,37 +22,36 @@ class _TicketBookingReceiptScreenState
     extends AppState<TicketBookingReceiptScreen> {
   @override
   Widget build(BuildContext context) {
-    return AppScreen(
-      title: context.tr("payment"),
-      child: BlocProvider<TicketBookingReceiptCubit>(
-        create: (_) => TicketBookingReceiptCubit()..loadData(context),
-        child:
-            BlocBuilder<TicketBookingReceiptCubit, TicketBookingReceiptState>(
-          builder: (context, state) => state.when(
-            initial: () => const SizedBox(),
-            loading: () => const AppLoadingWidget(),
-            loaded: (tickets) => PopScope(
-              canPop: false,
-              onPopInvokedWithResult: (didPop, result) {
-                context.go("/");
-              },
-              child: Column(
+    return BlocProvider<TicketBookingReceiptCubit>(
+      create: (_) => TicketBookingReceiptCubit()..loadData(context),
+      child: BlocBuilder<TicketBookingReceiptCubit, TicketBookingReceiptState>(
+        builder: (context, state) => PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) {
+            context.go("/");
+          },
+          child: AppScreen(
+            title: context.tr("receipt"),
+            child: state.when(
+              initial: () => const SizedBox(),
+              loading: () => const AppLoadingWidget(),
+              loaded: (tickets) => Column(
                 children: [
                   QrImageView(data: tickets.map((e) => e.id).join("|")),
                 ],
               ),
-            ),
-            empty: () => AppErrorWidget(
-              message: context.tr("noData.search"),
-              onPressed: () =>
-                  context.read<TicketBookingReceiptCubit>().loadData(context),
-              buttonText: context.tr("reload"),
-            ),
-            failed: (message) => AppErrorWidget(
-              message: message,
-              onPressed: () =>
-                  context.read<TicketBookingReceiptCubit>().loadData(context),
-              buttonText: context.tr("reload"),
+              empty: () => AppErrorWidget(
+                message: context.tr("noData.search"),
+                onPressed: () =>
+                    context.read<TicketBookingReceiptCubit>().loadData(context),
+                buttonText: context.tr("reload"),
+              ),
+              failed: (message) => AppErrorWidget(
+                message: message,
+                onPressed: () =>
+                    context.read<TicketBookingReceiptCubit>().loadData(context),
+                buttonText: context.tr("reload"),
+              ),
             ),
           ),
         ),
