@@ -32,7 +32,8 @@ Future<void> initPlatformState() async {
 void callback(LocationDto locationDto) async {
   final SendPort? send = IsolateNameServer.lookupPortByName(_isolateName);
   log("Callback", name: "Background locator");
-  CustomerAPI(await ApiHelper.getDioInstance()).get((locationDto.longitude * 1000000).toInt());
+  CustomerAPI(await ApiHelper.getDioInstance())
+      .get((locationDto.longitude * 1000000).toInt());
   send?.send(locationDto.toJson());
 }
 
@@ -77,8 +78,7 @@ void startLocationService() {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Permission.location.onDeniedCallback(() {
-  }).onGrantedCallback(() async {
+  await Permission.location.onDeniedCallback(() {}).onGrantedCallback(() async {
     log("Permission granted", name: "Background locator");
     // if (Platform.isAndroid) {
     //   IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
@@ -108,10 +108,11 @@ Future<void> main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('vi')],
-        path: 'assets/translations',
-        fallbackLocale: Locale('en'),
-        child: MyApp()),
+      supportedLocales: [Locale('en'), Locale('vi')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      child: MyApp(),
+    ),
   );
 }
 
@@ -122,8 +123,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final LocalAuthentication auth = LocalAuthentication();
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ThemeCubit>(

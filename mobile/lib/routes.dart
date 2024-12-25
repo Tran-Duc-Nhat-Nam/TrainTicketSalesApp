@@ -21,7 +21,6 @@ import 'package:mobile/screens/settings_screen.dart';
 import 'package:mobile/screens/splash_screen.dart';
 import 'package:mobile/widgets/app_drawer.dart';
 import 'package:mobile/widgets/app_nav_bar.dart';
-import 'package:mobile/widgets/toast/dialog.dart';
 import 'package:mobile/widgets/transition/fade_transition.dart';
 
 final _parentKey = GlobalKey<NavigatorState>();

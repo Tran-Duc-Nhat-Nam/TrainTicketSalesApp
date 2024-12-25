@@ -30,11 +30,13 @@ class _TicketBookingPaymentScreenState
           builder: (context, state) => state.when(
             initial: () => const SizedBox(),
             loading: () => const AppLoadingWidget(),
-            loaded: (tickets) => AppButton(
-              onPressed: () => context
-                  .read<TicketBookingPaymentCubit>()
-                  .pay(tickets[0].trip.id),
-              text: context.tr("pay"),
+            loaded: (tickets) => Center(
+              child: AppButton(
+                onPressed: () => context
+                    .read<TicketBookingPaymentCubit>()
+                    .pay(tickets[0].trip.id),
+                text: context.tr("pay"),
+              ),
             ),
             empty: () => AppErrorWidget(
               message: context.tr("noData.search"),

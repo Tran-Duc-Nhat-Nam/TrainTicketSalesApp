@@ -80,7 +80,7 @@ class _AppScreenState extends State<AppScreen> {
                 ),
               ) : null,
               actions: [
-                IconButton(
+                if (widget.isDrawer) IconButton(
                   icon: Icon(Icons.menu, color: Colors.white,),
                   iconSize: 28,
                   onPressed: () {

@@ -45,6 +45,7 @@
   "receipt": "Receipt",
   "payment": "Payment",
   "pay": "Go to payment",
+  "generalSettings": "General settings",
   "soldSeat": "Sold seat",
   "selectingSeat": "Selecting seat",
   "availableSeat": "Available seat",
