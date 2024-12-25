@@ -24,7 +24,8 @@ class AuthHelper {
   static Future<void> deleteAuth() async {
     await sharedPreferences.remove("accessToken");
     await sharedPreferences.remove("refreshToken");
-    await sharedPreferences.remove("expireDate");
+    await sharedPreferences.remove("accessTokenTime");
+    await sharedPreferences.remove("refreshTokenTime");
     await sharedPreferences.remove("userId");
     await sharedPreferences.remove("isRemember");
   }

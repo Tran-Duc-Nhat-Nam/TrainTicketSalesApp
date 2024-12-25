@@ -128,13 +128,13 @@ class _TicketAPI implements TicketAPI {
   }
 
   @override
-  Future<List<Ticket>> pay(Map<String, dynamic> body) async {
+  Future<Map<String, String>> pay(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _options = _setStreamType<List<Ticket>>(Options(
+    final _options = _setStreamType<Map<String, String>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -150,12 +150,10 @@ class _TicketAPI implements TicketAPI {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Ticket> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Map<String, String> _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) => Ticket.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = _result.data!.cast<String, String>();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

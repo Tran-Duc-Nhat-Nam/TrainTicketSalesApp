@@ -23,6 +23,9 @@ mixin _$TicketBookingTicketState {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +35,9 @@ mixin _$TicketBookingTicketState {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +47,9 @@ mixin _$TicketBookingTicketState {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +60,9 @@ mixin _$TicketBookingTicketState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +72,9 @@ mixin _$TicketBookingTicketState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +84,9 @@ mixin _$TicketBookingTicketState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +160,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) {
     return initial();
   }
@@ -154,6 +175,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) {
     return initial?.call();
   }
@@ -166,6 +190,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -182,6 +209,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) {
     return initial(this);
   }
@@ -194,6 +224,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) {
     return initial?.call(this);
   }
@@ -206,6 +239,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -265,6 +301,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) {
     return loading();
   }
@@ -277,6 +316,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) {
     return loading?.call();
   }
@@ -289,6 +331,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -305,6 +350,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) {
     return loading(this);
   }
@@ -317,6 +365,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) {
     return loading?.call(this);
   }
@@ -329,6 +380,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -421,6 +475,9 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) {
     return loaded(tickets);
   }
@@ -433,6 +490,9 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) {
     return loaded?.call(tickets);
   }
@@ -445,6 +505,9 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -461,6 +524,9 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) {
     return loaded(this);
   }
@@ -473,6 +539,9 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) {
     return loaded?.call(this);
   }
@@ -485,6 +554,9 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -552,6 +624,9 @@ class _$EmptyImpl implements _Empty {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) {
     return empty();
   }
@@ -564,6 +639,9 @@ class _$EmptyImpl implements _Empty {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) {
     return empty?.call();
   }
@@ -576,6 +654,9 @@ class _$EmptyImpl implements _Empty {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -592,6 +673,9 @@ class _$EmptyImpl implements _Empty {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) {
     return empty(this);
   }
@@ -604,6 +688,9 @@ class _$EmptyImpl implements _Empty {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) {
     return empty?.call(this);
   }
@@ -616,6 +703,9 @@ class _$EmptyImpl implements _Empty {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -702,6 +792,9 @@ class _$FailedImpl implements _Failed {
     required TResult Function(List<Ticket> tickets) loaded,
     required TResult Function() empty,
     required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
   }) {
     return failed(message);
   }
@@ -714,6 +807,9 @@ class _$FailedImpl implements _Failed {
     TResult? Function(List<Ticket> tickets)? loaded,
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
   }) {
     return failed?.call(message);
   }
@@ -726,6 +822,9 @@ class _$FailedImpl implements _Failed {
     TResult Function(List<Ticket> tickets)? loaded,
     TResult Function()? empty,
     TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -742,6 +841,9 @@ class _$FailedImpl implements _Failed {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
   }) {
     return failed(this);
   }
@@ -754,6 +856,9 @@ class _$FailedImpl implements _Failed {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
   }) {
     return failed?.call(this);
   }
@@ -766,6 +871,9 @@ class _$FailedImpl implements _Failed {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -785,4 +893,468 @@ abstract class _Failed implements TicketBookingTicketState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MovingImplCopyWith<$Res> {
+  factory _$$MovingImplCopyWith(
+          _$MovingImpl value, $Res Function(_$MovingImpl) then) =
+      __$$MovingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$MovingImplCopyWithImpl<$Res>
+    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$MovingImpl>
+    implements _$$MovingImplCopyWith<$Res> {
+  __$$MovingImplCopyWithImpl(
+      _$MovingImpl _value, $Res Function(_$MovingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TicketBookingTicketState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$MovingImpl implements _Moving {
+  const _$MovingImpl();
+
+  @override
+  String toString() {
+    return 'TicketBookingTicketState.moving()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$MovingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function() empty,
+    required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
+  }) {
+    return moving();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function()? empty,
+    TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
+  }) {
+    return moving?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function()? empty,
+    TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
+    required TResult orElse(),
+  }) {
+    if (moving != null) {
+      return moving();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
+  }) {
+    return moving(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
+  }) {
+    return moving?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
+    required TResult orElse(),
+  }) {
+    if (moving != null) {
+      return moving(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Moving implements TicketBookingTicketState {
+  const factory _Moving() = _$MovingImpl;
+}
+
+/// @nodoc
+abstract class _$$ForwardImplCopyWith<$Res> {
+  factory _$$ForwardImplCopyWith(
+          _$ForwardImpl value, $Res Function(_$ForwardImpl) then) =
+      __$$ForwardImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Ticket> tickets});
+}
+
+/// @nodoc
+class __$$ForwardImplCopyWithImpl<$Res>
+    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$ForwardImpl>
+    implements _$$ForwardImplCopyWith<$Res> {
+  __$$ForwardImplCopyWithImpl(
+      _$ForwardImpl _value, $Res Function(_$ForwardImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TicketBookingTicketState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tickets = null,
+  }) {
+    return _then(_$ForwardImpl(
+      null == tickets
+          ? _value._tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
+              as List<Ticket>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ForwardImpl implements _Forward {
+  const _$ForwardImpl(final List<Ticket> tickets) : _tickets = tickets;
+
+  final List<Ticket> _tickets;
+  @override
+  List<Ticket> get tickets {
+    if (_tickets is EqualUnmodifiableListView) return _tickets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tickets);
+  }
+
+  @override
+  String toString() {
+    return 'TicketBookingTicketState.forward(tickets: $tickets)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForwardImpl &&
+            const DeepCollectionEquality().equals(other._tickets, _tickets));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
+
+  /// Create a copy of TicketBookingTicketState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForwardImplCopyWith<_$ForwardImpl> get copyWith =>
+      __$$ForwardImplCopyWithImpl<_$ForwardImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function() empty,
+    required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
+  }) {
+    return forward(tickets);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function()? empty,
+    TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
+  }) {
+    return forward?.call(tickets);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function()? empty,
+    TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward(tickets);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
+  }) {
+    return forward(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
+  }) {
+    return forward?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
+    required TResult orElse(),
+  }) {
+    if (forward != null) {
+      return forward(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Forward implements TicketBookingTicketState {
+  const factory _Forward(final List<Ticket> tickets) = _$ForwardImpl;
+
+  List<Ticket> get tickets;
+
+  /// Create a copy of TicketBookingTicketState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ForwardImplCopyWith<_$ForwardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CanceledImplCopyWith<$Res> {
+  factory _$$CanceledImplCopyWith(
+          _$CanceledImpl value, $Res Function(_$CanceledImpl) then) =
+      __$$CanceledImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CanceledImplCopyWithImpl<$Res>
+    extends _$TicketBookingTicketStateCopyWithImpl<$Res, _$CanceledImpl>
+    implements _$$CanceledImplCopyWith<$Res> {
+  __$$CanceledImplCopyWithImpl(
+      _$CanceledImpl _value, $Res Function(_$CanceledImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TicketBookingTicketState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CanceledImpl implements _Canceled {
+  const _$CanceledImpl();
+
+  @override
+  String toString() {
+    return 'TicketBookingTicketState.canceled()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CanceledImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function() empty,
+    required TResult Function(String message) failed,
+    required TResult Function() moving,
+    required TResult Function(List<Ticket> tickets) forward,
+    required TResult Function() canceled,
+  }) {
+    return canceled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function()? empty,
+    TResult? Function(String message)? failed,
+    TResult? Function()? moving,
+    TResult? Function(List<Ticket> tickets)? forward,
+    TResult? Function()? canceled,
+  }) {
+    return canceled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function()? empty,
+    TResult Function(String message)? failed,
+    TResult Function()? moving,
+    TResult Function(List<Ticket> tickets)? forward,
+    TResult Function()? canceled,
+    required TResult orElse(),
+  }) {
+    if (canceled != null) {
+      return canceled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_Moving value) moving,
+    required TResult Function(_Forward value) forward,
+    required TResult Function(_Canceled value) canceled,
+  }) {
+    return canceled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failed value)? failed,
+    TResult? Function(_Moving value)? moving,
+    TResult? Function(_Forward value)? forward,
+    TResult? Function(_Canceled value)? canceled,
+  }) {
+    return canceled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_Moving value)? moving,
+    TResult Function(_Forward value)? forward,
+    TResult Function(_Canceled value)? canceled,
+    required TResult orElse(),
+  }) {
+    if (canceled != null) {
+      return canceled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Canceled implements TicketBookingTicketState {
+  const factory _Canceled() = _$CanceledImpl;
 }

@@ -20,7 +20,30 @@ class TicketBookingTicketCubit extends Cubit<TicketBookingTicketState> {
     List<Ticket> ticket = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    emit(ticket.isEmpty ? TicketBookingTicketState.empty() : TicketBookingTicketState.loaded(ticket));
+    emit(ticket.isEmpty
+        ? TicketBookingTicketState.empty()
+        : TicketBookingTicketState.loaded(ticket));
+  }
+
+  void moveForward(BuildContext context) {
+    state.maybeWhen(
+      loaded: (tickets) async {
+        emit(TicketBookingTicketState.loading());
+        await TicketAPI(await ApiHelper.getDioInstance())
+            .get(
+              tickets[0].id,
+            )
+            .then(
+              (value) => emit(
+                TicketBookingTicketState.forward(tickets),
+              ),
+              onError: (e) => emit(
+                TicketBookingTicketState.canceled(),
+              ),
+            );
+      },
+      orElse: () {},
+    );
   }
 
   Future<void> cancelBooking(BuildContext context) async {
@@ -29,8 +52,14 @@ class TicketBookingTicketCubit extends Cubit<TicketBookingTicketState> {
     List<Ticket> tickets = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    await TicketAPI(await ApiHelper.getDioInstance()).delete({
-      "ticketIds": tickets.map((e) => e.id,).toList(),
-    });
+    await TicketAPI(await ApiHelper.getDioInstance()).delete(
+      {
+        "ticketIds": tickets
+            .map(
+              (e) => e.id,
+            )
+            .toList(),
+      },
+    );
   }
 }

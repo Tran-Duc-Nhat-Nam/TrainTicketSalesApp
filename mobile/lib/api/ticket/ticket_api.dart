@@ -19,7 +19,7 @@ abstract class TicketAPI {
   Future<List<Ticket>> create(@Body() Map<String, dynamic> body);
 
   @POST('/tickets/pay')
-  Future<List<Ticket>> pay(@Body() Map<String, dynamic> body);
+  Future<Map<String, String>> pay(@Body() Map<String, dynamic> body);
 
   @DELETE('/tickets')
   Future<Map<String, String>> delete(@Body() Map<String, dynamic> body);
