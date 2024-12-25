@@ -20,9 +20,12 @@ class TicketBookingScreen extends StatefulWidget {
 class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
   @override
   Widget build(BuildContext context) {
-    var extra = GoRouterState.of(context).extra as Map<String, dynamic>;
+    var extra = GoRouterState.of(context).extra is Map<String, dynamic>
+        ? GoRouterState.of(context).extra as Map<String, dynamic>
+        : {};
     return BlocProvider<TicketBookingCubit>(
-      create: (context) => TicketBookingCubit()..getCars(context, extra['train_id']),
+      create: (context) =>
+          TicketBookingCubit()..getCars(context, extra['train_id']),
       child: AppScreen(
         title: extra['name'],
         isChildScrollView: true,
@@ -30,7 +33,7 @@ class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
           builder: (context, state) {
             return state.when(
               initial: () => Center(child: Text(context.tr("noData"))),
-              loading: () => AppLoadingWidget(),
+              loading: () => const AppLoadingWidget(),
               loaded: (cars) => cars.isNotEmpty
                   ? DefaultTabController(
                       length: cars.length,
@@ -63,7 +66,8 @@ class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
                               children: cars
                                   .map(
                                     (car) => TicketBookingTab(
-                                      title: "Toa ${cars.indexOf(car)}: ${car.name}",
+                                      title:
+                                          "Toa ${cars.indexOf(car)}: ${car.name}",
                                       car: car,
                                       tripId: extra['trip_id'],
                                     ),

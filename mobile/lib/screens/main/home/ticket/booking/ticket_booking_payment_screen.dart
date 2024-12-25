@@ -1,9 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile/bloc/ticket/booking/payment/ticket_booking_payment_cubit.dart';
 import 'package:mobile/widgets/app_button.dart';
 import 'package:mobile/widgets/state/app_state.dart';
 
+import '../../../../../widgets/app_error_widget.dart';
+import '../../../../../widgets/app_loading_widget.dart';
 import '../../../../../widgets/app_screen.dart';
 
 class TicketBookingPaymentScreen extends StatefulWidget {
@@ -20,8 +24,31 @@ class _TicketBookingPaymentScreenState
   Widget build(BuildContext context) {
     return AppScreen(
       title: context.tr("payment"),
-      footer: AppButton(onPressed: () => context.push("/trip/booking/receipt")),
-      child: Placeholder(),
+      child: BlocProvider<TicketBookingPaymentCubit>(
+        create: (_) => TicketBookingPaymentCubit()..loadData(context),
+        child: BlocBuilder<TicketBookingPaymentCubit, TicketBookingPaymentState>(
+          builder: (context, state) => state.when(
+            initial: () => const SizedBox(),
+            loading: () => const AppLoadingWidget(),
+            loaded: (tickets) => AppButton(
+              onPressed: () => context.go("/trip/booking/receipt", extra: tickets),
+              text: context.tr("pay"),
+            ),
+            empty: () => AppErrorWidget(
+              message: context.tr("noData.search"),
+              onPressed: () =>
+                  context.read<TicketBookingPaymentCubit>().loadData(context),
+              buttonText: context.tr("reload"),
+            ),
+            failed: (message) => AppErrorWidget(
+              message: message,
+              onPressed: () =>
+                  context.read<TicketBookingPaymentCubit>().loadData(context),
+              buttonText: context.tr("reload"),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
