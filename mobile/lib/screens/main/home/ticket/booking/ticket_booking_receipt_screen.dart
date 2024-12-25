@@ -187,7 +187,7 @@ class _TicketBookingReceiptScreenState
                 ],
               ),
               empty: () => AppErrorWidget(
-                message: context.tr("noData.search"),
+                message: "noData.search",
                 onPressed: () =>
                     context.read<TicketBookingReceiptCubit>().loadData(context),
                 buttonText: context.tr("reload"),

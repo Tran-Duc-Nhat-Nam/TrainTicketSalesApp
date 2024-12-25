@@ -24,7 +24,7 @@ mixin _$TicketBookingPaymentState {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) =>
@@ -37,7 +37,7 @@ mixin _$TicketBookingPaymentState {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) =>
@@ -50,7 +50,7 @@ mixin _$TicketBookingPaymentState {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -167,7 +167,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -183,7 +183,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -199,7 +199,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -314,7 +314,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -330,7 +330,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -346,7 +346,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -494,7 +494,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -510,7 +510,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -526,7 +526,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -649,7 +649,7 @@ class _$EmptyImpl implements _Empty {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -665,7 +665,7 @@ class _$EmptyImpl implements _Empty {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -681,7 +681,7 @@ class _$EmptyImpl implements _Empty {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -823,7 +823,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -839,7 +839,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -855,7 +855,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -978,7 +978,7 @@ class _$PayingImpl implements _Paying {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -994,7 +994,7 @@ class _$PayingImpl implements _Paying {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -1010,7 +1010,7 @@ class _$PayingImpl implements _Paying {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -1083,6 +1083,8 @@ abstract class _$$PaySucceedImplCopyWith<$Res> {
   factory _$$PaySucceedImplCopyWith(
           _$PaySucceedImpl value, $Res Function(_$PaySucceedImpl) then) =
       __$$PaySucceedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Ticket> tickets});
 }
 
 /// @nodoc
@@ -1095,26 +1097,57 @@ class __$$PaySucceedImplCopyWithImpl<$Res>
 
   /// Create a copy of TicketBookingPaymentState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tickets = null,
+  }) {
+    return _then(_$PaySucceedImpl(
+      null == tickets
+          ? _value._tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
+              as List<Ticket>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$PaySucceedImpl implements _PaySucceed {
-  const _$PaySucceedImpl();
+  const _$PaySucceedImpl(final List<Ticket> tickets) : _tickets = tickets;
+
+  final List<Ticket> _tickets;
+  @override
+  List<Ticket> get tickets {
+    if (_tickets is EqualUnmodifiableListView) return _tickets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tickets);
+  }
 
   @override
   String toString() {
-    return 'TicketBookingPaymentState.paySucceed()';
+    return 'TicketBookingPaymentState.paySucceed(tickets: $tickets)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PaySucceedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PaySucceedImpl &&
+            const DeepCollectionEquality().equals(other._tickets, _tickets));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
+
+  /// Create a copy of TicketBookingPaymentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaySucceedImplCopyWith<_$PaySucceedImpl> get copyWith =>
+      __$$PaySucceedImplCopyWithImpl<_$PaySucceedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1125,11 +1158,11 @@ class _$PaySucceedImpl implements _PaySucceed {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
-    return paySucceed();
+    return paySucceed(tickets);
   }
 
   @override
@@ -1141,11 +1174,11 @@ class _$PaySucceedImpl implements _PaySucceed {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
-    return paySucceed?.call();
+    return paySucceed?.call(tickets);
   }
 
   @override
@@ -1157,13 +1190,13 @@ class _$PaySucceedImpl implements _PaySucceed {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
   }) {
     if (paySucceed != null) {
-      return paySucceed();
+      return paySucceed(tickets);
     }
     return orElse();
   }
@@ -1222,7 +1255,15 @@ class _$PaySucceedImpl implements _PaySucceed {
 }
 
 abstract class _PaySucceed implements TicketBookingPaymentState {
-  const factory _PaySucceed() = _$PaySucceedImpl;
+  const factory _PaySucceed(final List<Ticket> tickets) = _$PaySucceedImpl;
+
+  List<Ticket> get tickets;
+
+  /// Create a copy of TicketBookingPaymentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaySucceedImplCopyWith<_$PaySucceedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1299,7 +1340,7 @@ class _$PayFailedImpl implements _PayFailed {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -1315,7 +1356,7 @@ class _$PayFailedImpl implements _PayFailed {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -1331,7 +1372,7 @@ class _$PayFailedImpl implements _PayFailed {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),
@@ -1454,7 +1495,7 @@ class _$CanceledImpl implements _Canceled {
     required TResult Function() empty,
     required TResult Function(String message) failed,
     required TResult Function() paying,
-    required TResult Function() paySucceed,
+    required TResult Function(List<Ticket> tickets) paySucceed,
     required TResult Function(String message) payFailed,
     required TResult Function() canceled,
   }) {
@@ -1470,7 +1511,7 @@ class _$CanceledImpl implements _Canceled {
     TResult? Function()? empty,
     TResult? Function(String message)? failed,
     TResult? Function()? paying,
-    TResult? Function()? paySucceed,
+    TResult? Function(List<Ticket> tickets)? paySucceed,
     TResult? Function(String message)? payFailed,
     TResult? Function()? canceled,
   }) {
@@ -1486,7 +1527,7 @@ class _$CanceledImpl implements _Canceled {
     TResult Function()? empty,
     TResult Function(String message)? failed,
     TResult Function()? paying,
-    TResult Function()? paySucceed,
+    TResult Function(List<Ticket> tickets)? paySucceed,
     TResult Function(String message)? payFailed,
     TResult Function()? canceled,
     required TResult orElse(),

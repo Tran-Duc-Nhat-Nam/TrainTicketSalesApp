@@ -25,9 +25,9 @@ class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
         : {};
     return BlocProvider<TicketBookingCubit>(
       create: (context) =>
-          TicketBookingCubit()..getCars(context, extra['train_id']),
+          TicketBookingCubit()..getCars(context, extra['train_id'] ?? -1),
       child: AppScreen(
-        title: extra['name'],
+        title: extra['name'] ?? "",
         isChildScrollView: true,
         child: BlocBuilder<TicketBookingCubit, TicketBookingState>(
           builder: (context, state) {
@@ -69,7 +69,7 @@ class _TicketBookingScreenState extends AppState<TicketBookingScreen> {
                                       title:
                                           "Toa ${cars.indexOf(car)}: ${car.name}",
                                       car: car,
-                                      tripId: extra['trip_id'],
+                                      tripId: extra['trip_id'] ?? -1,
                                     ),
                                   )
                                   .toList(),

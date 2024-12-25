@@ -30,6 +30,7 @@ class _TicketBookingPaymentScreenState
             BlocListener<TicketBookingPaymentCubit, TicketBookingPaymentState>(
           listener: (context, state) {
             state.whenOrNull(
+              paySucceed: (tickets) => context.go("/trip/booking/receipt", extra: tickets),
               canceled: () => context.go("/"),
             );
           },
@@ -64,7 +65,7 @@ class _TicketBookingPaymentScreenState
               paying: () => AppLoadingWidget(
                 label: context.tr("payingInProgress"),
               ),
-              paySucceed: () => const SizedBox(),
+              paySucceed: (tickets) => const SizedBox(),
               payFailed: (String message) => AppErrorWidget(
                 message: message,
                 onPressed: () =>
