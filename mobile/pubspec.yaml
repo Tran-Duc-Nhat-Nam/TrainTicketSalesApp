@@ -83,17 +83,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   build_runner: ^2.4.14
-  freezed:
-    git:
-      url: "https://github.com/Rexios80/freezed.git"
-      ref: "feature/dependency-upgrades-2024-12-20"
-      path: "packages/freezed"
-  json_serializable: ^6.9.2
-  retrofit_generator:
-    git:
-      url: "https://github.com/Carapacik/retrofit.dart.git"
-      ref: "master"
-      path: "generator/"
+  freezed: ^2.5.7
+  json_serializable: ^6.9.0
+  retrofit_generator: ^9.1.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
