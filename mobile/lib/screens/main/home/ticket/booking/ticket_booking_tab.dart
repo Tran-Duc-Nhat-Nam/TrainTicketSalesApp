@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/api/ticket/booking_web_socket.dart';
 import 'package:mobile/bloc/ticket/booking/tab/ticket_booking_tab_cubit.dart';
-import 'package:mobile/models/ticket/ticket.dart';
 import 'package:mobile/widgets/app_button.dart';
 import 'package:mobile/widgets/app_error_widget.dart';
 import 'package:mobile/widgets/app_loading_widget.dart';
@@ -36,56 +34,52 @@ class TicketBookingTab extends StatefulWidget {
 class _TicketBookingTabState extends AppState<TicketBookingTab>
     with AutomaticKeepAliveClientMixin<TicketBookingTab> {
   late BookingWebSocket socket;
-  List<Ticket> soldTickets = [];
-
-  @override
-  void dispose() {
-    socket.close();
-    super.dispose();
-  }
-
-  Future<void> connect() async {
-    socket = await BookingWebSocket.connect(widget.tripId, widget.car.id);
-    socket.listen((data) {
-      List<dynamic> convertedData = jsonDecode(data);
-      if (mounted) {
-        setState(() {
-          soldTickets =
-              convertedData.map((json) => Ticket.fromJson(json)).toList();
-        });
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return BlocProvider<TicketBookingTabCubit>(
       create: (context) {
-        connect();
-        return TicketBookingTabCubit()..loadData(context, widget.car.id);
+        return TicketBookingTabCubit()
+          ..loadData(
+            context,
+            widget.car.id,
+            widget.tripId,
+          );
       },
       child: BlocListener<TicketBookingTabCubit, TicketBookingTabState>(
         listener: (context, state) {
           state.maybeWhen(
-            booking: (ticket) {
-              log("Check", name: "Booking");
-              context.push("/trip/booking/ticket", extra: ticket).then((value) {
-                if (context.mounted) context.read<TicketBookingTabCubit>().loadData(context, widget.car.id);
-              });
+            bookingSucceed: (ticket) {
+              context.push("/trip/booking/ticket", extra: ticket).then(
+                (value) {
+                  if (context.mounted) {
+                    context.read<TicketBookingTabCubit>().loadData(
+                          context,
+                          widget.car.id,
+                          widget.tripId,
+                        );
+                  }
+                },
+              );
             },
             bookingFailed: (message) {
               log(message, name: "Booking");
-              context.read<TicketBookingTabCubit>().loadData(context, widget.car.id);
+              context.read<TicketBookingTabCubit>().loadData(
+                    context,
+                    widget.car.id,
+                    widget.tripId,
+                  );
             },
             orElse: () {},
           );
         },
         child: BlocBuilder<TicketBookingTabCubit, TicketBookingTabState>(
           builder: (context, state) => state.when(
-            initial: () => Container(),
-            loading: () => AppLoadingWidget(),
-            loaded: (seats, selectedSeat, userId, totalCost) => Column(
+            initial: () => const SizedBox(),
+            loading: () => const AppLoadingWidget(),
+            loaded: (seats, selectedSeat, soldTickets, userId, totalCost) =>
+                Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
@@ -101,34 +95,40 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Expanded(
-                                child: Column(children: [
-                                  Icon(
-                                    Icons.chair_outlined,
-                                    size: 40,
-                                  ),
-                                  Text(context.tr("availableSeat")),
-                                ]),
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.chair_outlined,
+                                      size: 40,
+                                    ),
+                                    Text(context.tr("availableSeat")),
+                                  ],
+                                ),
                               ),
                               Expanded(
-                                child: Column(children: [
-                                  Icon(
-                                    Icons.chair_outlined,
-                                    size: 40,
-                                    color: Colors.redAccent[200],
-                                  ),
-                                  Text(context.tr("selectingSeat")),
-                                ]),
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.chair_outlined,
+                                      size: 40,
+                                      color: Colors.redAccent[200],
+                                    ),
+                                    Text(context.tr("selectingSeat")),
+                                  ],
+                                ),
                               ),
                               Expanded(
-                                child: Column(children: [
-                                  Icon(
-                                    Icons.chair_outlined,
-                                    size: 40,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                  Text(context.tr("soldSeat")),
-                                ]),
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.chair_outlined,
+                                      size: 40,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                    Text(context.tr("soldSeat")),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -176,10 +176,6 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                                               context
                                                   .read<TicketBookingTabCubit>()
                                                   .selectSeat(
-                                                    selectedSeat,
-                                                    seats,
-                                                    userId,
-                                                    soldTickets,
                                                     widget.car.price,
                                                     seats[index].id,
                                                   );
@@ -260,7 +256,9 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                   ),
                   child: AppButton(
                     onPressed: () {
-                      context.read<TicketBookingTabCubit>().startBooking(selectedSeat, userId, widget.tripId);
+                      context
+                          .read<TicketBookingTabCubit>()
+                          .startBooking(widget.tripId);
                     },
                     text: context.tr("continue"),
                   ),
@@ -269,14 +267,18 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
             ),
             failed: (message) => AppErrorWidget(
               message: context.tr(message),
-              onPressed: () =>
-                  context.read<TicketBookingTabCubit>().loadData(context, widget.car.id),
+              onPressed: () => context.read<TicketBookingTabCubit>().loadData(
+                    context,
+                    widget.car.id,
+                    widget.tripId,
+                  ),
               buttonText: context.tr("reload"),
             ),
-            booking: (ticket) => Center(
-              child: Text(context.tr("moveToBooking")),
+            booking: () => AppLoadingWidget(
+              label: context.tr("bookingInProgress"),
             ),
-            bookingFailed: (message) => Container(),
+            bookingSucceed: (tickets) => const SizedBox(),
+            bookingFailed: (message) => const SizedBox(),
           ),
         ),
       ),
