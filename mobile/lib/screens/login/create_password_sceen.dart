@@ -29,9 +29,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
       create: (context) => SignUpCubit(),
       child: BlocListener<SignUpCubit, SignUpState>(
         listener: (context, state) {
-          state.when(
-            initial: () {},
-            loading: () {},
+          state.whenOrNull(
             success: () {
               if (mounted) {
                 AppToast.showSuccessToast(context,
@@ -70,7 +68,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
                     String username =
                         GoRouterState.of(context).extra! as String;
                     String password = _formKey.currentState?.value['password'];
-                    context.read<SignUpCubit>().signUp(username, password);
+                    context.read<SignUpCubit>().signUp(password);
                   }
                 },
                 loading: () => null,
@@ -81,7 +79,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
                     String username =
                         GoRouterState.of(context).extra! as String;
                     String password = _formKey.currentState?.value['password'];
-                    context.read<SignUpCubit>().signUp(username, password);
+                    context.read<SignUpCubit>().signUp(password);
                   }
                 },
               ),

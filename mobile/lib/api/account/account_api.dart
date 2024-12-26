@@ -12,6 +12,9 @@ abstract class AccountAPI {
   @POST('/signup')
   Future<Map<String, String>> signUp(@Body() Account account);
 
+  @POST('/signup/otp')
+  Future<Map<String, String>> otp(@Body() Map<String, String> otp);
+
   @POST('/login')
   Future<Map<String, String>> login(@Body() Account account);
 
