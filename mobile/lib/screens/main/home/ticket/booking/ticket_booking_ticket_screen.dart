@@ -50,10 +50,7 @@ class _TicketBookingTicketScreenState
                 if (result != true) {
                   context
                       .read<TicketBookingTicketCubit>()
-                      .cancelBooking(context)
-                      .whenComplete(() {
-                    if (context.mounted) context.pop(true);
-                  });
+                      .cancelBooking(context);
                 }
               },
               child: AppScreen(

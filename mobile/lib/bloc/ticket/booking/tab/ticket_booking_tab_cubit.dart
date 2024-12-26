@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile/api/seat/seat_api.dart';
 import 'package:mobile/api/ticket/ticket_api.dart';
 import 'package:mobile/core/shared_ref.dart';
+import 'package:mobile/models/car/car.dart';
 import 'package:mobile/models/ticket/ticket.dart';
 import 'package:mobile/widgets/toast/dialog.dart';
 
@@ -27,17 +28,34 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
     return super.close();
   }
 
-  Future<void> loadData(BuildContext context, int carId, int tripId) async {
+  Future<void> loadData(BuildContext context, Car car, int tripId) async {
     emit(TicketBookingTabState.loading());
     await AppDialog.checkAuth(context);
     int? userId = await sharedPreferences.getInt("userId");
     if (userId != null) {
       await SeatAPI(await ApiHelper.getDioInstance()).getList({
-        'carId': carId,
+        'carId': car.id,
       }).then(
         (value) {
-          emit(TicketBookingTabState.loaded(value, {}, [], userId, 0));
-          connect(tripId, carId);
+          Map<String, Map<int, Seat?>> temp = {};
+          Set<String> columns = value.map((seat) => seat.col).toSet();
+          for (String column in columns) {
+            if (temp[column] == null) {
+              temp[column] = {};
+            }
+
+            for (int i = 1; i <= car.width; i++) {
+              Seat tempSeat = value.firstWhere((seat) => seat.col == column && seat.row == i, orElse: () => Seat(id: -1));
+              if (tempSeat.id != -1) {
+                temp[column]![i] = tempSeat;
+              } else {
+                temp[column]![i] = null;
+              }
+            }
+          }
+          List<Seat?> seatMapList = temp.values.expand((seats) => seats.values).toList();
+          emit(TicketBookingTabState.loaded(seatMapList, {}, [], userId, 0));
+          connect(tripId, car.id);
         },
         onError: (error) => emit(
           TicketBookingTabState.failed(
@@ -61,15 +79,30 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
         List<Ticket> soldTickets =
             convertedData.map((json) => Ticket.fromJson(json)).toList();
         state.maybeWhen(
-          loaded: (seats, selectedSeat, _, userId, totalCost) => emit(
-            TicketBookingTabState.loaded(
-              seats,
-              selectedSeat,
-              soldTickets,
-              userId,
-              totalCost,
-            ),
-          ),
+          loaded: (seats, selectedSeat, _, userId, totalCost) async {
+            if (socket!.isOpen()) {
+              emit(
+                TicketBookingTabState.loaded(
+                  seats,
+                  selectedSeat,
+                  soldTickets,
+                  userId,
+                  totalCost,
+                ),
+              );
+            } else {
+              await socket!.reconnect();
+              emit(
+                TicketBookingTabState.loaded(
+                  seats,
+                  selectedSeat,
+                  soldTickets,
+                  userId,
+                  totalCost,
+                ),
+              );
+            }
+          },
           orElse: () {},
         );
       },
@@ -81,11 +114,11 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
       loaded: (seats, _, soldTickets, userId, __) {
         int totalCost = 0;
         var temp = selectedSeat.entries.map((e) {
-          Seat seat = seats.firstWhere(
-            (seat) => seat.id == e.key,
+          Seat? seat = seats.firstWhere(
+            (seat) => seat != null && seat.id == e.key,
             orElse: () => Seat(),
           );
-          return seat.seatType.id * carPrice;
+          return seat!.seatType.id * carPrice;
         }).toList();
         if (temp.isNotEmpty) totalCost = temp.reduce((a, b) => a + b);
         emit(TicketBookingTabState.loaded(
@@ -148,5 +181,51 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
           );
         },
         orElse: () {});
+  }
+
+  // void temp() {
+  //   StaggeredGridTile.count(
+  //     crossAxisCellCount: 1,
+  //     mainAxisCellCount: 1,
+  //     child: Column(
+  //       children: [
+  //         IconButton(
+  //           onPressed: () {
+  //             context
+  //                 .read<TicketBookingTabCubit>()
+  //                 .selectSeat(
+  //               widget.car.price,
+  //               entry.,
+  //             );
+  //           },
+  //           iconSize: 40,
+  //           icon: Icon(
+  //             Icons.chair_outlined,
+  //             size: 40,
+  //             color: soldTickets.any(
+  //                   (element) =>
+  //               element.seat.id ==
+  //                   seats[index].id,
+  //             )
+  //                 ? Theme.of(context)
+  //                 .colorScheme
+  //                 .primary
+  //                 : selectedSeat[seats[index]
+  //                 .id] ==
+  //                 true
+  //                 ? Colors.redAccent[200]
+  //                 : Theme.of(context)
+  //                 .colorScheme
+  //                 .secondary,
+  //           ),
+  //         ),
+  //         Text("${seats[index].col}${seats[index].row}")
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  int getSize(Map<String, Map<int, Seat>> seats, Car car) {
+    return seats.length * car.width;
   }
 }

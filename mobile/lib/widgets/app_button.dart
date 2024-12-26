@@ -38,7 +38,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      disabledColor: Theme.of(context).colorScheme.primary,
+      disabledColor: Theme.of(context).colorScheme.primary.withAlpha(155),
       color: Theme.of(context).colorScheme.primary,
       padding: EdgeInsets.symmetric(
         vertical: size.value.top,

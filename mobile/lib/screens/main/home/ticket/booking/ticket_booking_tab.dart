@@ -43,7 +43,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
         return TicketBookingTabCubit()
           ..loadData(
             context,
-            widget.car.id,
+            widget.car,
             widget.tripId,
           );
       },
@@ -56,7 +56,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                   if (context.mounted) {
                     context.read<TicketBookingTabCubit>().loadData(
                           context,
-                          widget.car.id,
+                          widget.car,
                           widget.tripId,
                         );
                   }
@@ -67,7 +67,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
               log(message, name: "Booking");
               context.read<TicketBookingTabCubit>().loadData(
                     context,
-                    widget.car.id,
+                    widget.car,
                     widget.tripId,
                   );
             },
@@ -165,44 +165,54 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                                     child: StaggeredGrid.count(
                                       crossAxisCount: 4,
                                       mainAxisSpacing: 4,
-                                      crossAxisSpacing: 4,
-                                      children: List.generate(
-                                        seats.length,
-                                        (index) => StaggeredGridTile.count(
-                                          crossAxisCellCount: 1,
-                                          mainAxisCellCount: 1,
-                                          child: IconButton(
-                                            onPressed: () {
-                                              context
-                                                  .read<TicketBookingTabCubit>()
-                                                  .selectSeat(
-                                                    widget.car.price,
-                                                    seats[index].id,
-                                                  );
-                                            },
-                                            iconSize: 40,
-                                            icon: Icon(
-                                              Icons.chair_outlined,
-                                              size: 40,
-                                              color: soldTickets.any(
-                                                (element) =>
-                                                    element.seat.id ==
-                                                    seats[index].id,
-                                              )
-                                                  ? Theme.of(context)
-                                                      .colorScheme
-                                                      .primary
-                                                  : selectedSeat[seats[index]
-                                                              .id] ==
-                                                          true
-                                                      ? Colors.redAccent[200]
-                                                      : Theme.of(context)
-                                                          .colorScheme
-                                                          .secondary,
+                                      crossAxisSpacing: 8,
+                                      children: seats.map((seat) {
+                                        if (seat != null) {
+                                          return StaggeredGridTile.count(
+                                            crossAxisCellCount: 1,
+                                            mainAxisCellCount: 1,
+                                            child: Column(
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    context
+                                                        .read<
+                                                            TicketBookingTabCubit>()
+                                                        .selectSeat(
+                                                          widget.car.price,
+                                                          seat.id,
+                                                        );
+                                                  },
+                                                  iconSize: 40,
+                                                  icon: Icon(
+                                                    Icons.chair_outlined,
+                                                    size: 40,
+                                                    color: soldTickets.any(
+                                                      (element) =>
+                                                          element.seat.id ==
+                                                          seat.id,
+                                                    )
+                                                        ? Theme.of(context)
+                                                            .colorScheme
+                                                            .primary
+                                                        : selectedSeat[
+                                                                    seat.id] ==
+                                                                true
+                                                            ? Colors
+                                                                .redAccent[200]
+                                                            : Theme.of(context)
+                                                                .colorScheme
+                                                                .secondary,
+                                                  ),
+                                                ),
+                                                Text("${seat.col}${seat.row}")
+                                              ],
                                             ),
-                                          ),
-                                        ),
-                                      ),
+                                          );
+                                        } else {
+                                          return const SizedBox();
+                                        }
+                                      }).toList(),
                                     ),
                                   ),
                                 ],
@@ -228,7 +238,10 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                         child: Text(
                           context.tr(
                             "totalCost",
-                            args: [totalCost.toString()],
+                            args: [
+                              NumberFormat.currency(locale: "vi_VN")
+                                  .format(totalCost)
+                            ],
                           ),
                         ),
                       ),
@@ -238,7 +251,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                             "selectedSeat",
                             args: [
                               selectedSeat.length.toString(),
-                              widget.car.capacity.toString()
+                              (seats.length - soldTickets.length).toString()
                             ],
                           ),
                           textAlign: TextAlign.right,
@@ -255,11 +268,11 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
                     right: 24,
                   ),
                   child: AppButton(
-                    onPressed: () {
-                      context
-                          .read<TicketBookingTabCubit>()
-                          .startBooking(widget.tripId);
-                    },
+                    onPressed: selectedSeat.isNotEmpty
+                        ? () => context
+                            .read<TicketBookingTabCubit>()
+                            .startBooking(widget.tripId)
+                        : null,
                     text: context.tr("continue"),
                   ),
                 ),
@@ -269,7 +282,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
               message: context.tr(message),
               onPressed: () => context.read<TicketBookingTabCubit>().loadData(
                     context,
-                    widget.car.id,
+                    widget.car,
                     widget.tripId,
                   ),
               buttonText: context.tr("reload"),

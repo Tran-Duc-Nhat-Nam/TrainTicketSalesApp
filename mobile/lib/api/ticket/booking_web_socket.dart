@@ -52,6 +52,11 @@ class BookingWebSocket {
   }
 
   void close() {
+    log("Closing...", name: "Web socket");
     _channel.sink.close();
+  }
+
+  bool isOpen() {
+    return _channel.closeCode == null;
   }
 }
