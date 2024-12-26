@@ -22,13 +22,12 @@ class _SplashScreenState extends State<SplashScreen> {
       create: (context) => AuthCubit()..init(),
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
-          state.when(
-            initial: () {},
+          state.whenOrNull(
             loaded: (canBiometrics) async {
               if (canBiometrics) {
                 LocalAuthentication()
                     .authenticate(
-                        localizedReason: "Test",
+                        localizedReason: "Authenticate yourself",
                         options: AuthenticationOptions(biometricOnly: true))
                     .then(
                   (value) async {
@@ -49,7 +48,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 context.go("/login");
               }
             },
-            authenticated: () {},
           );
         },
         child: BlocBuilder<AuthCubit, AuthState>(
@@ -57,14 +55,14 @@ class _SplashScreenState extends State<SplashScreen> {
             initial: () => Scaffold(
               body: Center(
                 child: Column(
+                  spacing: 60,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
                       'assets/images/logo.png',
-                      width: 150,
-                      height: 150,
+                      width: 100,
+                      height: 100,
                     ),
-                    SizedBox(height: 20),
                     AppLoadingWidget(),
                   ],
                 ),
@@ -73,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
             loaded: (canBiometrics) => Scaffold(
               body: AppLoadingWidget(),
             ),
-            authenticated: () => Placeholder(),
+            authenticated: () => const SizedBox(),
           ),
         ),
       ),

@@ -21,24 +21,21 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
-  bool _isRemember = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
-          state.when(
-            initial: () {},
-            loading: () {},
-            success: () {
+          state.whenOrNull(
+            loginSucceed: () {
               if (mounted) {
-                AppToast.showSuccessToast(context, text: context.tr("loginSucceed"));
+                AppToast.showSuccessToast(context,
+                    text: context.tr("loginSucceed"));
                 context.go("/");
               }
             },
-            failure: (message) {
+            loginFailed: (message) {
               AppToast.showFailureToast(context, text: message);
             },
           );
@@ -50,8 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               title: context.tr("title.login"),
               subTitle: context.tr("subtitle.login"),
               buttonText: context.tr("title.login"),
-              button: state.when(
-                initial: () => null,
+              button: state.whenOrNull(
                 loading: () => AppTextButton(
                   onPressed: () {},
                   child: LoadingAnimationWidget.waveDots(
@@ -59,21 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     size: 24,
                   ),
                 ),
-                success: () => null,
-                failure: (message) => null,
               ),
-              onPressed: state.when(
-                initial: () => () {
-                  _formKey.currentState?.saveAndValidate();
-                  if (_formKey.currentState?.validate() == true) {
-                    String username = _formKey.currentState?.value['username'];
-                    String password = _formKey.currentState?.value['password'];
-                    context.read<LoginCubit>().login(username, password);
-                  }
-                },
-                loading: () => null,
-                success: () => null,
-                failure: (message) => () {
+              onPressed: state.whenOrNull(
+                loaded: (isRemember) => () {
                   _formKey.currentState?.saveAndValidate();
                   if (_formKey.currentState?.validate() == true) {
                     String username = _formKey.currentState?.value['username'];
@@ -107,11 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   children: [
                     AppCheckbox(
-                      value: _isRemember,
+                      value: state.maybeWhen(loaded: (isRemember) => isRemember, orElse: () => false,),
                       onChanged: (value) {
-                        setState(() {
-                          _isRemember = value!;
-                        });
+                        context.read<LoginCubit>().setRemember(value ?? false);
                       },
                     ),
                     const SizedBox(width: 8),
