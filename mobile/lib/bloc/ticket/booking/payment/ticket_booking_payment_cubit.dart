@@ -22,53 +22,49 @@ class TicketBookingPaymentCubit extends Cubit<TicketBookingPaymentState> {
     List<Ticket> ticket = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    emit(ticket.isEmpty
-        ? TicketBookingPaymentState.empty()
-        : TicketBookingPaymentState.loaded(ticket));
+    emit(
+      ticket.isEmpty
+          ? TicketBookingPaymentState.empty()
+          : TicketBookingPaymentState.loaded(ticket),
+    );
   }
 
   void pay(int tripId) {
-    state.maybeWhen(
-        loaded: (tickets) async {
-          log("Starting Booking...", name: "Booking");
-          emit(TicketBookingPaymentState.paying());
-          log("Calling API...", name: "Booking");
-          await TicketAPI(await ApiHelper.getDioInstance())
-              .get(
-            tickets[0].id,
-          )
-              .then(
-            (value) async =>
-                await TicketAPI(await ApiHelper.getDioInstance()).pay({
-              'ticketIds': tickets
-                  .map(
-                    (e) => e.id,
-                  )
-                  .toList(),
-            }).then(
-              (value) {
-                log("Booking successfully", name: "Booking");
-                emit(TicketBookingPaymentState.paySucceed(tickets));
-              },
-              onError: (error) {
-                log("Booking failed", name: "Booking", error: error);
-                emit(
-                  TicketBookingPaymentState.payFailed(
-                    error is DioException
-                        ? error.response.toString().replaceAll('"', '')
-                        : "unexpectedError",
-                  ),
-                );
-              },
-            ),
-            onError: (e) {
-              log(e.toString(), name: "Ticket booking payment");
+    state.whenOrNull(
+      loaded: (tickets) async {
+        log("Starting Booking...", name: "Booking");
+        emit(TicketBookingPaymentState.paying());
+        log("Calling API...", name: "Booking");
+        await TicketAPI(await ApiHelper.getDioInstance())
+            .get(tickets[0].id)
+            .then(
+          (value) async =>
+              await TicketAPI(await ApiHelper.getDioInstance()).pay({
+            'ticketIds': tickets.map((e) => e.id).toList(),
+          }).then(
+            (value) {
+              log("Booking successfully", name: "Booking");
+              emit(TicketBookingPaymentState.paySucceed(tickets));
+            },
+            onError: (error) {
+              log("Booking failed", name: "Booking", error: error);
               emit(
-                TicketBookingPaymentState.canceled(),
+                TicketBookingPaymentState.payFailed(
+                  error is DioException
+                      ? error.response.toString().replaceAll('"', '')
+                      : "unexpectedError",
+                ),
               );
             },
-          );
-        },
-        orElse: () {});
+          ),
+          onError: (e) {
+            log(e.toString(), name: "Ticket booking payment");
+            emit(
+              TicketBookingPaymentState.canceled(),
+            );
+          },
+        );
+      },
+    );
   }
 }
