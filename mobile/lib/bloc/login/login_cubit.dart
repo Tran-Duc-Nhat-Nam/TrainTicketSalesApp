@@ -14,6 +14,11 @@ part 'login_cubit.freezed.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginState.initial());
 
+  Future<void> loadData() async {
+    emit(LoginState.loading());
+    bool isRemember = await sharedPreferences.getBool("isRemember") ?? false;
+    emit(LoginState.loaded(isRemember));
+  }
   Future<void> setRemember(bool isRemember) async {
     await sharedPreferences.setBool("isRemember", isRemember);
     emit(LoginState.loaded(isRemember));
@@ -21,7 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> login(String username, String password,
       {bool isRemember = false}) async {
-    emit(LoginState.loading());
+    emit(LoginState.login());
     AccountAPI(await ApiHelper.getDioInstance())
         .login(Account(id: -1, username: username, password: password))
         .then(

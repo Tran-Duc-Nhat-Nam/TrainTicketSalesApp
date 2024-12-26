@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => LoginCubit()..loadData(),
       child: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           state.whenOrNull(

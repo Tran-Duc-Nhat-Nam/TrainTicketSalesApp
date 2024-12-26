@@ -27,9 +27,9 @@ class _SignupScreenState extends State<SignupScreen> {
       child: BlocListener<SignUpCubit, SignUpState>(
         listener: (context, state) {
           state.whenOrNull(
-            success: () => context.go(
+            signupSucceed: (username) => context.go(
               "/otp",
-              extra: _formKey.currentState?.value['username'],
+              extra: username,
             ),
           );
         },

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:mobile/bloc/signup/create_password/create_password_cubit.dart';
 
 import '../../bloc/signup/sign_up_cubit.dart';
 import '../../common/styles/text_styles.dart';
@@ -25,19 +26,19 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SignUpCubit(),
-      child: BlocListener<SignUpCubit, SignUpState>(
+    return BlocProvider<CreatePasswordCubit>(
+      create: (context) => CreatePasswordCubit(),
+      child: BlocListener<CreatePasswordCubit, CreatePasswordState>(
         listener: (context, state) {
           state.whenOrNull(
-            success: () {
+            createSucceed: (username) {
               if (mounted) {
                 AppToast.showSuccessToast(context,
                     text: context.tr("loginSucceed"));
                 context.go("/");
               }
             },
-            failure: (message) {
+            createFailed: (message) {
               AppToast.showFailureToast(context, text: message);
             },
           );
@@ -49,8 +50,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
               title: context.tr('title.createPassword'),
               subTitle: context.tr('subtitle.createPassword'),
               buttonText: context.tr('complete'),
-              button: state.when(
-                initial: () => null,
+              button: state.whenOrNull(
                 loading: () => AppTextButton(
                   onPressed: () {},
                   child: LoadingAnimationWidget.waveDots(
@@ -58,22 +58,9 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
                     size: 24,
                   ),
                 ),
-                success: () => null,
-                failure: (message) => null,
               ),
-              onPressed: state.when(
+              onPressed: state.whenOrNull(
                 initial: () => () {
-                  _formKey.currentState?.saveAndValidate();
-                  if (_formKey.currentState?.validate() == true) {
-                    String username =
-                        GoRouterState.of(context).extra! as String;
-                    String password = _formKey.currentState?.value['password'];
-                    context.read<SignUpCubit>().signUp(password);
-                  }
-                },
-                loading: () => null,
-                success: () => null,
-                failure: (message) => () {
                   _formKey.currentState?.saveAndValidate();
                   if (_formKey.currentState?.validate() == true) {
                     String username =
