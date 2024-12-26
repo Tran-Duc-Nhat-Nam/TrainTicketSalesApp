@@ -10,6 +10,17 @@ class DateTimeConverter implements JsonConverter<DateTime, String> {
     return formatter.format(object.toUtc());
   }
 
+  static String toShortTime(DateTime object) {
+    // Customize the format as needed
+    final DateFormat formatter = DateFormat("hh:mm");
+    return formatter.format(object);
+  }
+  static String toDate(DateTime object) {
+    // Customize the format as needed
+    final DateFormat formatter = DateFormat("dd/MM/yyyy");
+    return formatter.format(object);
+  }
+
   @override
   DateTime fromJson(String json) {
     return DateTime.parse(json);

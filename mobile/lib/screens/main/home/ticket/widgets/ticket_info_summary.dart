@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
+import 'package:mobile/core/converter/date_time_converter.dart';
 import 'package:mobile/models/ticket/ticket.dart';
 import 'package:mobile/widgets/app_card.dart';
 
@@ -45,7 +45,7 @@ class TicketInfoSummary extends StatelessWidget {
                               ticket.trip.route.departureStation.province.name
                             ),
                             Text(
-                                Jiffy.parseFromDateTime(ticket.trip.departureTime).format(pattern: "dd/MM/yyyy")
+                                DateTimeConverter.toDate(ticket.trip.departureTime)
                             ),
                           ],
                         ),
@@ -60,7 +60,7 @@ class TicketInfoSummary extends StatelessWidget {
                                 ticket.trip.route.arrivalStation.province.name
                             ),
                             Text(
-                                Jiffy.parseFromDateTime(ticket.trip.arrivalTime).format(pattern: "dd/MM/yyyy")
+                                DateTimeConverter.toDate(ticket.trip.arrivalTime)
                             ),
                           ],
                         ),

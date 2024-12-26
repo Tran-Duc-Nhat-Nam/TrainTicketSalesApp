@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:mobile/bloc/ticket/booking/ticket/ticket_booking_ticket_cubit.dart';
 import 'package:mobile/common/styles/text_styles.dart';
+import 'package:mobile/core/converter/date_time_converter.dart';
 import 'package:mobile/screens/main/home/ticket/widgets/ticket_info_detail.dart';
 import 'package:mobile/widgets/app_button.dart';
 import 'package:mobile/widgets/app_card.dart';
@@ -251,9 +251,9 @@ class _TicketBookingTicketScreenState
                                             ),
                                           ),
                                           Text(
-                                            Jiffy.parseFromDateTime(
+                                            DateTimeConverter.toDate(
                                               tickets[0].trip.departureTime,
-                                            ).format(pattern: "dd/MM/yyyy"),
+                                            ),
                                             style: AppTextStyles.labelText
                                                 .copyWith(
                                               color: Colors.white,
@@ -276,9 +276,9 @@ class _TicketBookingTicketScreenState
                                             ),
                                           ),
                                           Text(
-                                            Jiffy.parseFromDateTime(
-                                              tickets[0].trip.departureTime,
-                                            ).format(pattern: "dd/MM/yyyy"),
+                                            DateTimeConverter.toDate(
+                                              tickets[0].trip.arrivalTime,
+                                            ),
                                             style: AppTextStyles.labelText
                                                 .copyWith(
                                               color: Colors.white,

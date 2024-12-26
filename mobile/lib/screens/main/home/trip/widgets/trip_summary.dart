@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:mobile/common/styles/text_styles.dart';
+import 'package:mobile/core/converter/date_time_converter.dart';
 import 'package:mobile/models/trip/trip.dart';
 import 'package:mobile/widgets/app_card.dart';
 import 'package:mobile/widgets/app_text_button.dart';
@@ -93,13 +93,11 @@ class TripSummary extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      Jiffy.parseFromDateTime(trip.departureTime)
-                          .format(pattern: "hh:mm"),
+                      DateTimeConverter.toShortTime(trip.departureTime),
                       style: AppTextStyles.extraLargeText,
                     ),
                     Text(
-                      Jiffy.parseFromDateTime(trip.departureTime)
-                          .format(pattern: "dd/MM/yyyy"),
+                      DateTimeConverter.toDate(trip.departureTime),
                       style: AppTextStyles.secondaryText,
                     ),
                     Text(
@@ -123,13 +121,11 @@ class TripSummary extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      Jiffy.parseFromDateTime(trip.arrivalTime)
-                          .format(pattern: "hh:mm"),
+                      DateTimeConverter.toShortTime(trip.arrivalTime),
                       style: AppTextStyles.extraLargeText,
                     ),
                     Text(
-                      Jiffy.parseFromDateTime(trip.arrivalTime)
-                          .format(pattern: "dd/MM/yyyy"),
+                      DateTimeConverter.toDate(trip.arrivalTime),
                       style: AppTextStyles.secondaryText,
                     ),
                     Text(
