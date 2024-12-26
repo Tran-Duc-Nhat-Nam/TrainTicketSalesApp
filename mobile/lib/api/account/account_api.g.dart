@@ -22,12 +22,12 @@ class _AccountAPI implements AccountAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<Map<String, String>> signUp(Account account) async {
+  Future<Map<String, String>> signUp(SignUpRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(account.toJson());
+    _data.addAll(request.toJson());
     final _options = _setStreamType<Map<String, String>>(Options(
       method: 'POST',
       headers: _headers,
@@ -56,12 +56,12 @@ class _AccountAPI implements AccountAPI {
   }
 
   @override
-  Future<Map<String, String>> otp(Map<String, String> otp) async {
+  Future<Map<String, String>> submitOtp(OTPRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(otp);
+    _data.addAll(request.toJson());
     final _options = _setStreamType<Map<String, String>>(Options(
       method: 'POST',
       headers: _headers,
@@ -70,6 +70,75 @@ class _AccountAPI implements AccountAPI {
         .compose(
           _dio.options,
           '/signup/otp',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Map<String, String> _value;
+    try {
+      _value = _result.data!.cast<String, String>();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<Map<String, String>> createPassword(
+      CreatePasswordRequest request) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<Map<String, String>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/signup/password',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Map<String, String> _value;
+    try {
+      _value = _result.data!.cast<String, String>();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<Map<String, String>> addInfo(AddInfoRequest request) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<Map<String, String>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/signup/info',
           queryParameters: queryParameters,
           data: _data,
         )
