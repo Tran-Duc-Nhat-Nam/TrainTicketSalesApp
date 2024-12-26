@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile/request/signup/signup_request.dart';
 
 import '../../api/account/account_api.dart';
 import '../../core/api/api_helper.dart';
@@ -14,10 +15,10 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<void> signUp(String username) async {
     emit(SignUpState.loading());
     await AccountAPI(await ApiHelper.getDioInstance())
-        .otp({"email": username}).then(
-          (value) => emit(SignUpState.success()),
+        .signUp(SignUpRequest(username: username)).then(
+          (value) => emit(SignUpState.signupSucceed(username)),
       onError: (error) => emit(
-        SignUpState.failure(
+        SignUpState.signupFailed(
           error is DioException
               ? error.response.toString().replaceAll('"', '')
               : error.toString(),
