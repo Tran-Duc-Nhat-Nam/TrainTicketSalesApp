@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/auth/auth_helper.dart';
+import 'package:mobile/screens/login/add_info_screen.dart';
 import 'package:mobile/screens/login/create_password_sceen.dart';
 import 'package:mobile/screens/login/forget_password_screen.dart';
 import 'package:mobile/screens/login/login_screen.dart';
@@ -67,6 +68,14 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/signup',
+      pageBuilder: (context, state) => fadingNavigation(
+        context,
+        state,
+        const SignupScreen(),
+      ),
+    ),
+    GoRoute(
       path: '/otp',
       pageBuilder: (context, state) => fadingNavigation(
         context,
@@ -83,11 +92,11 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/signup',
+      path: '/addInfo',
       pageBuilder: (context, state) => fadingNavigation(
         context,
         state,
-        const SignupScreen(),
+        const AddInfoScreen(),
       ),
     ),
     StatefulShellRoute.indexedStack(
