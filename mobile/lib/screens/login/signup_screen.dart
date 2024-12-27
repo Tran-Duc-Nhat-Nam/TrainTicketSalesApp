@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobile/bloc/signup/sign_up_cubit.dart';
+import 'package:mobile/widgets/toast/toast.dart';
 
 import '../../common/styles/text_styles.dart';
 import '../../widgets/app_public_screen.dart';
@@ -28,9 +30,17 @@ class _SignupScreenState extends State<SignupScreen> {
         listener: (context, state) {
           state.whenOrNull(
             signupSucceed: (username) => context.go(
-              "/addInfo",
+              "/otp",
               extra: username,
             ),
+            signupFailed: (message) {
+              AppToast.showFailureToast(
+                context,
+                text: context.tr("error"),
+                description: message,
+              );
+
+            },
           );
         },
         child: BlocBuilder<SignUpCubit, SignUpState>(
@@ -39,7 +49,16 @@ class _SignupScreenState extends State<SignupScreen> {
               formKey: _formKey,
               title: context.tr("title.signUp"),
               subTitle: context.tr("subtitle.signUp"),
-              buttonText: context.tr("title.signUp"),
+              buttonText: state.maybeWhen(
+                signup: () => null,
+                orElse: () => context.tr("title.signUp"),
+              ),
+              button: state.whenOrNull(
+                signup: () => LoadingAnimationWidget.beat(
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 24,
+                ),
+              ),
               onPressed: () {
                 _formKey.currentState?.saveAndValidate();
                 if (_formKey.currentState?.validate() == true) {

@@ -49,6 +49,7 @@
   "soldSeat": "Sold seat",
   "selectingSeat": "Selecting seat",
   "availableSeat": "Available seat",
+  "error": "Error happened",
   "selectedSeat": "Selected {}/{} seat(s)",
   "totalCost": "Total cost: {}",
   "car": "Car {}: {}",
@@ -87,6 +88,8 @@
     "login": "Login",
     "signUp": "Sign Up",
     "adult": "Adult",
+    "otp": "OTP",
+    "addInfo": "Customer Information",
     "createPassword": "Create Password",
     "forgetPassword": "Forgot Password"
   },
@@ -94,6 +97,8 @@
     "login": "Enter your account information",
     "signUp": "Enter your email address",
     "adult": "Add information as on Citizen ID/Passport",
+    "otp": "Please enter the OTP",
+    "addInfo": "Enter the required information to use the app",
     "createPassword": "Enter your password",
     "forgetPassword": "Enter your email address"
   },

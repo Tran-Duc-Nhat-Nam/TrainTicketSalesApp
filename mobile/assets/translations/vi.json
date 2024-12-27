@@ -45,6 +45,7 @@
   "receipt": "Hóa đơn",
   "payment": "Thanh toán",
   "pay": "Thanh toán",
+  "error": "Đã có lỗi xảy ra",
   "generalSettings": "Cài đặt chung",
   "soldSeat": "Chỗ đã bán",
   "selectingSeat": "Chỗ đang chọn",
@@ -87,6 +88,8 @@
     "login": "Đăng nhập",
     "signUp": "Đăng ký",
     "adult": "Người lớn",
+    "otp": "OTP",
+    "addInfo": "Thông tin hành khách",
     "createPassword": "Tạo mật khẩu",
     "forgetPassword": "Quên mật khẩu"
   },
@@ -94,6 +97,8 @@
     "login": "Nhập thông tin tài khoản của bạn",
     "signUp": "Nhập địa chỉ email của bạn",
     "adult": "Thêm thông tin như trên CCCD/hộ chiếu",
+    "otp": "Nhập mã OTP",
+    "addInfo": "Nhập những thông tin cần thiết để sử dụng ứng dụng",
     "createPassword": "Nhập mật khẩu của bạn",
     "forgetPassword": "Nhập địa chỉ email của bạn"
   },

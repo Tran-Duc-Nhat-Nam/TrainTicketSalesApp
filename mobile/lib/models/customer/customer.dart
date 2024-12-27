@@ -8,7 +8,7 @@ class Customer with _$Customer {
     required int id,
     required String idNumber,
     required String name,
-    required int age,
+    required DateTime dateOfBirth,
     required bool isMale,
     required String phoneNumber,
     required String email,

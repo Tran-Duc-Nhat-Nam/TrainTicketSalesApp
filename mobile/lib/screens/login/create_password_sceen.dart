@@ -32,7 +32,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
               if (mounted) {
                 AppToast.showSuccessToast(context,
                     text: context.tr("loginSucceed"));
-                context.go("/");
+                context.go("/addInfo");
               }
             },
             createFailed: (message) {
@@ -57,7 +57,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
                 ),
               ),
               onPressed: state.whenOrNull(
-                initial: () => () {
+                loaded: (username) => () {
                   _formKey.currentState?.saveAndValidate();
                   if (_formKey.currentState?.validate() == true) {
                     context.read<CreatePasswordCubit>().createPassword(_formKey.currentState?.value['password']);

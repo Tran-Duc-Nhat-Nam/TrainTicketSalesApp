@@ -14,7 +14,7 @@ import 'app_theme_toggle_icon.dart';
 class AppPublicScreen extends StatefulWidget {
   const AppPublicScreen({
     super.key,
-    required this.formKey,
+    this.formKey,
     this.children,
     required this.formChildren,
     required this.onPressed,
@@ -22,15 +22,17 @@ class AppPublicScreen extends StatefulWidget {
     this.subTitle,
     this.button,
     this.buttonText,
+    this.isNoButton = false,
   });
 
-  final GlobalKey<FormBuilderState> formKey;
+  final GlobalKey<FormBuilderState>? formKey;
   final List<Widget> formChildren;
   final List<Widget>? children;
   final String title;
   final String? subTitle;
   final String? buttonText;
   final Widget? button;
+  final bool isNoButton;
   final void Function()? onPressed;
 
   @override
@@ -130,7 +132,7 @@ class _AppPublicScreenState extends State<AppPublicScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ...widget.formChildren,
-                    AppButton(
+                    if (!widget.isNoButton) AppButton(
                       onPressed: widget.onPressed,
                       text: widget.buttonText ?? "",
                       child: widget.button,

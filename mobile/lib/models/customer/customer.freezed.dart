@@ -23,7 +23,7 @@ mixin _$Customer {
   int get id => throw _privateConstructorUsedError;
   String get idNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  DateTime get dateOfBirth => throw _privateConstructorUsedError;
   bool get isMale => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $CustomerCopyWith<$Res> {
       {int id,
       String idNumber,
       String name,
-      int age,
+      DateTime dateOfBirth,
       bool isMale,
       String phoneNumber,
       String email});
@@ -71,7 +71,7 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
     Object? id = null,
     Object? idNumber = null,
     Object? name = null,
-    Object? age = null,
+    Object? dateOfBirth = null,
     Object? isMale = null,
     Object? phoneNumber = null,
     Object? email = null,
@@ -89,10 +89,10 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isMale: null == isMale
           ? _value.isMale
           : isMale // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ abstract class _$$CustomerImplCopyWith<$Res>
       {int id,
       String idNumber,
       String name,
-      int age,
+      DateTime dateOfBirth,
       bool isMale,
       String phoneNumber,
       String email});
@@ -143,7 +143,7 @@ class __$$CustomerImplCopyWithImpl<$Res>
     Object? id = null,
     Object? idNumber = null,
     Object? name = null,
-    Object? age = null,
+    Object? dateOfBirth = null,
     Object? isMale = null,
     Object? phoneNumber = null,
     Object? email = null,
@@ -161,10 +161,10 @@ class __$$CustomerImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isMale: null == isMale
           ? _value.isMale
           : isMale // ignore: cast_nullable_to_non_nullable
@@ -188,7 +188,7 @@ class _$CustomerImpl implements _Customer {
       {required this.id,
       required this.idNumber,
       required this.name,
-      required this.age,
+      required this.dateOfBirth,
       required this.isMale,
       required this.phoneNumber,
       required this.email});
@@ -203,7 +203,7 @@ class _$CustomerImpl implements _Customer {
   @override
   final String name;
   @override
-  final int age;
+  final DateTime dateOfBirth;
   @override
   final bool isMale;
   @override
@@ -213,7 +213,7 @@ class _$CustomerImpl implements _Customer {
 
   @override
   String toString() {
-    return 'Customer(id: $id, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber, email: $email)';
+    return 'Customer(id: $id, idNumber: $idNumber, name: $name, dateOfBirth: $dateOfBirth, isMale: $isMale, phoneNumber: $phoneNumber, email: $email)';
   }
 
   @override
@@ -225,7 +225,8 @@ class _$CustomerImpl implements _Customer {
             (identical(other.idNumber, idNumber) ||
                 other.idNumber == idNumber) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.age, age) || other.age == age) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
             (identical(other.isMale, isMale) || other.isMale == isMale) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -235,7 +236,7 @@ class _$CustomerImpl implements _Customer {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, idNumber, name, age, isMale, phoneNumber, email);
+      runtimeType, id, idNumber, name, dateOfBirth, isMale, phoneNumber, email);
 
   /// Create a copy of Customer
   /// with the given fields replaced by the non-null parameter values.
@@ -258,7 +259,7 @@ abstract class _Customer implements Customer {
       {required final int id,
       required final String idNumber,
       required final String name,
-      required final int age,
+      required final DateTime dateOfBirth,
       required final bool isMale,
       required final String phoneNumber,
       required final String email}) = _$CustomerImpl;
@@ -273,7 +274,7 @@ abstract class _Customer implements Customer {
   @override
   String get name;
   @override
-  int get age;
+  DateTime get dateOfBirth;
   @override
   bool get isMale;
   @override
