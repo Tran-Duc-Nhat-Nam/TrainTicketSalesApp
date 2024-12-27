@@ -20,7 +20,7 @@ AddInfoRequest _$AddInfoRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AddInfoRequest {
-  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get idNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get age => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $AddInfoRequestCopyWith<$Res> {
       _$AddInfoRequestCopyWithImpl<$Res, AddInfoRequest>;
   @useResult
   $Res call(
-      {String username,
+      {String email,
       String idNumber,
       String name,
       int age,
@@ -67,7 +67,7 @@ class _$AddInfoRequestCopyWithImpl<$Res, $Val extends AddInfoRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? idNumber = null,
     Object? name = null,
     Object? age = null,
@@ -75,9 +75,9 @@ class _$AddInfoRequestCopyWithImpl<$Res, $Val extends AddInfoRequest>
     Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       idNumber: null == idNumber
           ? _value.idNumber
@@ -112,7 +112,7 @@ abstract class _$$AddInfoRequestImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String username,
+      {String email,
       String idNumber,
       String name,
       int age,
@@ -133,7 +133,7 @@ class __$$AddInfoRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? idNumber = null,
     Object? name = null,
     Object? age = null,
@@ -141,9 +141,9 @@ class __$$AddInfoRequestImplCopyWithImpl<$Res>
     Object? phoneNumber = null,
   }) {
     return _then(_$AddInfoRequestImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       idNumber: null == idNumber
           ? _value.idNumber
@@ -173,7 +173,7 @@ class __$$AddInfoRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AddInfoRequestImpl implements _AddInfoRequest {
   const _$AddInfoRequestImpl(
-      {required this.username,
+      {required this.email,
       required this.idNumber,
       required this.name,
       required this.age,
@@ -184,7 +184,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
       _$$AddInfoRequestImplFromJson(json);
 
   @override
-  final String username;
+  final String email;
   @override
   final String idNumber;
   @override
@@ -198,7 +198,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
 
   @override
   String toString() {
-    return 'AddInfoRequest(username: $username, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber)';
+    return 'AddInfoRequest(email: $email, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -206,8 +206,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddInfoRequestImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.idNumber, idNumber) ||
                 other.idNumber == idNumber) &&
             (identical(other.name, name) || other.name == name) &&
@@ -219,8 +218,8 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, idNumber, name, age, isMale, phoneNumber);
+  int get hashCode =>
+      Object.hash(runtimeType, email, idNumber, name, age, isMale, phoneNumber);
 
   /// Create a copy of AddInfoRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -241,7 +240,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
 
 abstract class _AddInfoRequest implements AddInfoRequest {
   const factory _AddInfoRequest(
-      {required final String username,
+      {required final String email,
       required final String idNumber,
       required final String name,
       required final int age,
@@ -252,7 +251,7 @@ abstract class _AddInfoRequest implements AddInfoRequest {
       _$AddInfoRequestImpl.fromJson;
 
   @override
-  String get username;
+  String get email;
   @override
   String get idNumber;
   @override

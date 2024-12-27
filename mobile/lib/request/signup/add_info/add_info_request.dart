@@ -6,7 +6,7 @@ part 'add_info_request.g.dart';
 @freezed
 class AddInfoRequest with _$AddInfoRequest {
   const factory AddInfoRequest({
-    required String username,
+    required String email,
     required String idNumber,
     required String name,
     required int age,

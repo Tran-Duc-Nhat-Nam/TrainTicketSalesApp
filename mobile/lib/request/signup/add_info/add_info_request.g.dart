@@ -8,7 +8,7 @@ part of 'add_info_request.dart';
 
 _$AddInfoRequestImpl _$$AddInfoRequestImplFromJson(Map<String, dynamic> json) =>
     _$AddInfoRequestImpl(
-      username: json['username'] as String,
+      email: json['email'] as String,
       idNumber: json['idNumber'] as String,
       name: json['name'] as String,
       age: (json['age'] as num).toInt(),
@@ -19,7 +19,7 @@ _$AddInfoRequestImpl _$$AddInfoRequestImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AddInfoRequestImplToJson(
         _$AddInfoRequestImpl instance) =>
     <String, dynamic>{
-      'username': instance.username,
+      'email': instance.email,
       'idNumber': instance.idNumber,
       'name': instance.name,
       'age': instance.age,
