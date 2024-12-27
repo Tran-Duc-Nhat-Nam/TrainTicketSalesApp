@@ -15,7 +15,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<void> signUp(String username) async {
     emit(SignUpState.loading());
     await AccountAPI(await ApiHelper.getDioInstance())
-        .signUp(SignUpRequest(username: username)).then(
+        .signUp(SignUpRequest(email: username)).then(
           (value) => emit(SignUpState.signupSucceed(username)),
       onError: (error) => emit(
         SignUpState.signupFailed(

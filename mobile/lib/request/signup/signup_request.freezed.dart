@@ -20,7 +20,7 @@ SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SignUpRequest {
-  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   /// Serializes this SignUpRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $SignUpRequestCopyWith<$Res> {
           SignUpRequest value, $Res Function(SignUpRequest) then) =
       _$SignUpRequestCopyWithImpl<$Res, SignUpRequest>;
   @useResult
-  $Res call({String username});
+  $Res call({String email});
 }
 
 /// @nodoc
@@ -56,12 +56,12 @@ class _$SignUpRequestCopyWithImpl<$Res, $Val extends SignUpRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$SignUpRequestImplCopyWith<$Res>
       __$$SignUpRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username});
+  $Res call({String email});
 }
 
 /// @nodoc
@@ -91,12 +91,12 @@ class __$$SignUpRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
   }) {
     return _then(_$SignUpRequestImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -105,17 +105,17 @@ class __$$SignUpRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SignUpRequestImpl implements _SignUpRequest {
-  const _$SignUpRequestImpl({required this.username});
+  const _$SignUpRequestImpl({required this.email});
 
   factory _$SignUpRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SignUpRequestImplFromJson(json);
 
   @override
-  final String username;
+  final String email;
 
   @override
   String toString() {
-    return 'SignUpRequest(username: $username)';
+    return 'SignUpRequest(email: $email)';
   }
 
   @override
@@ -123,13 +123,12 @@ class _$SignUpRequestImpl implements _SignUpRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignUpRequestImpl &&
-            (identical(other.username, username) ||
-                other.username == username));
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, username);
+  int get hashCode => Object.hash(runtimeType, email);
 
   /// Create a copy of SignUpRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -148,14 +147,14 @@ class _$SignUpRequestImpl implements _SignUpRequest {
 }
 
 abstract class _SignUpRequest implements SignUpRequest {
-  const factory _SignUpRequest({required final String username}) =
+  const factory _SignUpRequest({required final String email}) =
       _$SignUpRequestImpl;
 
   factory _SignUpRequest.fromJson(Map<String, dynamic> json) =
       _$SignUpRequestImpl.fromJson;
 
   @override
-  String get username;
+  String get email;
 
   /// Create a copy of SignUpRequest
   /// with the given fields replaced by the non-null parameter values.

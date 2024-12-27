@@ -28,7 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
         listener: (context, state) {
           state.whenOrNull(
             signupSucceed: (username) => context.go(
-              "/otp",
+              "/addInfo",
               extra: username,
             ),
           );
