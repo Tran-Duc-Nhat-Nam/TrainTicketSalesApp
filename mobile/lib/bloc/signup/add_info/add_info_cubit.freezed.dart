@@ -25,6 +25,7 @@ mixin _$AddInfoState {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$AddInfoState {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$AddInfoState {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$AddInfoState {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$AddInfoState {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$AddInfoState {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return initial();
   }
@@ -169,6 +176,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return initial?.call();
   }
@@ -183,6 +191,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -201,6 +210,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return initial(this);
   }
@@ -215,6 +225,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return initial?.call(this);
   }
@@ -229,6 +240,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -290,6 +302,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return loading();
   }
@@ -304,6 +317,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return loading?.call();
   }
@@ -318,6 +332,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -336,6 +351,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return loading(this);
   }
@@ -350,6 +366,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return loading?.call(this);
   }
@@ -364,6 +381,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -453,6 +471,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return loaded(username);
   }
@@ -467,6 +486,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return loaded?.call(username);
   }
@@ -481,6 +501,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -499,6 +520,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return loaded(this);
   }
@@ -513,6 +535,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return loaded?.call(this);
   }
@@ -527,6 +550,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -623,6 +647,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return failed(message);
   }
@@ -637,6 +662,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return failed?.call(message);
   }
@@ -651,6 +677,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -669,6 +696,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return failed(this);
   }
@@ -683,6 +711,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return failed?.call(this);
   }
@@ -697,6 +726,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -764,6 +794,7 @@ class _$AddImpl implements _Add {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return add();
   }
@@ -778,6 +809,7 @@ class _$AddImpl implements _Add {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return add?.call();
   }
@@ -792,6 +824,7 @@ class _$AddImpl implements _Add {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -810,6 +843,7 @@ class _$AddImpl implements _Add {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return add(this);
   }
@@ -824,6 +858,7 @@ class _$AddImpl implements _Add {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return add?.call(this);
   }
@@ -838,6 +873,7 @@ class _$AddImpl implements _Add {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -927,6 +963,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return addSucceed(username);
   }
@@ -941,6 +978,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return addSucceed?.call(username);
   }
@@ -955,6 +993,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (addSucceed != null) {
@@ -973,6 +1012,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return addSucceed(this);
   }
@@ -987,6 +1027,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return addSucceed?.call(this);
   }
@@ -1001,6 +1042,7 @@ class _$AddSucceedImpl implements _AddSucceed {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (addSucceed != null) {
@@ -1097,6 +1139,7 @@ class _$AddFailedImpl implements _AddFailed {
     required TResult Function() add,
     required TResult Function(String username) addSucceed,
     required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
   }) {
     return addFailed(message);
   }
@@ -1111,6 +1154,7 @@ class _$AddFailedImpl implements _AddFailed {
     TResult? Function()? add,
     TResult? Function(String username)? addSucceed,
     TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
   }) {
     return addFailed?.call(message);
   }
@@ -1125,6 +1169,7 @@ class _$AddFailedImpl implements _AddFailed {
     TResult Function()? add,
     TResult Function(String username)? addSucceed,
     TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
     required TResult orElse(),
   }) {
     if (addFailed != null) {
@@ -1143,6 +1188,7 @@ class _$AddFailedImpl implements _AddFailed {
     required TResult Function(_Add value) add,
     required TResult Function(_AddSucceed value) addSucceed,
     required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
   }) {
     return addFailed(this);
   }
@@ -1157,6 +1203,7 @@ class _$AddFailedImpl implements _AddFailed {
     TResult? Function(_Add value)? add,
     TResult? Function(_AddSucceed value)? addSucceed,
     TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
   }) {
     return addFailed?.call(this);
   }
@@ -1171,6 +1218,7 @@ class _$AddFailedImpl implements _AddFailed {
     TResult Function(_Add value)? add,
     TResult Function(_AddSucceed value)? addSucceed,
     TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
     required TResult orElse(),
   }) {
     if (addFailed != null) {
@@ -1189,5 +1237,181 @@ abstract class _AddFailed implements AddInfoState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFailedImplCopyWith<_$AddFailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginFailedImplCopyWith<$Res> {
+  factory _$$LoginFailedImplCopyWith(
+          _$LoginFailedImpl value, $Res Function(_$LoginFailedImpl) then) =
+      __$$LoginFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoginFailedImplCopyWithImpl<$Res>
+    extends _$AddInfoStateCopyWithImpl<$Res, _$LoginFailedImpl>
+    implements _$$LoginFailedImplCopyWith<$Res> {
+  __$$LoginFailedImplCopyWithImpl(
+      _$LoginFailedImpl _value, $Res Function(_$LoginFailedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddInfoState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$LoginFailedImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginFailedImpl implements _LoginFailed {
+  const _$LoginFailedImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'AddInfoState.loginFailed(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginFailedImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AddInfoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginFailedImplCopyWith<_$LoginFailedImpl> get copyWith =>
+      __$$LoginFailedImplCopyWithImpl<_$LoginFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String username) loaded,
+    required TResult Function(String message) failed,
+    required TResult Function() add,
+    required TResult Function(String username) addSucceed,
+    required TResult Function(String message) addFailed,
+    required TResult Function(String message) loginFailed,
+  }) {
+    return loginFailed(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String username)? loaded,
+    TResult? Function(String message)? failed,
+    TResult? Function()? add,
+    TResult? Function(String username)? addSucceed,
+    TResult? Function(String message)? addFailed,
+    TResult? Function(String message)? loginFailed,
+  }) {
+    return loginFailed?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String username)? loaded,
+    TResult Function(String message)? failed,
+    TResult Function()? add,
+    TResult Function(String username)? addSucceed,
+    TResult Function(String message)? addFailed,
+    TResult Function(String message)? loginFailed,
+    required TResult orElse(),
+  }) {
+    if (loginFailed != null) {
+      return loginFailed(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_Add value) add,
+    required TResult Function(_AddSucceed value) addSucceed,
+    required TResult Function(_AddFailed value) addFailed,
+    required TResult Function(_LoginFailed value) loginFailed,
+  }) {
+    return loginFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Failed value)? failed,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_AddSucceed value)? addSucceed,
+    TResult? Function(_AddFailed value)? addFailed,
+    TResult? Function(_LoginFailed value)? loginFailed,
+  }) {
+    return loginFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_Add value)? add,
+    TResult Function(_AddSucceed value)? addSucceed,
+    TResult Function(_AddFailed value)? addFailed,
+    TResult Function(_LoginFailed value)? loginFailed,
+    required TResult orElse(),
+  }) {
+    if (loginFailed != null) {
+      return loginFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginFailed implements AddInfoState {
+  const factory _LoginFailed(final String message) = _$LoginFailedImpl;
+
+  String get message;
+
+  /// Create a copy of AddInfoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoginFailedImplCopyWith<_$LoginFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

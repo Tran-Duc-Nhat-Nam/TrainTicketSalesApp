@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobile/bloc/signup/add_info/add_info_cubit.dart';
+import 'package:mobile/widgets/app_date_time_picker.dart';
 
 import '../../common/styles/text_styles.dart';
 import '../../widgets/app_public_screen.dart';
@@ -40,14 +41,18 @@ class _AddInfoScreenState extends State<AddInfoScreen> {
               AppToast.showFailureToast(context, text: message);
               context.read<AddInfoCubit>().loadData(context);
             },
+            loginFailed: (message) {
+              AppToast.showFailureToast(context, text: message);
+              context.go("/login");
+            },
           );
         },
         child: BlocBuilder<AddInfoCubit, AddInfoState>(
           builder: (context, state) {
             return AppPublicScreen(
               formKey: _formKey,
-              title: context.tr('title.createPassword'),
-              subTitle: context.tr('subtitle.createPassword'),
+              title: context.tr('title.addInfo'),
+              subTitle: context.tr('subtitle.addInfo'),
               buttonText: context.tr('complete'),
               button: state.whenOrNull(
                 loading: () => AppTextButton(
@@ -59,7 +64,7 @@ class _AddInfoScreenState extends State<AddInfoScreen> {
                 ),
               ),
               onPressed: state.whenOrNull(
-                initial: () => () {
+                loaded: (username) => () {
                   _formKey.currentState?.saveAndValidate();
                   if (_formKey.currentState?.validate() == true) {
                     context.read<AddInfoCubit>().addInfo(_formKey.currentState!.value);
@@ -68,31 +73,56 @@ class _AddInfoScreenState extends State<AddInfoScreen> {
               ),
               formChildren: [
                 Text(
-                  context.tr('password'),
+                  context.tr('name'),
                   style: AppTextStyles.labelText,
                 ),
                 const SizedBox(height: 8),
                 AppTextField(
-                  name: 'password',
+                  name: 'name',
                   required: true,
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  context.tr('confirmPassword'),
+                  context.tr('idNumber.short'),
                   style: AppTextStyles.labelText,
                 ),
                 const SizedBox(height: 8),
                 AppTextField(
-                  name: 'confirmPassword',
+                  name: 'idNumber',
                   required: true,
-                  validators: [
-                        (value) {
-                      return value ==
-                          _formKey.currentState?.instantValue['password']
-                          ? null
-                          : context.tr("errorMessage.confirmPassword");
-                    },
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  context.tr('phone.short'),
+                  style: AppTextStyles.labelText,
+                ),
+                const SizedBox(height: 8),
+                AppTextField(
+                  name: 'phoneNumber',
+                  required: true,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  context.tr('isMale.short'),
+                  style: AppTextStyles.labelText,
+                ),
+                const SizedBox(height: 8),
+                FormBuilderRadioGroup(
+                  name: "isMale",
+                  options: [
+                    FormBuilderFieldOption(value: true),
+                    FormBuilderFieldOption(value: false),
                   ],
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  context.tr('dateOfBirth.short'),
+                  style: AppTextStyles.labelText,
+                ),
+                const SizedBox(height: 8),
+                AppDateTimePicker(
+                  name: 'dateOfBirth',
+                  required: true,
                 ),
                 const SizedBox(height: 32),
               ],

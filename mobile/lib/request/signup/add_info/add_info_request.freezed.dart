@@ -23,7 +23,7 @@ mixin _$AddInfoRequest {
   String get email => throw _privateConstructorUsedError;
   String get idNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  DateTime get dateOfBirth => throw _privateConstructorUsedError;
   bool get isMale => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
 
@@ -47,7 +47,7 @@ abstract class $AddInfoRequestCopyWith<$Res> {
       {String email,
       String idNumber,
       String name,
-      int age,
+      DateTime dateOfBirth,
       bool isMale,
       String phoneNumber});
 }
@@ -70,7 +70,7 @@ class _$AddInfoRequestCopyWithImpl<$Res, $Val extends AddInfoRequest>
     Object? email = null,
     Object? idNumber = null,
     Object? name = null,
-    Object? age = null,
+    Object? dateOfBirth = null,
     Object? isMale = null,
     Object? phoneNumber = null,
   }) {
@@ -87,10 +87,10 @@ class _$AddInfoRequestCopyWithImpl<$Res, $Val extends AddInfoRequest>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isMale: null == isMale
           ? _value.isMale
           : isMale // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$AddInfoRequestImplCopyWith<$Res>
       {String email,
       String idNumber,
       String name,
-      int age,
+      DateTime dateOfBirth,
       bool isMale,
       String phoneNumber});
 }
@@ -136,7 +136,7 @@ class __$$AddInfoRequestImplCopyWithImpl<$Res>
     Object? email = null,
     Object? idNumber = null,
     Object? name = null,
-    Object? age = null,
+    Object? dateOfBirth = null,
     Object? isMale = null,
     Object? phoneNumber = null,
   }) {
@@ -153,10 +153,10 @@ class __$$AddInfoRequestImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       isMale: null == isMale
           ? _value.isMale
           : isMale // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
       {required this.email,
       required this.idNumber,
       required this.name,
-      required this.age,
+      required this.dateOfBirth,
       required this.isMale,
       required this.phoneNumber});
 
@@ -190,7 +190,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
   @override
   final String name;
   @override
-  final int age;
+  final DateTime dateOfBirth;
   @override
   final bool isMale;
   @override
@@ -198,7 +198,7 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
 
   @override
   String toString() {
-    return 'AddInfoRequest(email: $email, idNumber: $idNumber, name: $name, age: $age, isMale: $isMale, phoneNumber: $phoneNumber)';
+    return 'AddInfoRequest(email: $email, idNumber: $idNumber, name: $name, dateOfBirth: $dateOfBirth, isMale: $isMale, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -210,7 +210,8 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
             (identical(other.idNumber, idNumber) ||
                 other.idNumber == idNumber) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.age, age) || other.age == age) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
             (identical(other.isMale, isMale) || other.isMale == isMale) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
@@ -218,8 +219,8 @@ class _$AddInfoRequestImpl implements _AddInfoRequest {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, idNumber, name, age, isMale, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType, email, idNumber, name, dateOfBirth, isMale, phoneNumber);
 
   /// Create a copy of AddInfoRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -243,7 +244,7 @@ abstract class _AddInfoRequest implements AddInfoRequest {
       {required final String email,
       required final String idNumber,
       required final String name,
-      required final int age,
+      required final DateTime dateOfBirth,
       required final bool isMale,
       required final String phoneNumber}) = _$AddInfoRequestImpl;
 
@@ -257,7 +258,7 @@ abstract class _AddInfoRequest implements AddInfoRequest {
   @override
   String get name;
   @override
-  int get age;
+  DateTime get dateOfBirth;
   @override
   bool get isMale;
   @override

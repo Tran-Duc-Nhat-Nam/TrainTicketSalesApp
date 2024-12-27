@@ -11,7 +11,7 @@ _$AddInfoRequestImpl _$$AddInfoRequestImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       idNumber: json['idNumber'] as String,
       name: json['name'] as String,
-      age: (json['age'] as num).toInt(),
+      dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
       isMale: json['isMale'] as bool,
       phoneNumber: json['phoneNumber'] as String,
     );
@@ -22,7 +22,7 @@ Map<String, dynamic> _$$AddInfoRequestImplToJson(
       'email': instance.email,
       'idNumber': instance.idNumber,
       'name': instance.name,
-      'age': instance.age,
+      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
       'isMale': instance.isMale,
       'phoneNumber': instance.phoneNumber,
     };

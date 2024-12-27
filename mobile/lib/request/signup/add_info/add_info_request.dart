@@ -9,7 +9,7 @@ class AddInfoRequest with _$AddInfoRequest {
     required String email,
     required String idNumber,
     required String name,
-    required int age,
+    required DateTime dateOfBirth,
     required bool isMale,
     required String phoneNumber,
   }) = _AddInfoRequest;

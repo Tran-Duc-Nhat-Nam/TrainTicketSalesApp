@@ -9,4 +9,5 @@ class AddInfoState with _$AddInfoState {
   const factory AddInfoState.add() = _Add;
   const factory AddInfoState.addSucceed(String username) = _AddSucceed;
   const factory AddInfoState.addFailed(String message) = _AddFailed;
+  const factory AddInfoState.loginFailed(String message) = _LoginFailed;
 }
