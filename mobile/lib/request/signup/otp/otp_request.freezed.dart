@@ -20,7 +20,7 @@ OTPRequest _$OTPRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OTPRequest {
-  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get otp => throw _privateConstructorUsedError;
 
   /// Serializes this OTPRequest to a JSON map.
@@ -39,7 +39,7 @@ abstract class $OTPRequestCopyWith<$Res> {
           OTPRequest value, $Res Function(OTPRequest) then) =
       _$OTPRequestCopyWithImpl<$Res, OTPRequest>;
   @useResult
-  $Res call({String username, String otp});
+  $Res call({String email, String otp});
 }
 
 /// @nodoc
@@ -57,13 +57,13 @@ class _$OTPRequestCopyWithImpl<$Res, $Val extends OTPRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? otp = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       otp: null == otp
           ? _value.otp
@@ -81,7 +81,7 @@ abstract class _$$OTPRequestImplCopyWith<$Res>
       __$$OTPRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String otp});
+  $Res call({String email, String otp});
 }
 
 /// @nodoc
@@ -97,13 +97,13 @@ class __$$OTPRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? otp = null,
   }) {
     return _then(_$OTPRequestImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       otp: null == otp
           ? _value.otp
@@ -116,19 +116,19 @@ class __$$OTPRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OTPRequestImpl implements _OTPRequest {
-  const _$OTPRequestImpl({required this.username, required this.otp});
+  const _$OTPRequestImpl({required this.email, required this.otp});
 
   factory _$OTPRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$OTPRequestImplFromJson(json);
 
   @override
-  final String username;
+  final String email;
   @override
   final String otp;
 
   @override
   String toString() {
-    return 'OTPRequest(username: $username, otp: $otp)';
+    return 'OTPRequest(email: $email, otp: $otp)';
   }
 
   @override
@@ -136,14 +136,13 @@ class _$OTPRequestImpl implements _OTPRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OTPRequestImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.otp, otp) || other.otp == otp));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, username, otp);
+  int get hashCode => Object.hash(runtimeType, email, otp);
 
   /// Create a copy of OTPRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -163,14 +162,14 @@ class _$OTPRequestImpl implements _OTPRequest {
 
 abstract class _OTPRequest implements OTPRequest {
   const factory _OTPRequest(
-      {required final String username,
+      {required final String email,
       required final String otp}) = _$OTPRequestImpl;
 
   factory _OTPRequest.fromJson(Map<String, dynamic> json) =
       _$OTPRequestImpl.fromJson;
 
   @override
-  String get username;
+  String get email;
   @override
   String get otp;
 

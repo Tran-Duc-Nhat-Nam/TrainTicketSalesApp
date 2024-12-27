@@ -8,12 +8,12 @@ part of 'otp_request.dart';
 
 _$OTPRequestImpl _$$OTPRequestImplFromJson(Map<String, dynamic> json) =>
     _$OTPRequestImpl(
-      username: json['username'] as String,
+      email: json['email'] as String,
       otp: json['otp'] as String,
     );
 
 Map<String, dynamic> _$$OTPRequestImplToJson(_$OTPRequestImpl instance) =>
     <String, dynamic>{
-      'username': instance.username,
+      'email': instance.email,
       'otp': instance.otp,
     };

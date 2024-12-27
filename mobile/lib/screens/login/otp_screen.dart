@@ -1,46 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile/bloc/signup/otp/otp_cubit.dart';
+import 'package:mobile/widgets/app_loading_widget.dart';
+import 'package:pinput/pinput.dart';
 
-import '../../common/styles/text_styles.dart';
-import '../../widgets/app_public_screen.dart';
-import '../../widgets/app_text_field.dart';
-
-class OtpScreen extends StatefulWidget {
+class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
-}
-
-class _OtpScreenState extends State<OtpScreen> {
-  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
-
-  @override
   Widget build(BuildContext context) {
-    return AppPublicScreen(
-      formKey: _formKey,
-      title: "OTP",
-      subTitle: 'Vui lòng nhập mã OTP',
-      buttonText: 'Tiếp tục',
-      onPressed: () {
-        _formKey.currentState?.saveAndValidate();
-        if (_formKey.currentState?.validate() == true) {
-          context.go("/createPassword");
-        }
-      },
-      formChildren: [
-        Text(
-          'OTP',
-          style: AppTextStyles.labelText,
+    return BlocProvider<OtpCubit>(
+      create: (_) => OtpCubit()..loadData(context),
+      child: BlocListener<OtpCubit, OtpState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            submitSucceed: (username) => context.go("/createPassword", extra: username),
+          );
+        },
+        child: BlocBuilder<OtpCubit, OtpState>(
+          builder: (context, state) => Scaffold(
+            body: state.when(
+              initial: () => const SizedBox(),
+              loading: () => AppLoadingWidget(),
+              loaded: (username) => Pinput(
+                length: 6,
+                defaultPinTheme: PinTheme(decoration: BoxDecoration(color: Theme.of(context).colorScheme.onPrimary)),
+                onCompleted: (pin) => context.read<OtpCubit>().submit(pin),
+              ),
+              failed: (message) => const SizedBox(),
+              submit: () => const SizedBox(),
+              submitSucceed: (username) => const SizedBox(),
+              submitFailed: (message) => const SizedBox(),
+            ),
+          ),
         ),
-        const SizedBox(height: 8),
-        AppTextField(
-          name: 'otp',
-          required: true,
-        ),
-        const SizedBox(height: 32),
-      ],
+      ),
     );
   }
 }

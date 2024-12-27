@@ -6,7 +6,7 @@ part 'otp_request.g.dart';
 @freezed
 class OTPRequest with _$OTPRequest {
   const factory OTPRequest({
-    required String username,
+    required String email,
     required String otp,
   }) = _OTPRequest;
 
