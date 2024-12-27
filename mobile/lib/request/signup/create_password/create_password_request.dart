@@ -6,7 +6,7 @@ part 'create_password_request.g.dart';
 @freezed
 class CreatePasswordRequest with _$CreatePasswordRequest {
   const factory CreatePasswordRequest({
-    required String username,
+    required String email,
     required String password,
   }) = _CreatePasswordRequest;
 

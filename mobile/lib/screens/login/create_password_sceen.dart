@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobile/bloc/signup/create_password/create_password_cubit.dart';
 
-import '../../bloc/signup/sign_up_cubit.dart';
 import '../../common/styles/text_styles.dart';
 import '../../widgets/app_public_screen.dart';
 import '../../widgets/app_text_button.dart';
@@ -22,12 +21,10 @@ class CreatePasswordSceen extends StatefulWidget {
 
 class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
-  String? password;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CreatePasswordCubit>(
-      create: (context) => CreatePasswordCubit(),
+      create: (_) => CreatePasswordCubit()..loadData(context),
       child: BlocListener<CreatePasswordCubit, CreatePasswordState>(
         listener: (context, state) {
           state.whenOrNull(
@@ -43,7 +40,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
             },
           );
         },
-        child: BlocBuilder<SignUpCubit, SignUpState>(
+        child: BlocBuilder<CreatePasswordCubit, CreatePasswordState>(
           builder: (context, state) {
             return AppPublicScreen(
               formKey: _formKey,
@@ -63,10 +60,7 @@ class _CreatePasswordSceenState extends State<CreatePasswordSceen> {
                 initial: () => () {
                   _formKey.currentState?.saveAndValidate();
                   if (_formKey.currentState?.validate() == true) {
-                    String username =
-                        GoRouterState.of(context).extra! as String;
-                    String password = _formKey.currentState?.value['password'];
-                    context.read<SignUpCubit>().signUp(password);
+                    context.read<CreatePasswordCubit>().createPassword(_formKey.currentState?.value['password']);
                   }
                 },
               ),

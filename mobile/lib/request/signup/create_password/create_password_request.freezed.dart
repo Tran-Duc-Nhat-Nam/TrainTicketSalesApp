@@ -21,7 +21,7 @@ CreatePasswordRequest _$CreatePasswordRequestFromJson(
 
 /// @nodoc
 mixin _$CreatePasswordRequest {
-  String get username => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   /// Serializes this CreatePasswordRequest to a JSON map.
@@ -40,7 +40,7 @@ abstract class $CreatePasswordRequestCopyWith<$Res> {
           $Res Function(CreatePasswordRequest) then) =
       _$CreatePasswordRequestCopyWithImpl<$Res, CreatePasswordRequest>;
   @useResult
-  $Res call({String username, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -59,13 +59,13 @@ class _$CreatePasswordRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -84,7 +84,7 @@ abstract class _$$CreatePasswordRequestImplCopyWith<$Res>
       __$$CreatePasswordRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -101,13 +101,13 @@ class __$$CreatePasswordRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? email = null,
     Object? password = null,
   }) {
     return _then(_$CreatePasswordRequestImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -121,19 +121,19 @@ class __$$CreatePasswordRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreatePasswordRequestImpl implements _CreatePasswordRequest {
   const _$CreatePasswordRequestImpl(
-      {required this.username, required this.password});
+      {required this.email, required this.password});
 
   factory _$CreatePasswordRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreatePasswordRequestImplFromJson(json);
 
   @override
-  final String username;
+  final String email;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'CreatePasswordRequest(username: $username, password: $password)';
+    return 'CreatePasswordRequest(email: $email, password: $password)';
   }
 
   @override
@@ -141,15 +141,14 @@ class _$CreatePasswordRequestImpl implements _CreatePasswordRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreatePasswordRequestImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, username, password);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   /// Create a copy of CreatePasswordRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -170,14 +169,14 @@ class _$CreatePasswordRequestImpl implements _CreatePasswordRequest {
 
 abstract class _CreatePasswordRequest implements CreatePasswordRequest {
   const factory _CreatePasswordRequest(
-      {required final String username,
+      {required final String email,
       required final String password}) = _$CreatePasswordRequestImpl;
 
   factory _CreatePasswordRequest.fromJson(Map<String, dynamic> json) =
       _$CreatePasswordRequestImpl.fromJson;
 
   @override
-  String get username;
+  String get email;
   @override
   String get password;
 
