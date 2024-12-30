@@ -22,8 +22,12 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 mixin _$Account {
   int get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  Customer? get customer => throw _privateConstructorUsedError;
+  AccountStatus get status => throw _privateConstructorUsedError;
+  String? get idNumber => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  DateTime? get dateOfBirth => throw _privateConstructorUsedError;
+  bool? get isMale => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
 
   /// Serializes this Account to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,9 +43,17 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call({int id, String username, String password, Customer? customer});
+  $Res call(
+      {int id,
+      String username,
+      AccountStatus status,
+      String? idNumber,
+      String? name,
+      DateTime? dateOfBirth,
+      bool? isMale,
+      String? phoneNumber});
 
-  $CustomerCopyWith<$Res>? get customer;
+  $AccountStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -61,8 +73,12 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   $Res call({
     Object? id = null,
     Object? username = null,
-    Object? password = null,
-    Object? customer = freezed,
+    Object? status = null,
+    Object? idNumber = freezed,
+    Object? name = freezed,
+    Object? dateOfBirth = freezed,
+    Object? isMale = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,14 +89,30 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AccountStatus,
+      idNumber: freezed == idNumber
+          ? _value.idNumber
+          : idNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isMale: freezed == isMale
+          ? _value.isMale
+          : isMale // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -88,13 +120,9 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CustomerCopyWith<$Res>? get customer {
-    if (_value.customer == null) {
-      return null;
-    }
-
-    return $CustomerCopyWith<$Res>(_value.customer!, (value) {
-      return _then(_value.copyWith(customer: value) as $Val);
+  $AccountStatusCopyWith<$Res> get status {
+    return $AccountStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
     });
   }
 }
@@ -106,10 +134,18 @@ abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String username, String password, Customer? customer});
+  $Res call(
+      {int id,
+      String username,
+      AccountStatus status,
+      String? idNumber,
+      String? name,
+      DateTime? dateOfBirth,
+      bool? isMale,
+      String? phoneNumber});
 
   @override
-  $CustomerCopyWith<$Res>? get customer;
+  $AccountStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -127,8 +163,12 @@ class __$$AccountImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? username = null,
-    Object? password = null,
-    Object? customer = freezed,
+    Object? status = null,
+    Object? idNumber = freezed,
+    Object? name = freezed,
+    Object? dateOfBirth = freezed,
+    Object? isMale = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_$AccountImpl(
       id: null == id
@@ -139,14 +179,30 @@ class __$$AccountImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AccountStatus,
+      idNumber: freezed == idNumber
+          ? _value.idNumber
+          : idNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isMale: freezed == isMale
+          ? _value.isMale
+          : isMale // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -157,8 +213,12 @@ class _$AccountImpl implements _Account {
   const _$AccountImpl(
       {required this.id,
       required this.username,
-      required this.password,
-      this.customer});
+      required this.status,
+      this.idNumber,
+      this.name,
+      this.dateOfBirth,
+      this.isMale,
+      this.phoneNumber});
 
   factory _$AccountImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountImplFromJson(json);
@@ -168,13 +228,21 @@ class _$AccountImpl implements _Account {
   @override
   final String username;
   @override
-  final String password;
+  final AccountStatus status;
   @override
-  final Customer? customer;
+  final String? idNumber;
+  @override
+  final String? name;
+  @override
+  final DateTime? dateOfBirth;
+  @override
+  final bool? isMale;
+  @override
+  final String? phoneNumber;
 
   @override
   String toString() {
-    return 'Account(id: $id, username: $username, password: $password, customer: $customer)';
+    return 'Account(id: $id, username: $username, status: $status, idNumber: $idNumber, name: $name, dateOfBirth: $dateOfBirth, isMale: $isMale, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -185,16 +253,21 @@ class _$AccountImpl implements _Account {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.idNumber, idNumber) ||
+                other.idNumber == idNumber) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.isMale, isMale) || other.isMale == isMale) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, username, password, customer);
+  int get hashCode => Object.hash(runtimeType, id, username, status, idNumber,
+      name, dateOfBirth, isMale, phoneNumber);
 
   /// Create a copy of Account
   /// with the given fields replaced by the non-null parameter values.
@@ -216,8 +289,12 @@ abstract class _Account implements Account {
   const factory _Account(
       {required final int id,
       required final String username,
-      required final String password,
-      final Customer? customer}) = _$AccountImpl;
+      required final AccountStatus status,
+      final String? idNumber,
+      final String? name,
+      final DateTime? dateOfBirth,
+      final bool? isMale,
+      final String? phoneNumber}) = _$AccountImpl;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$AccountImpl.fromJson;
 
@@ -226,9 +303,17 @@ abstract class _Account implements Account {
   @override
   String get username;
   @override
-  String get password;
+  AccountStatus get status;
   @override
-  Customer? get customer;
+  String? get idNumber;
+  @override
+  String? get name;
+  @override
+  DateTime? get dateOfBirth;
+  @override
+  bool? get isMale;
+  @override
+  String? get phoneNumber;
 
   /// Create a copy of Account
   /// with the given fields replaced by the non-null parameter values.

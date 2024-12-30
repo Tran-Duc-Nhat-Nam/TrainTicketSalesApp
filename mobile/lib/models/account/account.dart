@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile/models/account/status/account_status.dart';
 
-import '../customer/customer.dart';
 part 'account.freezed.dart';
 part 'account.g.dart';
 
@@ -9,12 +9,16 @@ class Account with _$Account {
   const factory Account({
     required int id,
     required String username,
-    required String password,
-    Customer? customer,
+    required AccountStatus status,
+    String? idNumber,
+    String? name,
+    DateTime? dateOfBirth,
+    bool? isMale,
+    String? phoneNumber,
   }) = _Account;
 
-  factory Account.fromJson(Map<String, Object?> json)
-  => _$AccountFromJson(json);
+  factory Account.fromJson(Map<String, Object?> json) =>
+      _$AccountFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => toJson();

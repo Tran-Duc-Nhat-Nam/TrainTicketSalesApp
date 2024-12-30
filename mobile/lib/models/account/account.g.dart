@@ -10,16 +10,24 @@ _$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
     _$AccountImpl(
       id: (json['id'] as num).toInt(),
       username: json['username'] as String,
-      password: json['password'] as String,
-      customer: json['customer'] == null
+      status: AccountStatus.fromJson(json['status'] as Map<String, dynamic>),
+      idNumber: json['idNumber'] as String?,
+      name: json['name'] as String?,
+      dateOfBirth: json['dateOfBirth'] == null
           ? null
-          : Customer.fromJson(json['customer'] as Map<String, dynamic>),
+          : DateTime.parse(json['dateOfBirth'] as String),
+      isMale: json['isMale'] as bool?,
+      phoneNumber: json['phoneNumber'] as String?,
     );
 
 Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'username': instance.username,
-      'password': instance.password,
-      'customer': instance.customer,
+      'status': instance.status,
+      'idNumber': instance.idNumber,
+      'name': instance.name,
+      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
+      'isMale': instance.isMale,
+      'phoneNumber': instance.phoneNumber,
     };

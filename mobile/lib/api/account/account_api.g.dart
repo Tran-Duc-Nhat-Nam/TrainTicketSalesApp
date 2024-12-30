@@ -22,7 +22,40 @@ class _AccountAPI implements AccountAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<Map<String, String>> signUp(SignUpRequest request) async {
+  Future<Account> get(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<Account>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/account/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Account _value;
+    try {
+      _value = Account.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<Map<String, String>> signUp(AccountRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -159,12 +192,12 @@ class _AccountAPI implements AccountAPI {
   }
 
   @override
-  Future<Map<String, String>> login(Account account) async {
+  Future<Map<String, String>> login(AccountRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(account.toJson());
+    _data.addAll(request.toJson());
     final _options = _setStreamType<Map<String, String>>(Options(
       method: 'POST',
       headers: _headers,
