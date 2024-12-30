@@ -12,7 +12,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart' as l;
-import 'package:mobile/api/customer/customer_api.dart';
+import 'package:mobile/api/ticket/ticket_api.dart';
 import 'package:mobile/bloc/theme/theme_cubit.dart';
 import 'package:mobile/common/styles/colors.dart';
 import 'package:mobile/core/api/api_helper.dart';
@@ -32,7 +32,7 @@ Future<void> initPlatformState() async {
 void callback(LocationDto locationDto) async {
   final SendPort? send = IsolateNameServer.lookupPortByName(_isolateName);
   log("Callback", name: "Background locator");
-  CustomerAPI(await ApiHelper.getDioInstance())
+  TicketAPI(await ApiHelper.getDioInstance())
       .get((locationDto.longitude * 1000000).toInt());
   send?.send(locationDto.toJson());
 }
