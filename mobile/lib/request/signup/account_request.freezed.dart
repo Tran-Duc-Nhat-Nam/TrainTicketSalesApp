@@ -20,7 +20,7 @@ AccountRequest _$AccountRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccountRequest {
-  String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   /// Serializes this AccountRequest to a JSON map.
@@ -39,7 +39,7 @@ abstract class $AccountRequestCopyWith<$Res> {
           AccountRequest value, $Res Function(AccountRequest) then) =
       _$AccountRequestCopyWithImpl<$Res, AccountRequest>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String username, String password});
 }
 
 /// @nodoc
@@ -57,13 +57,13 @@ class _$AccountRequestCopyWithImpl<$Res, $Val extends AccountRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -81,7 +81,7 @@ abstract class _$$AccountRequestImplCopyWith<$Res>
       __$$AccountRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password});
+  $Res call({String username, String password});
 }
 
 /// @nodoc
@@ -97,13 +97,13 @@ class __$$AccountRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
   }) {
     return _then(_$AccountRequestImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -116,19 +116,19 @@ class __$$AccountRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AccountRequestImpl implements _AccountRequest {
-  const _$AccountRequestImpl({required this.email, required this.password});
+  const _$AccountRequestImpl({required this.username, required this.password});
 
   factory _$AccountRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountRequestImplFromJson(json);
 
   @override
-  final String email;
+  final String username;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'AccountRequest(email: $email, password: $password)';
+    return 'AccountRequest(username: $username, password: $password)';
   }
 
   @override
@@ -136,14 +136,15 @@ class _$AccountRequestImpl implements _AccountRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountRequestImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, username, password);
 
   /// Create a copy of AccountRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -164,14 +165,14 @@ class _$AccountRequestImpl implements _AccountRequest {
 
 abstract class _AccountRequest implements AccountRequest {
   const factory _AccountRequest(
-      {required final String email,
+      {required final String username,
       required final String password}) = _$AccountRequestImpl;
 
   factory _AccountRequest.fromJson(Map<String, dynamic> json) =
       _$AccountRequestImpl.fromJson;
 
   @override
-  String get email;
+  String get username;
   @override
   String get password;
 

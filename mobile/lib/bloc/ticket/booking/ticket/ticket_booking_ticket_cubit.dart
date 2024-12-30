@@ -20,13 +20,15 @@ class TicketBookingTicketCubit extends Cubit<TicketBookingTicketState> {
     List<Ticket> ticket = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    emit(ticket.isEmpty
-        ? TicketBookingTicketState.empty()
-        : TicketBookingTicketState.loaded(ticket));
+    emit(
+      ticket.isEmpty
+          ? TicketBookingTicketState.empty()
+          : TicketBookingTicketState.loaded(ticket),
+    );
   }
 
   void moveForward(BuildContext context) {
-    state.maybeWhen(
+    state.whenOrNull(
       loaded: (tickets) async {
         emit(TicketBookingTicketState.loading());
         await TicketAPI(await ApiHelper.getDioInstance())
@@ -42,7 +44,6 @@ class TicketBookingTicketCubit extends Cubit<TicketBookingTicketState> {
               ),
             );
       },
-      orElse: () {},
     );
   }
 

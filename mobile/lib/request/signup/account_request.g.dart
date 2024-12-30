@@ -8,13 +8,13 @@ part of 'account_request.dart';
 
 _$AccountRequestImpl _$$AccountRequestImplFromJson(Map<String, dynamic> json) =>
     _$AccountRequestImpl(
-      email: json['email'] as String,
+      username: json['username'] as String,
       password: json['password'] as String,
     );
 
 Map<String, dynamic> _$$AccountRequestImplToJson(
         _$AccountRequestImpl instance) =>
     <String, dynamic>{
-      'email': instance.email,
+      'username': instance.username,
       'password': instance.password,
     };

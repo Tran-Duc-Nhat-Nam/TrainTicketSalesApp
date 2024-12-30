@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobile/bloc/account/account_cubit.dart';
 import 'package:mobile/common/styles/text_styles.dart';
 import 'package:mobile/core/auth/auth_helper.dart';
@@ -25,12 +27,13 @@ class _AccountScreenState extends AppState<AccountScreen> {
       RefreshController(initialRefresh: false);
   @override
   Widget build(BuildContext context) {
-    return AppScreen(
-      title: context.tr("account"),
-      child: BlocProvider<AccountCubit>(
-        create: (context) => AccountCubit()..getCustomerInfo(context),
-        child: BlocBuilder<AccountCubit, AccountState>(
-          builder: (context, state) => state.when(
+    return BlocProvider<AccountCubit>(
+      create: (context) => AccountCubit()..getCustomerInfo(context),
+      child: BlocBuilder<AccountCubit, AccountState>(
+        builder: (context, state) => AppScreen(
+          title: context.tr("account"),
+          isChildScrollView: state.maybeWhen(failed: (message) => true, orElse: () => false),
+          child: state.when(
             initial: () => const SizedBox(),
             loading: () => const AppLoadingWidget(),
             noAccount: () => AppErrorWidget(
@@ -62,13 +65,21 @@ class _AccountScreenState extends AppState<AccountScreen> {
                               width: 48,
                               height: 48,
                               child: Center(
-                                child:
-                                    Image.network('https://picsum.photos/100'),
+                                child: CachedNetworkImage(
+                                  imageUrl: "https://picsum.photos/100",
+                                  height: 48,
+                                  placeholder: (context, url) =>
+                                      LoadingAnimationWidget.beat(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    size: 48,
+                                  ),
+                                ),
                               ),
                             ),
                             Expanded(
                               child: Text(
-                                account.name ?? "Chưa có",
+                                account.name ??  context.tr("noInfo"),
                                 style: AppTextStyles.thinLargeText,
                               ),
                             ),

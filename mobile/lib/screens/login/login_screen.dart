@@ -37,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
             },
             loginFailed: (message) {
               AppToast.showFailureToast(context, text: message);
+              context.read<LoginCubit>().loadData();
             },
           );
         },

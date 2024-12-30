@@ -29,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
       {bool isRemember = false}) async {
     emit(LoginState.login());
     AccountAPI(await ApiHelper.getDioInstance())
-        .login(AccountRequest(email: username, password: password))
+        .login(AccountRequest(username: username, password: password))
         .then(
       (value) {
         String? accessToken = value['accessToken'];
