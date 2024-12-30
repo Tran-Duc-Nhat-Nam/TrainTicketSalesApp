@@ -7,6 +7,7 @@ import 'package:mobile/core/shared_ref.dart';
 import 'package:mobile/models/account/account.dart';
 
 import '../../api/account/account_api.dart';
+import '../../request/signup/account_request.dart';
 
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
@@ -28,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
       {bool isRemember = false}) async {
     emit(LoginState.login());
     AccountAPI(await ApiHelper.getDioInstance())
-        .login(Account(id: -1, username: username, password: password))
+        .login(AccountRequest(email: username, password: password))
         .then(
       (value) {
         String? accessToken = value['accessToken'];

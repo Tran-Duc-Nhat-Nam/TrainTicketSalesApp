@@ -33,11 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   (value) async {
                     if (!value) {
                       exit(0);
-                    } else if ((await AuthHelper.getAuth()) == true &&
-                        context.mounted) {
-                      context.go("/");
                     } else if (context.mounted) {
-                      context.go("/login");
+                      context.go("/");
                     }
                   },
                 );

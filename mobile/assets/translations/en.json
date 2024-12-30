@@ -42,6 +42,8 @@
   "bookingInfo": "Booking information",
   "bookingInProgress": "Booking in progress...",
   "note": "Note",
+  "noInfo": "No information",
+  "skip": "Skip",
   "receipt": "Receipt",
   "payment": "Payment",
   "pay": "Go to payment",

@@ -37,10 +37,9 @@ class AuthHelper {
   }
 
   static Future<bool?> getAuth() async {
-    log("Checking", name: "Auth");
     if (await checkExpire('accessTokenTime')) {
-      log("User ID: ${(await sharedPreferences.getInt('userId')).toString()}", name: "Auth");
-      return (await sharedPreferences.getInt('userId')) != null;
+      int? userId = await sharedPreferences.getInt('userId');
+      return userId != null ? true : null;
     } else {
       if (await checkExpire('refreshTokenTime')) {
         try {
@@ -52,19 +51,18 @@ class AuthHelper {
                 "accessToken", value['accessToken']!);
             int expireDate = JwtDecoder.decode(value['accessToken']!)['exp'];
             await sharedPreferences.setInt("accessTokenTime", expireDate);
-            log("Refresh", name: "Auth");
             return true;
           }
         } catch (error) {
           log(
-              error is DioException
-                  ? error.message ?? "Unexpected error"
-                  : error.toString(),
-              name: "Auth");
+            error is DioException
+                ? error.message ?? "Unexpected error"
+                : error.toString(),
+            name: "Auth",
+          );
         }
       }
     }
-    log("Error", name: "Auth");
     return null;
   }
 

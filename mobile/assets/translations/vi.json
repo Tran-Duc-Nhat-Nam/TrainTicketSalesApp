@@ -42,6 +42,8 @@
   "bookingInfo": "Thông tin đặt vé",
   "bookingInProgress": "Đang tiến hành đặt vé...",
   "note": "Ghi chú",
+  "noInfo": "Không có thông tin",
+  "skip": "Bỏ qua",
   "receipt": "Hóa đơn",
   "payment": "Thanh toán",
   "pay": "Thanh toán",

@@ -19,7 +19,7 @@ class OtpScreen extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             submitSucceed: (username) =>
-                context.go("/createPassword", extra: username),
+                context.go("/addInfo", extra: username),
             submitFailed: (message) {
               AppToast.showFailureToast(
                 context,

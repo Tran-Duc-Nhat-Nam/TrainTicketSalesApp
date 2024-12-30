@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobile/bloc/signup/sign_up_cubit.dart';
+import 'package:mobile/request/signup/account_request.dart';
 import 'package:mobile/widgets/toast/toast.dart';
 
 import '../../common/styles/text_styles.dart';
@@ -39,7 +40,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 text: context.tr("error"),
                 description: message,
               );
-
             },
           );
         },
@@ -62,9 +62,10 @@ class _SignupScreenState extends State<SignupScreen> {
               onPressed: () {
                 _formKey.currentState?.saveAndValidate();
                 if (_formKey.currentState?.validate() == true) {
-                  context
-                      .read<SignUpCubit>()
-                      .signUp(_formKey.currentState?.value['username']);
+                  context.read<SignUpCubit>().signUp(
+                        _formKey.currentState!.value["email"],
+                        _formKey.currentState!.value["password"],
+                      );
                 }
               },
               formChildren: [
@@ -76,6 +77,34 @@ class _SignupScreenState extends State<SignupScreen> {
                 AppTextField(
                   name: 'username',
                   required: true,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  context.tr('password'),
+                  style: AppTextStyles.labelText,
+                ),
+                const SizedBox(height: 8),
+                AppTextField(
+                  name: 'password',
+                  required: true,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  context.tr('confirmPassword'),
+                  style: AppTextStyles.labelText,
+                ),
+                const SizedBox(height: 8),
+                AppTextField(
+                  name: 'confirmPassword',
+                  required: true,
+                  validators: [
+                    (value) {
+                      return value ==
+                              _formKey.currentState?.instantValue['password']
+                          ? null
+                          : context.tr("errorMessage.confirmPassword");
+                    },
+                  ],
                 ),
                 const SizedBox(height: 32),
               ],

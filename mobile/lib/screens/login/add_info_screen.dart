@@ -126,6 +126,13 @@ class _AddInfoScreenState extends State<AddInfoScreen> {
                 ),
                 const SizedBox(height: 32),
               ],
+              children: [
+                const SizedBox(height: 20),
+                AppTextButton(
+                  text: context.tr("skip"),
+                  onPressed: () => context.go('/'),
+                ),
+              ],
             );
           },
         ),
