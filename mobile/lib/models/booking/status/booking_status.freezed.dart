@@ -21,7 +21,6 @@ BookingStatus _$BookingStatusFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BookingStatus {
   int get id => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   /// Serializes this BookingStatus to a JSON map.
@@ -40,7 +39,7 @@ abstract class $BookingStatusCopyWith<$Res> {
           BookingStatus value, $Res Function(BookingStatus) then) =
       _$BookingStatusCopyWithImpl<$Res, BookingStatus>;
   @useResult
-  $Res call({int id, String code, String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -59,7 +58,6 @@ class _$BookingStatusCopyWithImpl<$Res, $Val extends BookingStatus>
   @override
   $Res call({
     Object? id = null,
-    Object? code = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +65,6 @@ class _$BookingStatusCopyWithImpl<$Res, $Val extends BookingStatus>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -87,7 +81,7 @@ abstract class _$$BookingStatusImplCopyWith<$Res>
       __$$BookingStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String code, String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -104,7 +98,6 @@ class __$$BookingStatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? code = null,
     Object? name = null,
   }) {
     return _then(_$BookingStatusImpl(
@@ -112,10 +105,6 @@ class __$$BookingStatusImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -127,8 +116,7 @@ class __$$BookingStatusImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BookingStatusImpl implements _BookingStatus {
-  const _$BookingStatusImpl(
-      {required this.id, required this.code, required this.name});
+  const _$BookingStatusImpl({required this.id, required this.name});
 
   factory _$BookingStatusImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookingStatusImplFromJson(json);
@@ -136,13 +124,11 @@ class _$BookingStatusImpl implements _BookingStatus {
   @override
   final int id;
   @override
-  final String code;
-  @override
   final String name;
 
   @override
   String toString() {
-    return 'BookingStatus(id: $id, code: $code, name: $name)';
+    return 'BookingStatus(id: $id, name: $name)';
   }
 
   @override
@@ -151,13 +137,12 @@ class _$BookingStatusImpl implements _BookingStatus {
         (other.runtimeType == runtimeType &&
             other is _$BookingStatusImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, code, name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   /// Create a copy of BookingStatus
   /// with the given fields replaced by the non-null parameter values.
@@ -178,7 +163,6 @@ class _$BookingStatusImpl implements _BookingStatus {
 abstract class _BookingStatus implements BookingStatus {
   const factory _BookingStatus(
       {required final int id,
-      required final String code,
       required final String name}) = _$BookingStatusImpl;
 
   factory _BookingStatus.fromJson(Map<String, dynamic> json) =
@@ -186,8 +170,6 @@ abstract class _BookingStatus implements BookingStatus {
 
   @override
   int get id;
-  @override
-  String get code;
   @override
   String get name;
 

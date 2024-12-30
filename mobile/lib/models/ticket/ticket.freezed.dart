@@ -21,11 +21,15 @@ Ticket _$TicketFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Ticket {
   int get id => throw _privateConstructorUsedError;
-  Customer get customer => throw _privateConstructorUsedError;
+  Booking get booking => throw _privateConstructorUsedError;
   Trip get trip => throw _privateConstructorUsedError;
   Seat get seat => throw _privateConstructorUsedError;
   Trip? get returnTrip => throw _privateConstructorUsedError;
   Seat? get returnSeat => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get idNumber => throw _privateConstructorUsedError;
+  DateTime get dateOfBirth => throw _privateConstructorUsedError;
+  bool get isMale => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get note => throw _privateConstructorUsedError;
 
@@ -45,15 +49,19 @@ abstract class $TicketCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      Customer customer,
+      Booking booking,
       Trip trip,
       Seat seat,
       Trip? returnTrip,
       Seat? returnSeat,
+      String name,
+      String idNumber,
+      DateTime dateOfBirth,
+      bool isMale,
       int price,
       String note});
 
-  $CustomerCopyWith<$Res> get customer;
+  $BookingCopyWith<$Res> get booking;
   $TripCopyWith<$Res> get trip;
   $SeatCopyWith<$Res> get seat;
   $TripCopyWith<$Res>? get returnTrip;
@@ -76,11 +84,15 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
   @override
   $Res call({
     Object? id = null,
-    Object? customer = null,
+    Object? booking = null,
     Object? trip = null,
     Object? seat = null,
     Object? returnTrip = freezed,
     Object? returnSeat = freezed,
+    Object? name = null,
+    Object? idNumber = null,
+    Object? dateOfBirth = null,
+    Object? isMale = null,
     Object? price = null,
     Object? note = null,
   }) {
@@ -89,10 +101,10 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer,
+      booking: null == booking
+          ? _value.booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as Booking,
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -109,6 +121,22 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
           ? _value.returnSeat
           : returnSeat // ignore: cast_nullable_to_non_nullable
               as Seat?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      idNumber: null == idNumber
+          ? _value.idNumber
+          : idNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isMale: null == isMale
+          ? _value.isMale
+          : isMale // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -124,9 +152,9 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CustomerCopyWith<$Res> get customer {
-    return $CustomerCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value) as $Val);
+  $BookingCopyWith<$Res> get booking {
+    return $BookingCopyWith<$Res>(_value.booking, (value) {
+      return _then(_value.copyWith(booking: value) as $Val);
     });
   }
 
@@ -188,16 +216,20 @@ abstract class _$$TicketImplCopyWith<$Res> implements $TicketCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      Customer customer,
+      Booking booking,
       Trip trip,
       Seat seat,
       Trip? returnTrip,
       Seat? returnSeat,
+      String name,
+      String idNumber,
+      DateTime dateOfBirth,
+      bool isMale,
       int price,
       String note});
 
   @override
-  $CustomerCopyWith<$Res> get customer;
+  $BookingCopyWith<$Res> get booking;
   @override
   $TripCopyWith<$Res> get trip;
   @override
@@ -222,11 +254,15 @@ class __$$TicketImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? customer = null,
+    Object? booking = null,
     Object? trip = null,
     Object? seat = null,
     Object? returnTrip = freezed,
     Object? returnSeat = freezed,
+    Object? name = null,
+    Object? idNumber = null,
+    Object? dateOfBirth = null,
+    Object? isMale = null,
     Object? price = null,
     Object? note = null,
   }) {
@@ -235,10 +271,10 @@ class __$$TicketImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer,
+      booking: null == booking
+          ? _value.booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as Booking,
       trip: null == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
@@ -255,6 +291,22 @@ class __$$TicketImplCopyWithImpl<$Res>
           ? _value.returnSeat
           : returnSeat // ignore: cast_nullable_to_non_nullable
               as Seat?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      idNumber: null == idNumber
+          ? _value.idNumber
+          : idNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isMale: null == isMale
+          ? _value.isMale
+          : isMale // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -272,11 +324,15 @@ class __$$TicketImplCopyWithImpl<$Res>
 class _$TicketImpl implements _Ticket {
   const _$TicketImpl(
       {required this.id,
-      required this.customer,
+      required this.booking,
       required this.trip,
       required this.seat,
       required this.returnTrip,
       required this.returnSeat,
+      required this.name,
+      required this.idNumber,
+      required this.dateOfBirth,
+      required this.isMale,
       required this.price,
       required this.note});
 
@@ -286,7 +342,7 @@ class _$TicketImpl implements _Ticket {
   @override
   final int id;
   @override
-  final Customer customer;
+  final Booking booking;
   @override
   final Trip trip;
   @override
@@ -296,13 +352,21 @@ class _$TicketImpl implements _Ticket {
   @override
   final Seat? returnSeat;
   @override
+  final String name;
+  @override
+  final String idNumber;
+  @override
+  final DateTime dateOfBirth;
+  @override
+  final bool isMale;
+  @override
   final int price;
   @override
   final String note;
 
   @override
   String toString() {
-    return 'Ticket(id: $id, customer: $customer, trip: $trip, seat: $seat, returnTrip: $returnTrip, returnSeat: $returnSeat, price: $price, note: $note)';
+    return 'Ticket(id: $id, booking: $booking, trip: $trip, seat: $seat, returnTrip: $returnTrip, returnSeat: $returnSeat, name: $name, idNumber: $idNumber, dateOfBirth: $dateOfBirth, isMale: $isMale, price: $price, note: $note)';
   }
 
   @override
@@ -311,22 +375,27 @@ class _$TicketImpl implements _Ticket {
         (other.runtimeType == runtimeType &&
             other is _$TicketImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer) &&
+            (identical(other.booking, booking) || other.booking == booking) &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.seat, seat) || other.seat == seat) &&
             (identical(other.returnTrip, returnTrip) ||
                 other.returnTrip == returnTrip) &&
             (identical(other.returnSeat, returnSeat) ||
                 other.returnSeat == returnSeat) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.idNumber, idNumber) ||
+                other.idNumber == idNumber) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.isMale, isMale) || other.isMale == isMale) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, customer, trip, seat,
-      returnTrip, returnSeat, price, note);
+  int get hashCode => Object.hash(runtimeType, id, booking, trip, seat,
+      returnTrip, returnSeat, name, idNumber, dateOfBirth, isMale, price, note);
 
   /// Create a copy of Ticket
   /// with the given fields replaced by the non-null parameter values.
@@ -347,11 +416,15 @@ class _$TicketImpl implements _Ticket {
 abstract class _Ticket implements Ticket {
   const factory _Ticket(
       {required final int id,
-      required final Customer customer,
+      required final Booking booking,
       required final Trip trip,
       required final Seat seat,
       required final Trip? returnTrip,
       required final Seat? returnSeat,
+      required final String name,
+      required final String idNumber,
+      required final DateTime dateOfBirth,
+      required final bool isMale,
       required final int price,
       required final String note}) = _$TicketImpl;
 
@@ -360,7 +433,7 @@ abstract class _Ticket implements Ticket {
   @override
   int get id;
   @override
-  Customer get customer;
+  Booking get booking;
   @override
   Trip get trip;
   @override
@@ -369,6 +442,14 @@ abstract class _Ticket implements Ticket {
   Trip? get returnTrip;
   @override
   Seat? get returnSeat;
+  @override
+  String get name;
+  @override
+  String get idNumber;
+  @override
+  DateTime get dateOfBirth;
+  @override
+  bool get isMale;
   @override
   int get price;
   @override

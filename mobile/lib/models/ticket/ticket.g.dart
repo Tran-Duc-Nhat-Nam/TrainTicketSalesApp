@@ -8,7 +8,7 @@ part of 'ticket.dart';
 
 _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => _$TicketImpl(
       id: (json['id'] as num).toInt(),
-      customer: Customer.fromJson(json['customer'] as Map<String, dynamic>),
+      booking: Booking.fromJson(json['booking'] as Map<String, dynamic>),
       trip: Trip.fromJson(json['trip'] as Map<String, dynamic>),
       seat: Seat.fromJson(json['seat'] as Map<String, dynamic>),
       returnTrip: json['returnTrip'] == null
@@ -17,6 +17,10 @@ _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => _$TicketImpl(
       returnSeat: json['returnSeat'] == null
           ? null
           : Seat.fromJson(json['returnSeat'] as Map<String, dynamic>),
+      name: json['name'] as String,
+      idNumber: json['idNumber'] as String,
+      dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
+      isMale: json['isMale'] as bool,
       price: (json['price'] as num).toInt(),
       note: json['note'] as String,
     );
@@ -24,11 +28,15 @@ _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => _$TicketImpl(
 Map<String, dynamic> _$$TicketImplToJson(_$TicketImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'customer': instance.customer,
+      'booking': instance.booking,
       'trip': instance.trip,
       'seat': instance.seat,
       'returnTrip': instance.returnTrip,
       'returnSeat': instance.returnSeat,
+      'name': instance.name,
+      'idNumber': instance.idNumber,
+      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+      'isMale': instance.isMale,
       'price': instance.price,
       'note': instance.note,
     };

@@ -6,7 +6,6 @@ part 'booking_status.g.dart';
 class BookingStatus with _$BookingStatus {
   const factory BookingStatus({
     required int id,
-    required String code,
     required String name,
   }) = _BookingStatus;
 
