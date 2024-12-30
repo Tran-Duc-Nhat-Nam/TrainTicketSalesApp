@@ -6,6 +6,9 @@ import 'package:mobile/core/converter/date_time_converter.dart';
 import 'package:mobile/models/trip/trip.dart';
 import 'package:mobile/widgets/app_card.dart';
 import 'package:mobile/widgets/app_text_button.dart';
+import 'package:mobile/widgets/toast/toast.dart';
+
+import '../../../../../core/auth/auth_helper.dart';
 
 class TripSummary extends StatelessWidget {
   const TripSummary({super.key, required this.trip});
@@ -48,7 +51,16 @@ class TripSummary extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Center(
                 child: AppTextButton(
-                  onPressed: () => context.push('/trip/detail', extra: trip.id),
+                  onPressed: () async {
+                    if (await AuthHelper.getAuth() == true && context.mounted) {
+                      context.push('/trip/detail', extra: trip.id);
+                    } else if (context.mounted) {
+                      context.push("/login");
+                    } else {
+                      AppToast.showFailureToast(context,
+                          text: "error", description: "noAccount");
+                    }
+                  },
                   text: context.tr("viewDetails"),
                 ),
               ),
@@ -66,11 +78,23 @@ class TripSummary extends StatelessWidget {
               ),
               child: Center(
                 child: AppTextButton(
-                  onPressed: () => context.push('/trip/booking', extra: {
-                    "trip_id": trip.id,
-                    "train_id": trip.train.id,
-                    "name": trip.name,
-                  }),
+                  onPressed: () async {
+                    if (await AuthHelper.getAuth() == true && context.mounted) {
+                      context.push(
+                        '/trip/booking',
+                        extra: {
+                          "trip_id": trip.id,
+                          "train_id": trip.train.id,
+                          "name": trip.name,
+                        },
+                      );
+                    } else if (context.mounted) {
+                      context.push("/login");
+                    } else {
+                      AppToast.showFailureToast(context,
+                          text: "error", description: "noAccount");
+                    }
+                  },
                   text: context.tr("bookTickets"),
                 ),
               ),

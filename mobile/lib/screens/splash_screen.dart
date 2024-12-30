@@ -38,11 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     }
                   },
                 );
-              } else if ((await AuthHelper.getAuth()) == true &&
-                  context.mounted) {
-                context.go("/");
               } else if (context.mounted) {
-                context.go("/login");
+                context.go("/");
               }
             },
           );

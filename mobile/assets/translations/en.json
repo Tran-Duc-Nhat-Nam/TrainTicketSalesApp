@@ -43,6 +43,7 @@
   "bookingInProgress": "Booking in progress...",
   "note": "Note",
   "noInfo": "No information",
+  "noAccount": "Login to book tickets",
   "skip": "Skip",
   "receipt": "Receipt",
   "payment": "Payment",

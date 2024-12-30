@@ -12,7 +12,7 @@ import '../../core/auth/auth_helper.dart';
 class AppDialog {
   static dynamic _dialogKey;
 
-  static Future<void> checkAuth(BuildContext context) async {
+  static Future<bool?> checkAuth(BuildContext context) async {
     bool? isAuth = await AuthHelper.getAuth();
     if (isAuth == false && context.mounted && _dialogKey == null) {
       _dialogKey = AwesomeDialog(
@@ -33,9 +33,8 @@ class AppDialog {
         useRootNavigator: true,
         headerAnimationLoop: false,
       ).show();
-    } else if (isAuth == null && context.mounted) {
-      context.go("/login");
     }
+    return isAuth;
   }
 
   static void showLogoutDialog(BuildContext context) {

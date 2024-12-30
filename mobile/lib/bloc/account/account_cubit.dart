@@ -17,16 +17,19 @@ class AccountCubit extends Cubit<AccountState> {
 
   Future<void> getCustomerInfo(BuildContext context) async {
     emit(AccountState.loading());
-    await AppDialog.checkAuth(context);
-    await AccountAPI(await ApiHelper.getDioInstance())
-        .get( (await AuthHelper.getUserId())!)
-        .then(
-          (value) => emit(AccountState.loaded(value)),
-      onError: (error) => emit(
-        AccountState.failed(
-          error is DioException? error.response.toString().replaceAll('"', '') : "unexpectedError",
+    if (await AppDialog.checkAuth(context) == true) {
+      await AccountAPI(await ApiHelper.getDioInstance())
+          .get( (await AuthHelper.getUserId())!)
+          .then(
+            (value) => emit(AccountState.loaded(value)),
+        onError: (error) => emit(
+          AccountState.failed(
+            error is DioException? error.response.toString().replaceAll('"', '') : "unexpectedError",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      emit(AccountState.noAccount());
+    }
   }
 }
