@@ -55,7 +55,7 @@ class _TicketBookingReceiptScreenState
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12),
                               child: Text(
-                                tickets[0].customer.name,
+                                tickets[0].booking.name,
                                 style: AppTextStyles.thinLargeText,
                               ),
                             ),
@@ -76,7 +76,7 @@ class _TicketBookingReceiptScreenState
                                     style: AppTextStyles.labelText,
                                   ),
                                   Text(
-                                    tickets[0].customer.phoneNumber,
+                                    tickets[0].booking.name,
                                     style: AppTextStyles
                                         .semiLabelText
                                         .copyWith(
@@ -105,36 +105,7 @@ class _TicketBookingReceiptScreenState
                                     style: AppTextStyles.labelText,
                                   ),
                                   Text(
-                                    tickets[0].customer.email,
-                                    style: AppTextStyles
-                                        .semiLabelText
-                                        .copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .surface,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    context.tr("idNumber.short"),
-                                    style: AppTextStyles.labelText,
-                                  ),
-                                  Text(
-                                    tickets[0].customer.idNumber,
+                                    tickets[0].booking.account.username,
                                     style: AppTextStyles
                                         .semiLabelText
                                         .copyWith(

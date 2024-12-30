@@ -83,7 +83,7 @@ class _TicketBookingTicketScreenState
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 12),
                                             child: Text(
-                                              tickets[0].customer.name,
+                                              tickets[0].booking.name,
                                               style:
                                                   AppTextStyles.thinLargeText,
                                             ),
@@ -108,7 +108,7 @@ class _TicketBookingTicketScreenState
                                                 ),
                                                 Text(
                                                   tickets[0]
-                                                      .customer
+                                                      .booking
                                                       .phoneNumber,
                                                   style: AppTextStyles
                                                       .semiLabelText
@@ -140,7 +140,7 @@ class _TicketBookingTicketScreenState
                                                       AppTextStyles.labelText,
                                                 ),
                                                 Text(
-                                                  tickets[0].customer.email,
+                                                  tickets[0].booking.email,
                                                   style: AppTextStyles
                                                       .semiLabelText
                                                       .copyWith(
@@ -171,7 +171,7 @@ class _TicketBookingTicketScreenState
                                                       AppTextStyles.labelText,
                                                 ),
                                                 Text(
-                                                  tickets[0].customer.idNumber,
+                                                  tickets[0].idNumber,
                                                   style: AppTextStyles
                                                       .semiLabelText
                                                       .copyWith(

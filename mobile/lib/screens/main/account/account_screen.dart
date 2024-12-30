@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mobile/bloc/account/account_cubit.dart';
 import 'package:mobile/common/styles/text_styles.dart';
 import 'package:mobile/core/auth/auth_helper.dart';
+import 'package:mobile/widgets/app_error_widget.dart';
 import 'package:mobile/widgets/app_loading_widget.dart';
 import 'package:mobile/widgets/toast/dialog.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -32,7 +33,12 @@ class _AccountScreenState extends AppState<AccountScreen> {
           builder: (context, state) => state.when(
             initial: () => const SizedBox(),
             loading: () => const AppLoadingWidget(),
-            loaded: (customer) => Column(
+            noAccount: () => AppErrorWidget(
+              message: context.tr("noAccount"),
+              onPressed: () => context.push("/login"),
+              buttonText: context.tr("title.login"),
+            ),
+            loaded: (account) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
@@ -62,7 +68,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                             ),
                             Expanded(
                               child: Text(
-                                customer.name,
+                                account.name ?? "Chưa có",
                                 style: AppTextStyles.thinLargeText,
                               ),
                             ),
@@ -70,7 +76,8 @@ class _AccountScreenState extends AppState<AccountScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: () => AppDialog.showQrCode(context, customer.toString()),
+                        onTap: () =>
+                            AppDialog.showQrCode(context, account.toString()),
                         child: Icon(
                           Icons.qr_code,
                           color: Theme.of(context).colorScheme.primary,
@@ -113,7 +120,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                   width: 8,
                                 ),
                                 Text(
-                                  '${context.tr('phone.short')}: ${customer.phoneNumber}',
+                                  '${context.tr('phone.short')}: ${account.phoneNumber ?? context.tr("noInfo")}',
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -154,7 +161,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                   width: 8,
                                 ),
                                 Text(
-                                  '${context.tr('idNumber.long')}: ${customer.idNumber}',
+                                  '${context.tr('idNumber.long')}: ${account.idNumber ?? context.tr("noInfo")}',
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -204,7 +211,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                   width: 8,
                                 ),
                                 Text(
-                                  '${context.tr("gender")}: ${context.tr(customer.isMale ? "male" : "female").toLowerCase()}',
+                                  '${context.tr("gender")}: ${context.tr(account.isMale == null ? context.tr("noInfo") : account.isMale! ? "male" : "female").toLowerCase()}',
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -245,7 +252,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                   width: 8,
                                 ),
                                 Text(
-                                  '${context.tr('email.short')}: ${customer.id}',
+                                  '${context.tr('email.short')}: ${account.username}',
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .colorScheme

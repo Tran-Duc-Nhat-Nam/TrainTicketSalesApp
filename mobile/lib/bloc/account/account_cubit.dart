@@ -2,11 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile/api/customer/customer_api.dart';
+import 'package:mobile/api/account/account_api.dart';
 import 'package:mobile/core/auth/auth_helper.dart';
-import 'package:mobile/models/customer/customer.dart';
 
 import '../../core/api/api_helper.dart';
+import '../../models/account/account.dart';
 import '../../widgets/toast/dialog.dart';
 
 part 'account_state.dart';
@@ -18,7 +18,7 @@ class AccountCubit extends Cubit<AccountState> {
   Future<void> getCustomerInfo(BuildContext context) async {
     emit(AccountState.loading());
     await AppDialog.checkAuth(context);
-    await CustomerAPI(await ApiHelper.getDioInstance())
+    await AccountAPI(await ApiHelper.getDioInstance())
         .get( (await AuthHelper.getUserId())!)
         .then(
           (value) => emit(AccountState.loaded(value)),

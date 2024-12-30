@@ -20,7 +20,8 @@ mixin _$AccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
     required TResult Function(String message) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +29,8 @@ mixin _$AccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
     TResult? Function(String message)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +38,8 @@ mixin _$AccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) =>
@@ -45,6 +48,7 @@ mixin _$AccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) =>
@@ -53,6 +57,7 @@ mixin _$AccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) =>
@@ -61,6 +66,7 @@ mixin _$AccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -132,7 +138,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
     required TResult Function(String message) failed,
   }) {
     return initial();
@@ -143,7 +150,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return initial?.call();
@@ -154,7 +162,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -169,6 +178,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -180,6 +190,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -191,6 +202,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -249,7 +261,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
     required TResult Function(String message) failed,
   }) {
     return loading();
@@ -260,7 +273,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return loading?.call();
@@ -271,7 +285,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -286,6 +301,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -297,6 +313,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -308,6 +325,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -324,14 +342,137 @@ abstract class _Loading implements AccountState {
 }
 
 /// @nodoc
+abstract class _$$NoAccountImplCopyWith<$Res> {
+  factory _$$NoAccountImplCopyWith(
+          _$NoAccountImpl value, $Res Function(_$NoAccountImpl) then) =
+      __$$NoAccountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoAccountImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$NoAccountImpl>
+    implements _$$NoAccountImplCopyWith<$Res> {
+  __$$NoAccountImplCopyWithImpl(
+      _$NoAccountImpl _value, $Res Function(_$NoAccountImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoAccountImpl implements _NoAccount {
+  const _$NoAccountImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.noAccount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoAccountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
+    required TResult Function(String message) failed,
+  }) {
+    return noAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
+    TResult? Function(String message)? failed,
+  }) {
+    return noAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
+    TResult Function(String message)? failed,
+    required TResult orElse(),
+  }) {
+    if (noAccount != null) {
+      return noAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return noAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Failed value)? failed,
+  }) {
+    return noAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (noAccount != null) {
+      return noAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoAccount implements AccountState {
+  const factory _NoAccount() = _$NoAccountImpl;
+}
+
+/// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Customer customer});
+  $Res call({Account account});
 
-  $CustomerCopyWith<$Res> get customer;
+  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
@@ -347,13 +488,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? customer = null,
+    Object? account = null,
   }) {
     return _then(_$LoadedImpl(
-      null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Customer,
+      null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
     ));
   }
 
@@ -361,9 +502,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CustomerCopyWith<$Res> get customer {
-    return $CustomerCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value));
+  $AccountCopyWith<$Res> get account {
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value));
     });
   }
 }
@@ -371,14 +512,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.customer);
+  const _$LoadedImpl(this.account);
 
   @override
-  final Customer customer;
+  final Account account;
 
   @override
   String toString() {
-    return 'AccountState.loaded(customer: $customer)';
+    return 'AccountState.loaded(account: $account)';
   }
 
   @override
@@ -386,12 +527,11 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.customer, customer) ||
-                other.customer == customer));
+            (identical(other.account, account) || other.account == account));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, customer);
+  int get hashCode => Object.hash(runtimeType, account);
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -406,10 +546,11 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
     required TResult Function(String message) failed,
   }) {
-    return loaded(customer);
+    return loaded(account);
   }
 
   @override
@@ -417,10 +558,11 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
     TResult? Function(String message)? failed,
   }) {
-    return loaded?.call(customer);
+    return loaded?.call(account);
   }
 
   @override
@@ -428,12 +570,13 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(customer);
+      return loaded(account);
     }
     return orElse();
   }
@@ -443,6 +586,7 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -454,6 +598,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -465,6 +610,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -477,9 +623,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements AccountState {
-  const factory _Loaded(final Customer customer) = _$LoadedImpl;
+  const factory _Loaded(final Account account) = _$LoadedImpl;
 
-  Customer get customer;
+  Account get account;
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -558,7 +704,8 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Customer customer) loaded,
+    required TResult Function() noAccount,
+    required TResult Function(Account account) loaded,
     required TResult Function(String message) failed,
   }) {
     return failed(message);
@@ -569,7 +716,8 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Customer customer)? loaded,
+    TResult? Function()? noAccount,
+    TResult? Function(Account account)? loaded,
     TResult? Function(String message)? failed,
   }) {
     return failed?.call(message);
@@ -580,7 +728,8 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Customer customer)? loaded,
+    TResult Function()? noAccount,
+    TResult Function(Account account)? loaded,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -595,6 +744,7 @@ class _$FailedImpl implements _Failed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoAccount value) noAccount,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -606,6 +756,7 @@ class _$FailedImpl implements _Failed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoAccount value)? noAccount,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -617,6 +768,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoAccount value)? noAccount,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
