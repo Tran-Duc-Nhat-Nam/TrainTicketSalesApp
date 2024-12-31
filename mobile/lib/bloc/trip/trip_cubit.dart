@@ -17,19 +17,27 @@ class TripCubit extends Cubit<TripState> {
   Future<void> getStations(BuildContext context) async {
     emit(TripState.loading());
     await AppDialog.checkAuth(context);
-    await StationAPI(await ApiHelper.getDioInstance())
-        .getAll()
-        .then(
+    await StationAPI(await ApiHelper.getDioInstance()).getAll().then(
           (value) => emit(TripState.loaded(value)),
-      onError: (error) => emit(
-        TripState.loadFailed(
-          error is DioException? error.response.toString().replaceAll('"', '') : "unexpectedError",
-        ),
+          onError: (error) => emit(
+            TripState.loadFailed(
+              error is DioException
+                  ? error.response.toString().replaceAll('"', '')
+                  : "unexpectedError",
+            ),
+          ),
+        );
+  }
+
+  void reset(List<Station> stations) {
+    emit(TripState.loaded(stations));
+  }
+
+  void search(Map<String, dynamic> values) {
+    state.whenOrNull(
+      loaded: (stations) => emit(
+        TripState.searching(stations),
       ),
     );
-  }
-  
-  void search(Map<String, dynamic> values) {
-    emit(TripState.searching());
   }
 }

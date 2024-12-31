@@ -6,6 +6,6 @@ class TripState with _$TripState {
   const factory TripState.loading() = _Loading;
   const factory TripState.loaded(List<Station> stations) = _Loaded;
   const factory TripState.loadFailed(String message) = _Failed;
-  const factory TripState.searching() = _Searching;
+  const factory TripState.searching(List<Station> stations) = _Searching;
   const factory TripState.searchFailed(String message) = _SearchFailed;
 }

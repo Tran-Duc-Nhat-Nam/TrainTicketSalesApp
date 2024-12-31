@@ -22,7 +22,7 @@ mixin _$TripState {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$TripState {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$TripState {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) =>
@@ -145,7 +145,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
     return initial();
@@ -158,7 +158,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
     return initial?.call();
@@ -171,7 +171,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
@@ -274,7 +274,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
     return loading();
@@ -287,7 +287,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
     return loading?.call();
@@ -300,7 +300,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
@@ -436,7 +436,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
     return loaded(stations);
@@ -449,7 +449,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
     return loaded?.call(stations);
@@ -462,7 +462,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
@@ -600,7 +600,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
     return loadFailed(message);
@@ -613,7 +613,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
     return loadFailed?.call(message);
@@ -626,7 +626,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
@@ -697,6 +697,8 @@ abstract class _$$SearchingImplCopyWith<$Res> {
   factory _$$SearchingImplCopyWith(
           _$SearchingImpl value, $Res Function(_$SearchingImpl) then) =
       __$$SearchingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Station> stations});
 }
 
 /// @nodoc
@@ -709,26 +711,57 @@ class __$$SearchingImplCopyWithImpl<$Res>
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stations = null,
+  }) {
+    return _then(_$SearchingImpl(
+      null == stations
+          ? _value._stations
+          : stations // ignore: cast_nullable_to_non_nullable
+              as List<Station>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SearchingImpl implements _Searching {
-  const _$SearchingImpl();
+  const _$SearchingImpl(final List<Station> stations) : _stations = stations;
+
+  final List<Station> _stations;
+  @override
+  List<Station> get stations {
+    if (_stations is EqualUnmodifiableListView) return _stations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stations);
+  }
 
   @override
   String toString() {
-    return 'TripState.searching()';
+    return 'TripState.searching(stations: $stations)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SearchingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SearchingImpl &&
+            const DeepCollectionEquality().equals(other._stations, _stations));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_stations));
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchingImplCopyWith<_$SearchingImpl> get copyWith =>
+      __$$SearchingImplCopyWithImpl<_$SearchingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -737,10 +770,10 @@ class _$SearchingImpl implements _Searching {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
-    return searching();
+    return searching(stations);
   }
 
   @override
@@ -750,10 +783,10 @@ class _$SearchingImpl implements _Searching {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
-    return searching?.call();
+    return searching?.call(stations);
   }
 
   @override
@@ -763,12 +796,12 @@ class _$SearchingImpl implements _Searching {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
     if (searching != null) {
-      return searching();
+      return searching(stations);
     }
     return orElse();
   }
@@ -818,7 +851,15 @@ class _$SearchingImpl implements _Searching {
 }
 
 abstract class _Searching implements TripState {
-  const factory _Searching() = _$SearchingImpl;
+  const factory _Searching(final List<Station> stations) = _$SearchingImpl;
+
+  List<Station> get stations;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchingImplCopyWith<_$SearchingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -893,7 +934,7 @@ class _$SearchFailedImpl implements _SearchFailed {
     required TResult Function() loading,
     required TResult Function(List<Station> stations) loaded,
     required TResult Function(String message) loadFailed,
-    required TResult Function() searching,
+    required TResult Function(List<Station> stations) searching,
     required TResult Function(String message) searchFailed,
   }) {
     return searchFailed(message);
@@ -906,7 +947,7 @@ class _$SearchFailedImpl implements _SearchFailed {
     TResult? Function()? loading,
     TResult? Function(List<Station> stations)? loaded,
     TResult? Function(String message)? loadFailed,
-    TResult? Function()? searching,
+    TResult? Function(List<Station> stations)? searching,
     TResult? Function(String message)? searchFailed,
   }) {
     return searchFailed?.call(message);
@@ -919,7 +960,7 @@ class _$SearchFailedImpl implements _SearchFailed {
     TResult Function()? loading,
     TResult Function(List<Station> stations)? loaded,
     TResult Function(String message)? loadFailed,
-    TResult Function()? searching,
+    TResult Function(List<Station> stations)? searching,
     TResult Function(String message)? searchFailed,
     required TResult orElse(),
   }) {
