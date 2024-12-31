@@ -23,7 +23,6 @@
   "roundTrip": "Round-trip",
   "station": "{} Station",
   "loginSucceed": "Login succeed",
-  "logout": "Logout",
   "changePassword": "Change password",
   "gender": "Gender",
   "male": "Male",
@@ -44,6 +43,7 @@
   "note": "Note",
   "noInfo": "No information",
   "noAccount": "Login to book tickets",
+  "noTrip": "No trip found for this day",
   "skip": "Skip",
   "receipt": "Receipt",
   "payment": "Payment",
@@ -57,9 +57,7 @@
   "totalCost": "Total cost: {}",
   "car": "Car {}: {}",
   "seat": "Seat: {}{}",
-  "sessionEnded": {
-    "title": "Login session ended.",
-    "description": "Your login session has ended. For your security, please log in again to continue using the app."
+  "logout": {
   },
   "remainingTicket": {
     "zero": "Sold out",
@@ -89,7 +87,10 @@
   },
   "title": {
     "login": "Login",
+    "logout": "Log out",
     "signUp": "Sign Up",
+    "exit": "Exit",
+    "sessionEnded": "Login session ended",
     "adult": "Adult",
     "otp": "OTP",
     "addInfo": "Customer Information",
@@ -98,7 +99,10 @@
   },
   "subtitle": {
     "login": "Enter your account information",
+    "logout": "Are you sure you want to log out from this account?",
     "signUp": "Enter your email address",
+    "exit": "You about to exit this page",
+    "sessionEnded": "Your login session has ended. For your security, please log in again to continue using the app.",
     "adult": "Add information as on Citizen ID/Passport",
     "otp": "Please enter the OTP",
     "addInfo": "Enter the required information to use the app",

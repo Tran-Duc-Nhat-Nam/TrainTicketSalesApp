@@ -23,7 +23,6 @@
   "roundTrip": "Khứ hồi",
   "station": "Ga {}",
   "loginSucceed": "Đăng nhập thành công",
-  "logout": "Đăng xuất",
   "changePassword": "Đổi mật khẩu",
   "gender": "Giới tính",
   "male": "Nam",
@@ -57,10 +56,6 @@
   "totalCost": "Tổng tiền: {}",
   "car": "Toa {}: {}",
   "seat": "Chỗ ngồi: {}{}",
-  "sessionEnded": {
-    "title": "Phiên đăng nhập đã kết thúc.",
-    "description": "Phiên đăng nhập của bạn đã kết thúc. Nhằm đảm bảo bảo mật, hãy đăng nhập lại để tiếp tục sử dụng ứng dụng."
-  },
   "remainingTicket": {
     "zero": "Hết vé",
     "one": "Còn {} vé",
@@ -89,7 +84,10 @@
   },
   "title" : {
     "login": "Đăng nhập",
+    "logout": "Đăng xuất",
     "signUp": "Đăng ký",
+    "exit": "Thoát",
+    "sessionEnded": "Phiên đăng nhập đã kết thúc.",
     "adult": "Người lớn",
     "otp": "OTP",
     "addInfo": "Thông tin hành khách",
@@ -98,7 +96,10 @@
   },
   "subtitle": {
     "login": "Nhập thông tin tài khoản của bạn",
+    "logout": "Bạn có muốn đăng xuất khỏi tài khoản hay không?",
     "signUp": "Nhập địa chỉ email của bạn",
+    "exit": "Bạn đang rời khỏi trang",
+    "sessionEnded": "Phiên đăng nhập của bạn đã kết thúc. Nhằm đảm bảo bảo mật, hãy đăng nhập lại để tiếp tục sử dụng ứng dụng.",
     "adult": "Thêm thông tin như trên CCCD/hộ chiếu",
     "otp": "Nhập mã OTP",
     "addInfo": "Nhập những thông tin cần thiết để sử dụng ứng dụng",
