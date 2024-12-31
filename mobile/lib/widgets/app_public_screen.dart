@@ -21,6 +21,7 @@ class AppPublicScreen extends StatefulWidget {
     required this.onPressed,
     required this.title,
     this.subTitle,
+    this.footer,
     this.button,
     this.buttonText,
     this.isNoButton = false,
@@ -33,6 +34,7 @@ class AppPublicScreen extends StatefulWidget {
   final String? subTitle;
   final String? buttonText;
   final Widget? button;
+  final Widget? footer;
   final bool isNoButton;
   final void Function()? onPressed;
 
@@ -68,98 +70,112 @@ class _AppPublicScreenState extends State<AppPublicScreen>
   Widget build(BuildContext context) {
     return AppScreen(
       isAppBar: false,
-      child: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: Row(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: ModalRoute.of(context)?.impliesAppBarDismissal ==
+                          true
+                      ? InkWell(
+                          onTap: () => context.pop(),
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        )
+                      : InkWell(
+                          onTap: () => context.go("/"),
+                          child: Icon(
+                            Icons.home,
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          context.setLocale(
+                            context.locale.toString() == 'en'
+                                ? Locale('vi')
+                                : Locale('en'),
+                          );
+                        },
+                        child: Text(
+                          context.locale.toString().toUpperCase(),
+                          style: AppTextStyles.appBarTitle.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        overlayColor:
+                            WidgetStatePropertyAll(Colors.transparent),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: AppThemeToggleIcon(
+                            animation: animation,
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                        onTap: () {
+                          final themeCubit = context.read<ThemeCubit>();
+                          if (themeCubit.state.theme.brightness ==
+                              Brightness.light) {
+                            themeCubit.changeTheme(appDarkTheme);
+                            controller.forward();
+                          } else {
+                            themeCubit.changeTheme(appTheme);
+                            controller.reverse();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FormBuilder(
+            key: widget.formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () => context.go("/"),
-                    child: Icon(
-                      Icons.home,
-                      color: Theme.of(context).colorScheme.secondary,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 32),
+                    child: Center(
+                      child: AppBigTitle(
+                        title: widget.title,
+                        subTitle: widget.subTitle,
+                      ),
                     ),
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            context.setLocale(
-                              context.locale.toString() == 'en'
-                                  ? Locale('vi')
-                                  : Locale('en'),
-                            );
-                          },
-                          child: Text(
-                            context.locale.toString().toUpperCase(),
-                            style: AppTextStyles.appBarTitle.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          overlayColor:
-                              WidgetStatePropertyAll(Colors.transparent),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: AppThemeToggleIcon(
-                              animation: animation,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                          onTap: () {
-                            final themeCubit = context.read<ThemeCubit>();
-                            if (themeCubit.state.theme.brightness ==
-                                Brightness.light) {
-                              themeCubit.changeTheme(appDarkTheme);
-                              controller.forward();
-                            } else {
-                              themeCubit.changeTheme(appTheme);
-                              controller.reverse();
-                            }
-                          },
-                        ),
-                      ],
+                  ...widget.formChildren,
+                  if (!widget.isNoButton)
+                    AppButton(
+                      onPressed: widget.onPressed,
+                      text: widget.buttonText ?? "",
+                      child: widget.button,
                     ),
-                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 100),
-            AppBigTitle(
-              title: widget.title,
-              subTitle: widget.subTitle,
-            ),
-            FormBuilder(
-              key: widget.formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ...widget.formChildren,
-                    if (!widget.isNoButton)
-                      AppButton(
-                        onPressed: widget.onPressed,
-                        text: widget.buttonText ?? "",
-                        child: widget.button,
-                      ),
-                  ],
-                ),
-              ),
-            ),
-            if (widget.children != null) ...widget.children!
-          ],
-        ),
+          ),
+          if (widget.children != null) ...widget.children!,
+          widget.footer ?? const SizedBox(),
+        ],
       ),
     );
   }

@@ -24,7 +24,6 @@ class AppBigTitle extends StatelessWidget {
               style: AppTextStyles.secondaryText,
             ),
           ),
-        const SizedBox(height: 45),
       ],
     );
   }

@@ -106,19 +106,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 32),
               ],
+              footer: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 60),
+                child: AppTextButton(
+                  text: context.tr('signUpNow'),
+                  onPressed: () => context.go('/signup'),
+                ),
+              ),
               children: [
-                const SizedBox(height: 20),
                 AppTextButton(
                   text: context.tr('forgetPassword'),
                   onPressed: () => context.push('/forgetPassword'),
                   underline: true,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 90),
-                  child: AppTextButton(
-                    text: context.tr('signUpNow'),
-                    onPressed: () => context.go('/signup'),
-                  ),
                 ),
               ],
             );
