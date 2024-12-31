@@ -10,6 +10,7 @@ import 'package:mobile/screens/login/signup_screen.dart';
 import 'package:mobile/screens/main/activity/activity_history_screen.dart';
 import 'package:mobile/screens/main/account/account_screen.dart';
 import 'package:mobile/screens/main/activity/activity_screen.dart';
+import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_customer.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_payment_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_receipt_screen.dart';
 import 'package:mobile/screens/main/home/ticket/booking/ticket_booking_screen.dart';
@@ -142,6 +143,14 @@ final GoRouter router = GoRouter(
                         const TicketBookingScreen(),
                       ),
                       routes: [
+                        GoRoute(
+                          path: 'customer',
+                          pageBuilder: (context, state) => fadingNavigation(
+                            context,
+                            state,
+                            const TicketBookingCustomerScreen(),
+                          ),
+                        ),
                         GoRoute(
                           path: 'ticket',
                           pageBuilder: (context, state) => fadingNavigation(

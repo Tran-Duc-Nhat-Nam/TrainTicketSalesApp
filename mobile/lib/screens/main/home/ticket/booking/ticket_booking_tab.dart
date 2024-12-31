@@ -11,6 +11,7 @@ import 'package:mobile/widgets/app_button.dart';
 import 'package:mobile/widgets/app_error_widget.dart';
 import 'package:mobile/widgets/app_loading_widget.dart';
 import 'package:mobile/widgets/state/app_state.dart';
+import 'package:mobile/widgets/toast/toast.dart';
 
 import '../../../../../common/styles/text_styles.dart';
 import '../../../../../models/car/car.dart';
@@ -51,7 +52,7 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
         listener: (context, state) {
           state.maybeWhen(
             bookingSucceed: (ticket) {
-              context.push("/trip/booking/ticket", extra: ticket).then(
+              context.push("/trip/booking/customer", extra: ticket).then(
                 (value) {
                   if (context.mounted) {
                     context.read<TicketBookingTabCubit>().loadData(
@@ -64,7 +65,11 @@ class _TicketBookingTabState extends AppState<TicketBookingTab>
               );
             },
             bookingFailed: (message) {
-              log(message, name: "Booking");
+              AppToast.showFailureToast(
+                context,
+                text: context.tr("error"),
+                description: message,
+              );
               context.read<TicketBookingTabCubit>().loadData(
                     context,
                     widget.car,
