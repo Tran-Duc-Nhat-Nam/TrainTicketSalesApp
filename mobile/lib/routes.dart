@@ -80,7 +80,7 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => fadingNavigation(
         context,
         state,
-        const OtpScreen(),
+        OtpScreen(),
       ),
     ),
     GoRoute(

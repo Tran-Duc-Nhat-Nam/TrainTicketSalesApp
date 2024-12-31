@@ -63,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 _formKey.currentState?.saveAndValidate();
                 if (_formKey.currentState?.validate() == true) {
                   context.read<SignUpCubit>().signUp(
-                        _formKey.currentState!.value["email"],
+                        _formKey.currentState!.value["username"],
                         _formKey.currentState!.value["password"],
                       );
                 }
