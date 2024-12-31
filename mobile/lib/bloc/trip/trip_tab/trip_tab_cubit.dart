@@ -33,7 +33,7 @@ class TripTabCubit extends Cubit<TripTabState> {
     }
     await TripAPI(await ApiHelper.getDioInstance()).getSome(query).then(
       (value) {
-        emit(TripTabState.loaded(value));
+        emit(value.isEmpty ? TripTabState.empty() : TripTabState.loaded(value));
       },
       onError: (error) {
         log(error is Error ? error.stackTrace!.toString() : error.toString(),

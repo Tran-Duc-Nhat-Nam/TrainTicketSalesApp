@@ -21,6 +21,7 @@ mixin _$TripTabState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
     required TResult Function(String message) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$TripTabState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
     TResult? Function(String message)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$TripTabState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$TripTabState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$TripTabState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$TripTabState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) =>
@@ -133,6 +139,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
     required TResult Function(String message) failed,
   }) {
     return initial();
@@ -144,6 +151,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
     TResult? Function(String message)? failed,
   }) {
     return initial?.call();
@@ -155,6 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -170,6 +179,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
   }) {
     return initial(this);
@@ -181,6 +191,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
@@ -192,6 +203,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
@@ -250,6 +262,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
     required TResult Function(String message) failed,
   }) {
     return loading();
@@ -261,6 +274,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
     TResult? Function(String message)? failed,
   }) {
     return loading?.call();
@@ -272,6 +286,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -287,6 +302,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
   }) {
     return loading(this);
@@ -298,6 +314,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
   }) {
     return loading?.call(this);
@@ -309,6 +326,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
@@ -400,6 +418,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
     required TResult Function(String message) failed,
   }) {
     return loaded(trips);
@@ -411,6 +430,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
     TResult? Function(String message)? failed,
   }) {
     return loaded?.call(trips);
@@ -422,6 +442,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -437,6 +458,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
   }) {
     return loaded(this);
@@ -448,6 +470,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
   }) {
     return loaded?.call(this);
@@ -459,6 +482,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
@@ -479,6 +503,129 @@ abstract class _Loaded implements TripTabState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmptyImplCopyWith<$Res> {
+  factory _$$EmptyImplCopyWith(
+          _$EmptyImpl value, $Res Function(_$EmptyImpl) then) =
+      __$$EmptyImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmptyImplCopyWithImpl<$Res>
+    extends _$TripTabStateCopyWithImpl<$Res, _$EmptyImpl>
+    implements _$$EmptyImplCopyWith<$Res> {
+  __$$EmptyImplCopyWithImpl(
+      _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripTabState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$EmptyImpl implements _Empty {
+  const _$EmptyImpl();
+
+  @override
+  String toString() {
+    return 'TripTabState.empty()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmptyImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
+    required TResult Function(String message) failed,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
+    TResult? Function(String message)? failed,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
+    TResult Function(String message)? failed,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failed value)? failed,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Empty implements TripTabState {
+  const factory _Empty() = _$EmptyImpl;
 }
 
 /// @nodoc
@@ -552,6 +699,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Trip> trips) loaded,
+    required TResult Function() empty,
     required TResult Function(String message) failed,
   }) {
     return failed(message);
@@ -563,6 +711,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Trip> trips)? loaded,
+    TResult? Function()? empty,
     TResult? Function(String message)? failed,
   }) {
     return failed?.call(message);
@@ -574,6 +723,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Trip> trips)? loaded,
+    TResult Function()? empty,
     TResult Function(String message)? failed,
     required TResult orElse(),
   }) {
@@ -589,6 +739,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Empty value) empty,
     required TResult Function(_Failed value) failed,
   }) {
     return failed(this);
@@ -600,6 +751,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Empty value)? empty,
     TResult? Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
@@ -611,6 +763,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Empty value)? empty,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {

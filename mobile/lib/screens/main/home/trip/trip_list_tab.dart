@@ -5,6 +5,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:mobile/screens/main/home/trip/widgets/trip_summary.dart';
 import 'package:mobile/widgets/app_error_widget.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../bloc/trip/trip_tab/trip_tab_cubit.dart';
 import '../../../../models/station/station.dart';
@@ -58,27 +59,63 @@ class _TripListTabState extends AppState<TripListTab>
                   widget.departureStation,
                   widget.arrivalStation,
                 ),
-            child: ListView.builder(
-              physics: AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.only(top: index == 0 ? 24 : 0, bottom: 24),
-                child: TripSummary(
-                  trip: trips[index],
+            child: Skeletonizer(
+                enabled: state.maybeWhen(
+                  loading: () => true,
+                  orElse: () => false,
                 ),
-              ),
-              shrinkWrap: true,
-              itemCount: trips.length,
-            ),
+                child: ListView.builder(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => Padding(
+                    padding:
+                        EdgeInsets.only(top: index == 0 ? 24 : 0, bottom: 24),
+                    child: TripSummary(
+                      trip: trips[index],
+                    ),
+                  ),
+                  shrinkWrap: true,
+                  itemCount: trips.length,
+                )),
           ),
-          failed: (message) => AppErrorWidget(
-            message: context.tr(message),
-            onPressed: () => context.read<TripTabCubit>().getTrips(
+          empty: () => SmartRefresher(
+            controller: _refreshController,
+            enablePullDown: true,
+            onRefresh: () => context.read<TripTabCubit>().getTrips(
                   context,
                   widget.day,
                   widget.departureStation,
                   widget.arrivalStation,
                 ),
-            buttonText: context.tr("reload"),
+            child: AppErrorWidget(
+              message: context.tr("noTrip"),
+              onPressed: () => context.read<TripTabCubit>().getTrips(
+                    context,
+                    widget.day,
+                    widget.departureStation,
+                    widget.arrivalStation,
+                  ),
+              buttonText: context.tr("reload"),
+            ),
+          ),
+          failed: (message) => SmartRefresher(
+            controller: _refreshController,
+            enablePullDown: true,
+            onRefresh: () => context.read<TripTabCubit>().getTrips(
+                  context,
+                  widget.day,
+                  widget.departureStation,
+                  widget.arrivalStation,
+                ),
+            child: AppErrorWidget(
+              message: context.tr(message),
+              onPressed: () => context.read<TripTabCubit>().getTrips(
+                    context,
+                    widget.day,
+                    widget.departureStation,
+                    widget.arrivalStation,
+                  ),
+              buttonText: context.tr("reload"),
+            ),
           ),
         ),
       ),
