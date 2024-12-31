@@ -47,74 +47,77 @@ class _TripListTabState extends AppState<TripListTab>
           widget.arrivalStation,
         ),
       child: BlocBuilder<TripTabCubit, TripTabState>(
-        builder: (context, state) => state.when(
-          initial: () => const SizedBox(),
-          loading: () => const AppLoadingWidget(),
-          loaded: (trips) => SmartRefresher(
-            controller: _refreshController,
-            enablePullDown: true,
-            onRefresh: () => context.read<TripTabCubit>().getTrips(
-                  context,
-                  widget.day,
-                  widget.departureStation,
-                  widget.arrivalStation,
-                ),
-            child: Skeletonizer(
-                enabled: state.maybeWhen(
-                  loading: () => true,
-                  orElse: () => false,
-                ),
-                child: ListView.builder(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => Padding(
-                    padding:
-                        EdgeInsets.only(top: index == 0 ? 24 : 0, bottom: 24),
-                    child: TripSummary(
-                      trip: trips[index],
+        builder: (context, state) => AnimatedSwitcher(
+          duration: Duration(milliseconds: 500),
+          child: state.when(
+            initial: () => const SizedBox(),
+            loading: () => const AppLoadingWidget(),
+            loaded: (trips) => SmartRefresher(
+              controller: _refreshController,
+              enablePullDown: true,
+              onRefresh: () => context.read<TripTabCubit>().getTrips(
+                    context,
+                    widget.day,
+                    widget.departureStation,
+                    widget.arrivalStation,
+                  ),
+              child: Skeletonizer(
+                  enabled: state.maybeWhen(
+                    loading: () => true,
+                    orElse: () => false,
+                  ),
+                  child: ListView.builder(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => Padding(
+                      padding:
+                          EdgeInsets.only(top: index == 0 ? 24 : 0, bottom: 24),
+                      child: TripSummary(
+                        trip: trips[index],
+                      ),
                     ),
-                  ),
-                  shrinkWrap: true,
-                  itemCount: trips.length,
-                )),
-          ),
-          empty: () => SmartRefresher(
-            controller: _refreshController,
-            enablePullDown: true,
-            onRefresh: () => context.read<TripTabCubit>().getTrips(
-                  context,
-                  widget.day,
-                  widget.departureStation,
-                  widget.arrivalStation,
-                ),
-            child: AppErrorWidget(
-              message: context.tr("noTrip"),
-              onPressed: () => context.read<TripTabCubit>().getTrips(
-                    context,
-                    widget.day,
-                    widget.departureStation,
-                    widget.arrivalStation,
-                  ),
-              buttonText: context.tr("reload"),
+                    shrinkWrap: true,
+                    itemCount: trips.length,
+                  )),
             ),
-          ),
-          failed: (message) => SmartRefresher(
-            controller: _refreshController,
-            enablePullDown: true,
-            onRefresh: () => context.read<TripTabCubit>().getTrips(
-                  context,
-                  widget.day,
-                  widget.departureStation,
-                  widget.arrivalStation,
-                ),
-            child: AppErrorWidget(
-              message: context.tr(message),
-              onPressed: () => context.read<TripTabCubit>().getTrips(
+            empty: () => SmartRefresher(
+              controller: _refreshController,
+              enablePullDown: true,
+              onRefresh: () => context.read<TripTabCubit>().getTrips(
                     context,
                     widget.day,
                     widget.departureStation,
                     widget.arrivalStation,
                   ),
-              buttonText: context.tr("reload"),
+              child: AppErrorWidget(
+                message: context.tr("noTrip"),
+                onPressed: () => context.read<TripTabCubit>().getTrips(
+                      context,
+                      widget.day,
+                      widget.departureStation,
+                      widget.arrivalStation,
+                    ),
+                buttonText: context.tr("reload"),
+              ),
+            ),
+            failed: (message) => SmartRefresher(
+              controller: _refreshController,
+              enablePullDown: true,
+              onRefresh: () => context.read<TripTabCubit>().getTrips(
+                    context,
+                    widget.day,
+                    widget.departureStation,
+                    widget.arrivalStation,
+                  ),
+              child: AppErrorWidget(
+                message: context.tr(message),
+                onPressed: () => context.read<TripTabCubit>().getTrips(
+                      context,
+                      widget.day,
+                      widget.departureStation,
+                      widget.arrivalStation,
+                    ),
+                buttonText: context.tr("reload"),
+              ),
             ),
           ),
         ),

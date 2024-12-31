@@ -70,112 +70,95 @@ class _AppPublicScreenState extends State<AppPublicScreen>
   Widget build(BuildContext context) {
     return AppScreen(
       isAppBar: false,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 15),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: ModalRoute.of(context)?.impliesAppBarDismissal ==
-                          true
-                      ? InkWell(
-                          onTap: () => context.pop(),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        )
-                      : InkWell(
-                          onTap: () => context.go("/"),
-                          child: Icon(
-                            Icons.home,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          context.setLocale(
-                            context.locale.toString() == 'en'
-                                ? Locale('vi')
-                                : Locale('en'),
-                          );
-                        },
-                        child: Text(
-                          context.locale.toString().toUpperCase(),
-                          style: AppTextStyles.appBarTitle.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        overlayColor:
-                            WidgetStatePropertyAll(Colors.transparent),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: AppThemeToggleIcon(
-                            animation: animation,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                        onTap: () {
-                          final themeCubit = context.read<ThemeCubit>();
-                          if (themeCubit.state.theme.brightness ==
-                              Brightness.light) {
-                            themeCubit.changeTheme(appDarkTheme);
-                            controller.forward();
-                          } else {
-                            themeCubit.changeTheme(appTheme);
-                            controller.reverse();
-                          }
-                        },
-                      ),
-                    ],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: ModalRoute.of(context)?.impliesAppBarDismissal == true
+              ? InkWell(
+                  onTap: () => context.pop(),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                )
+              : InkWell(
+                  onTap: () => context.go("/"),
+                  child: Icon(
+                    Icons.home,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
-              ],
-            ),
-          ),
-          FormBuilder(
-            key: widget.formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
-                    child: Center(
-                      child: AppBigTitle(
-                        title: widget.title,
-                        subTitle: widget.subTitle,
-                      ),
-                    ),
-                  ),
-                  ...widget.formChildren,
-                  if (!widget.isNoButton)
-                    AppButton(
-                      onPressed: widget.onPressed,
-                      text: widget.buttonText ?? "",
-                      child: widget.button,
-                    ),
-                ],
+        ),
+        actions: [
+          InkWell(
+            onTap: () {
+              context.setLocale(
+                context.locale.toString() == 'en' ? Locale('vi') : Locale('en'),
+              );
+            },
+            child: Text(
+              context.locale.toString().toUpperCase(),
+              style: AppTextStyles.appBarTitle.copyWith(
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ),
-          if (widget.children != null) ...widget.children!,
-          widget.footer ?? const SizedBox(),
+          InkWell(
+            overlayColor: WidgetStatePropertyAll(Colors.transparent),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: AppThemeToggleIcon(
+                animation: animation,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            onTap: () {
+              final themeCubit = context.read<ThemeCubit>();
+              if (themeCubit.state.theme.brightness == Brightness.light) {
+                themeCubit.changeTheme(appDarkTheme);
+                controller.forward();
+              } else {
+                themeCubit.changeTheme(appTheme);
+                controller.reverse();
+              }
+            },
+          ),
+          SizedBox(width: 8,)
         ],
+      ),
+      child: FormBuilder(
+        key: widget.formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32),
+                child: Center(
+                  child: AppBigTitle(
+                    title: widget.title,
+                    subTitle: widget.subTitle,
+                  ),
+                ),
+              ),
+              ...widget.formChildren,
+              if (!widget.isNoButton)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32),
+                  child: AppButton(
+                    onPressed: widget.onPressed,
+                    text: widget.buttonText ?? "",
+                    child: widget.button,
+                  ),
+                ),
+              if (widget.children != null) ...widget.children!,
+            ],
+          ),
+        ),
       ),
     );
   }

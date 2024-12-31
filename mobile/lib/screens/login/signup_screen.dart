@@ -109,10 +109,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 32),
               ],
               children: [
-                const SizedBox(height: 20),
-                AppTextButton(
-                  text: context.tr("title.login"),
-                  onPressed: () => context.go('/login'),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 45),
+                  child: Center(
+                    child: AppTextButton(
+                      text: context.tr("title.login"),
+                      onPressed: () => context.go('/login'),
+                    ),
+                  ),
                 ),
               ],
             );

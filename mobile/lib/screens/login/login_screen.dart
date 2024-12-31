@@ -49,11 +49,14 @@ class _LoginScreenState extends State<LoginScreen> {
               subTitle: context.tr("subtitle.login"),
               buttonText: context.tr("title.login"),
               button: state.whenOrNull(
-                loading: () => AppTextButton(
-                  onPressed: () {},
-                  child: LoadingAnimationWidget.waveDots(
-                    color: Colors.white,
-                    size: 24,
+                loading: () => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32),
+                  child: AppTextButton(
+                    onPressed: () {},
+                    child: LoadingAnimationWidget.waveDots(
+                      color: Colors.white,
+                      size: 24,
+                    ),
                   ),
                 ),
               ),
@@ -104,20 +107,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 32),
               ],
-              footer: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 60),
-                child: AppTextButton(
-                  text: context.tr('signUpNow'),
-                  onPressed: () => context.go('/signup'),
-                ),
-              ),
               children: [
-                AppTextButton(
-                  text: context.tr('forgetPassword'),
-                  onPressed: () => context.push('/forgetPassword'),
-                  underline: true,
+                Center(
+                  child: AppTextButton(
+                    text: context.tr('forgetPassword'),
+                    onPressed: () => context.push('/forgetPassword'),
+                    underline: true,
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 60),
+                    child: AppTextButton(
+                      text: context.tr('signUpNow'),
+                      onPressed: () => context.push('/signup'),
+                    ),
+                  ),
                 ),
               ],
             );

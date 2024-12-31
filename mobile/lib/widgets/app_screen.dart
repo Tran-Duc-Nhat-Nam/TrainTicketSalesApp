@@ -12,6 +12,7 @@ class AppScreen extends StatefulWidget {
     this.title = '',
     required this.child,
     this.isAppBar = true,
+    this.appBar,
     this.subtitle,
     this.isDrawer = true,
     this.isChildScrollView = false,
@@ -20,6 +21,7 @@ class AppScreen extends StatefulWidget {
   final bool isAppBar;
   final bool isDrawer;
   final bool isChildScrollView;
+  final PreferredSizeWidget? appBar;
   final String title;
   final String? subtitle;
   final Widget child;
@@ -94,7 +96,7 @@ class _AppScreenState extends State<AppScreen> {
                 )
               ],
             )
-          : null,
+          : widget.appBar,
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: SizedBox(
