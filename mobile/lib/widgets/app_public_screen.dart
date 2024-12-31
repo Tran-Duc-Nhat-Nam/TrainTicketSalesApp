@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile/common/styles/text_styles.dart';
 
 import '../bloc/theme/theme_cubit.dart';
@@ -76,44 +77,58 @@ class _AppPublicScreenState extends State<AppPublicScreen>
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () {
-                      context.setLocale(
-                        context.locale.toString() == 'en'
-                            ? Locale('vi')
-                            : Locale('en'),
-                      );
-                    },
-                    child: Text(
-                      context.locale.toString().toUpperCase(),
-                      style: AppTextStyles.appBarTitle.copyWith(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+                    onTap: () => context.go("/"),
+                    child: Icon(
+                      Icons.home,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
-                  InkWell(
-                    overlayColor: WidgetStatePropertyAll(Colors.transparent),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: AppThemeToggleIcon(
-                        animation: animation,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            context.setLocale(
+                              context.locale.toString() == 'en'
+                                  ? Locale('vi')
+                                  : Locale('en'),
+                            );
+                          },
+                          child: Text(
+                            context.locale.toString().toUpperCase(),
+                            style: AppTextStyles.appBarTitle.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          overlayColor:
+                              WidgetStatePropertyAll(Colors.transparent),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: AppThemeToggleIcon(
+                              animation: animation,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                          onTap: () {
+                            final themeCubit = context.read<ThemeCubit>();
+                            if (themeCubit.state.theme.brightness ==
+                                Brightness.light) {
+                              themeCubit.changeTheme(appDarkTheme);
+                              controller.forward();
+                            } else {
+                              themeCubit.changeTheme(appTheme);
+                              controller.reverse();
+                            }
+                          },
+                        ),
+                      ],
                     ),
-                    onTap: () {
-                      final themeCubit = context.read<ThemeCubit>();
-                      if (themeCubit.state.theme.brightness ==
-                          Brightness.light) {
-                        themeCubit.changeTheme(appDarkTheme);
-                        controller.forward();
-                      } else {
-                        themeCubit.changeTheme(appTheme);
-                        controller.reverse();
-                      }
-                    },
                   ),
                 ],
               ),
@@ -132,11 +147,12 @@ class _AppPublicScreenState extends State<AppPublicScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ...widget.formChildren,
-                    if (!widget.isNoButton) AppButton(
-                      onPressed: widget.onPressed,
-                      text: widget.buttonText ?? "",
-                      child: widget.button,
-                    ),
+                    if (!widget.isNoButton)
+                      AppButton(
+                        onPressed: widget.onPressed,
+                        text: widget.buttonText ?? "",
+                        child: widget.button,
+                      ),
                   ],
                 ),
               ),

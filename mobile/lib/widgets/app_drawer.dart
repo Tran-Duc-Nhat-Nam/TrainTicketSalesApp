@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile/routes.dart';
 import 'package:mobile/widgets/toast/dialog.dart';
 
 import 'dart:math' as math;
@@ -9,14 +10,28 @@ import 'dart:math' as math;
 import '../bloc/theme/theme_cubit.dart';
 import '../common/styles/text_styles.dart';
 import '../common/styles/theme.dart';
+import '../core/auth/auth_helper.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({
     super.key,
   });
 
   @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  bool isAuth = false;
+
+  Future<void> getAuth() async {
+    isAuth = await AuthHelper.getAuth() == true;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    getAuth();
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -98,7 +113,7 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          isAuth ? ListTile(
             onTap: () {
               AppDialog.showLogoutDialog(context);
             },
@@ -107,9 +122,25 @@ class AppDrawer extends StatelessWidget {
               color: Colors.red,
             ),
             title: Text(
-              context.tr('logout'),
+              context.tr('title.logout'),
               style: TextStyle(
                 color: Colors.red,
+                fontSize: 16,
+              ),
+            ),
+          ) : ListTile(
+            onTap: () {
+              context.push("/login");
+              drawerKey.currentState?.closeDrawer();
+            },
+            leading: Icon(
+              Icons.login,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            title: Text(
+              context.tr('title.login'),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
               ),
             ),

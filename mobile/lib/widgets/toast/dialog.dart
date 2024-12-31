@@ -19,8 +19,8 @@ class AppDialog {
         context: context,
         dialogType: DialogType.error,
         animType: AnimType.scale,
-        title: context.tr("sessionEnded.title"),
-        desc: context.tr("sessionEnded.description"),
+        title: context.tr("title.sessionEnded"),
+        desc: context.tr("subtitle.sessionEnded"),
         btnCancelText: context.tr("quit"),
         btnCancelOnPress: () => exit(0),
         btnOkText: context.tr("title.login"),
@@ -42,15 +42,15 @@ class AppDialog {
       context: context,
       dialogType: DialogType.warning,
       animType: AnimType.scale,
-      title: context.tr("logout.title"),
-      desc: context.tr("logout.description"),
+      title: context.tr("title.logout"),
+      desc: context.tr("subtitle.logout"),
       btnCancelText: context.tr("back"),
       btnCancelColor: Theme.of(context).colorScheme.primary,
       btnOkText: context.tr("quit"),
       btnOkOnPress: () {
         AuthHelper.deleteAuth().whenComplete(
           () {
-            if (context.mounted) context.go('/login');
+            if (context.mounted) context.go('/');
           },
         );
       },
@@ -62,22 +62,21 @@ class AppDialog {
 
   static Future<bool> showExitDialog(BuildContext context) async {
     bool isClose = false;
-    var result = await AwesomeDialog(
+    await AwesomeDialog(
       context: context,
       dialogType: DialogType.warning,
       animType: AnimType.scale,
-      title: context.tr("exit.title"),
-      desc: context.tr("exit.description"),
+      title: context.tr("title.exit"),
+      desc: context.tr("subtitle.exit"),
       btnCancelText: context.tr("back"),
       btnCancelOnPress: () {},
       btnCancelColor: Theme.of(context).colorScheme.primary,
-      btnOkText: context.tr("exit"),
+      btnOkText: context.tr("title.exit"),
       btnOkOnPress: () => isClose = true,
       btnOkColor: Colors.red,
       useRootNavigator: true,
       headerAnimationLoop: false,
     ).show();
-    log(result.toString(), name: "Exit");
     return isClose;
   }
 

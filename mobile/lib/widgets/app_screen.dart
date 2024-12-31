@@ -15,13 +15,11 @@ class AppScreen extends StatefulWidget {
     this.subtitle,
     this.isDrawer = true,
     this.isChildScrollView = false,
-    this.footer,
   });
 
   final bool isAppBar;
   final bool isDrawer;
   final bool isChildScrollView;
-  final Widget? footer;
   final String title;
   final String? subtitle;
   final Widget child;
@@ -31,11 +29,6 @@ class AppScreen extends StatefulWidget {
 }
 
 class _AppScreenState extends State<AppScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,27 +60,38 @@ class _AppScreenState extends State<AppScreen> {
                       ],
                     )
                   : GestureDetector(
-                child: Text(widget.title),
-              ),
+                      child: Text(widget.title),
+                    ),
               titleTextStyle: AppTextStyles.appBarTitle,
               automaticallyImplyLeading: false,
-              leading: context.canPop() ? Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.white,),
-                  iconSize: 28,
-                  onPressed: () => context.pop(),
-                ),
-              ) : null,
+              leading: ModalRoute.of(context)?.impliesAppBarDismissal == true
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 12),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        iconSize: 28,
+                        onPressed: () => context.pop(),
+                      ),
+                    )
+                  : null,
               actions: [
-                if (widget.isDrawer) IconButton(
-                  icon: Icon(Icons.menu, color: Colors.white,),
-                  iconSize: 28,
-                  onPressed: () {
-                    drawerKey.currentState!.openDrawer();
-                  },
-                ),
-                const SizedBox(width: 12,)
+                if (widget.isDrawer)
+                  IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
+                    iconSize: 28,
+                    onPressed: () {
+                      drawerKey.currentState!.openDrawer();
+                    },
+                  ),
+                const SizedBox(
+                  width: 12,
+                )
               ],
             )
           : null,

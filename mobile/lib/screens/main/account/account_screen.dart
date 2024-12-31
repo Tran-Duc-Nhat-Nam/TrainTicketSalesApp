@@ -71,7 +71,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                   placeholder: (context, url) =>
                                       LoadingAnimationWidget.beat(
                                     color:
-                                        Theme.of(context).colorScheme.primary,
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 48,
                                   ),
                                 ),
@@ -384,7 +384,7 @@ class _AccountScreenState extends AppState<AccountScreen> {
                                     width: 8,
                                   ),
                                   Text(
-                                    context.tr('logout'),
+                                    context.tr('title.logout'),
                                     style: TextStyle(
                                       color: Colors.red,
                                       fontSize: 16,
