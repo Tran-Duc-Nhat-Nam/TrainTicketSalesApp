@@ -26,7 +26,7 @@ mixin _$Booking {
   String get phoneNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   BookingStatus get status => throw _privateConstructorUsedError;
-  List<Ticket> get ticketList => throw _privateConstructorUsedError;
+  List<Ticket> get tickets => throw _privateConstructorUsedError;
 
   /// Serializes this Booking to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BookingCopyWith<$Res> {
       String phoneNumber,
       String name,
       BookingStatus status,
-      List<Ticket> ticketList});
+      List<Ticket> tickets});
 
   $AccountCopyWith<$Res> get account;
   $BookingStatusCopyWith<$Res> get status;
@@ -76,7 +76,7 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? phoneNumber = null,
     Object? name = null,
     Object? status = null,
-    Object? ticketList = null,
+    Object? tickets = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -103,9 +103,9 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BookingStatus,
-      ticketList: null == ticketList
-          ? _value.ticketList
-          : ticketList // ignore: cast_nullable_to_non_nullable
+      tickets: null == tickets
+          ? _value.tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
               as List<Ticket>,
     ) as $Val);
   }
@@ -145,7 +145,7 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       String phoneNumber,
       String name,
       BookingStatus status,
-      List<Ticket> ticketList});
+      List<Ticket> tickets});
 
   @override
   $AccountCopyWith<$Res> get account;
@@ -172,7 +172,7 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? name = null,
     Object? status = null,
-    Object? ticketList = null,
+    Object? tickets = null,
   }) {
     return _then(_$BookingImpl(
       id: null == id
@@ -199,9 +199,9 @@ class __$$BookingImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BookingStatus,
-      ticketList: null == ticketList
-          ? _value._ticketList
-          : ticketList // ignore: cast_nullable_to_non_nullable
+      tickets: null == tickets
+          ? _value._tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
               as List<Ticket>,
     ));
   }
@@ -217,8 +217,8 @@ class _$BookingImpl implements _Booking {
       required this.phoneNumber,
       required this.name,
       required this.status,
-      required final List<Ticket> ticketList})
-      : _ticketList = ticketList;
+      required final List<Ticket> tickets})
+      : _tickets = tickets;
 
   factory _$BookingImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookingImplFromJson(json);
@@ -235,17 +235,17 @@ class _$BookingImpl implements _Booking {
   final String name;
   @override
   final BookingStatus status;
-  final List<Ticket> _ticketList;
+  final List<Ticket> _tickets;
   @override
-  List<Ticket> get ticketList {
-    if (_ticketList is EqualUnmodifiableListView) return _ticketList;
+  List<Ticket> get tickets {
+    if (_tickets is EqualUnmodifiableListView) return _tickets;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ticketList);
+    return EqualUnmodifiableListView(_tickets);
   }
 
   @override
   String toString() {
-    return 'Booking(id: $id, account: $account, email: $email, phoneNumber: $phoneNumber, name: $name, status: $status, ticketList: $ticketList)';
+    return 'Booking(id: $id, account: $account, email: $email, phoneNumber: $phoneNumber, name: $name, status: $status, tickets: $tickets)';
   }
 
   @override
@@ -260,14 +260,13 @@ class _$BookingImpl implements _Booking {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality()
-                .equals(other._ticketList, _ticketList));
+            const DeepCollectionEquality().equals(other._tickets, _tickets));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, account, email, phoneNumber,
-      name, status, const DeepCollectionEquality().hash(_ticketList));
+      name, status, const DeepCollectionEquality().hash(_tickets));
 
   /// Create a copy of Booking
   /// with the given fields replaced by the non-null parameter values.
@@ -293,7 +292,7 @@ abstract class _Booking implements Booking {
       required final String phoneNumber,
       required final String name,
       required final BookingStatus status,
-      required final List<Ticket> ticketList}) = _$BookingImpl;
+      required final List<Ticket> tickets}) = _$BookingImpl;
 
   factory _Booking.fromJson(Map<String, dynamic> json) = _$BookingImpl.fromJson;
 
@@ -310,7 +309,7 @@ abstract class _Booking implements Booking {
   @override
   BookingStatus get status;
   @override
-  List<Ticket> get ticketList;
+  List<Ticket> get tickets;
 
   /// Create a copy of Booking
   /// with the given fields replaced by the non-null parameter values.

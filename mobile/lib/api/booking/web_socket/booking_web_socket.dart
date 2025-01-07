@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:mobile/environment.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+
 class BookingWebSocket {
   WebSocketChannel _channel;
 
@@ -40,15 +41,6 @@ class BookingWebSocket {
       {Function(dynamic error)? onError}) async {
     _channel.stream
         .listen(onListen, onError: onError ?? (error) => reconnect());
-  }
-
-  void book(int tripId, int seatId, int customerId) {
-    final jsonData = json.encode({
-      'tripId': tripId,
-      'seatId': seatId,
-      'customerId': customerId,
-    });
-    _channel.sink.add(jsonData);
   }
 
   void close() {

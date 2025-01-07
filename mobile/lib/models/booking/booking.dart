@@ -15,7 +15,7 @@ class Booking with _$Booking {
     required String phoneNumber,
     required String name,
     required BookingStatus status,
-    required List<Ticket> ticketList,
+    required List<Ticket> tickets,
   }) = _Booking;
 
   factory Booking.fromJson(Map<String, Object?> json)

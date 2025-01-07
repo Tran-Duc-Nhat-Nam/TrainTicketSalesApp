@@ -14,7 +14,7 @@ _$BookingImpl _$$BookingImplFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String,
       name: json['name'] as String,
       status: BookingStatus.fromJson(json['status'] as Map<String, dynamic>),
-      ticketList: (json['ticketList'] as List<dynamic>)
+      tickets: (json['tickets'] as List<dynamic>)
           .map((e) => Ticket.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -27,5 +27,5 @@ Map<String, dynamic> _$$BookingImplToJson(_$BookingImpl instance) =>
       'phoneNumber': instance.phoneNumber,
       'name': instance.name,
       'status': instance.status,
-      'ticketList': instance.ticketList,
+      'tickets': instance.tickets,
     };
