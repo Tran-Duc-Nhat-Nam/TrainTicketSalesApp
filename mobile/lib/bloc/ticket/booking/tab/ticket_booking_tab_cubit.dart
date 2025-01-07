@@ -6,14 +6,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile/api/seat/seat_api.dart';
-import 'package:mobile/api/ticket/ticket_api.dart';
 import 'package:mobile/core/shared_ref.dart';
 import 'package:mobile/models/car/car.dart';
 import 'package:mobile/models/ticket/ticket.dart';
+import 'package:mobile/request/ticket/booking/ticket_booking_request.dart';
 import 'package:mobile/widgets/toast/dialog.dart';
 
-import '../../../../api/ticket/booking_web_socket.dart';
+import '../../../../api/booking/booking_api.dart';
+import '../../../../api/booking/web_socket/booking_web_socket.dart';
 import '../../../../core/api/api_helper.dart';
+import '../../../../models/booking/booking.dart';
 import '../../../../models/seat/seat.dart';
 
 part 'ticket_booking_tab_state.dart';
@@ -45,7 +47,9 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
             }
 
             for (int i = 1; i <= car.width; i++) {
-              Seat tempSeat = value.firstWhere((seat) => seat.col == column && seat.row == i, orElse: () => Seat(id: -1));
+              Seat tempSeat = value.firstWhere(
+                  (seat) => seat.col == column && seat.row == i,
+                  orElse: () => Seat(id: -1));
               if (tempSeat.id != -1) {
                 temp[column]![i] = tempSeat;
               } else {
@@ -53,9 +57,10 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
               }
             }
           }
-          List<Seat?> seatMapList = temp.values.expand((seats) => seats.values).toList();
+          List<Seat?> seatMapList =
+              temp.values.expand((seats) => seats.values).toList();
           emit(TicketBookingTabState.loaded(seatMapList, {}, [], userId, 0));
-          connect(tripId, car.id);
+          connect(context, tripId, car.id);
         },
         onError: (error) => emit(
           TicketBookingTabState.failed(
@@ -70,15 +75,17 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
     }
   }
 
-  Future<void> connect(int tripId, int carId) async {
+  Future<void> connect(BuildContext context, int tripId, int carId) async {
+    await AppDialog.checkAuth(context);
     socket = await BookingWebSocket.connect(tripId, carId);
-    log("Connect websocket...", name: "Booking");
+    log("Connect web_socket...", name: "Booking");
     socket!.listen(
       (data) {
+        log(data, name: "Booking web socket data");
         List<dynamic> convertedData = jsonDecode(data);
         List<Ticket> soldTickets =
             convertedData.map((json) => Ticket.fromJson(json)).toList();
-        state.maybeWhen(
+        state.whenOrNull(
           loaded: (seats, selectedSeat, _, userId, totalCost) async {
             if (socket!.isOpen()) {
               emit(
@@ -103,7 +110,6 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
               );
             }
           },
-          orElse: () {},
         );
       },
     );
@@ -150,82 +156,34 @@ class TicketBookingTabCubit extends Cubit<TicketBookingTabState> {
   }
 
   void startBooking(int tripId) {
-    state.maybeWhen(
-        loaded: (seats, selectedSeat, soldTickets, userId, totalCost) async {
-          log("Starting Booking...", name: "Booking");
-          emit(TicketBookingTabState.booking());
-          log("Calling API...", name: "Booking");
-          await TicketAPI(await ApiHelper.getDioInstance()).create({
-            'selectedSeatId': selectedSeat.entries
-                .map(
-                  (e) => e.key,
-                )
-                .toList(),
-            "customerId": userId,
-            "tripId": tripId,
-          }).then(
-            (value) {
-              log("Booking successfully", name: "Booking");
-              emit(TicketBookingTabState.bookingSucceed(value));
-            },
-            onError: (error) {
-              log("Booking failed", name: "Booking", error: error);
-              emit(
-                TicketBookingTabState.bookingFailed(
-                  error is DioException
-                      ? error.response.toString().replaceAll('"', '')
-                      : "unexpectedError",
-                ),
-              );
-            },
-          );
-        },
-        orElse: () {});
-  }
-
-  // void temp() {
-  //   StaggeredGridTile.count(
-  //     crossAxisCellCount: 1,
-  //     mainAxisCellCount: 1,
-  //     child: Column(
-  //       children: [
-  //         IconButton(
-  //           onPressed: () {
-  //             context
-  //                 .read<TicketBookingTabCubit>()
-  //                 .selectSeat(
-  //               widget.car.price,
-  //               entry.,
-  //             );
-  //           },
-  //           iconSize: 40,
-  //           icon: Icon(
-  //             Icons.chair_outlined,
-  //             size: 40,
-  //             color: soldTickets.any(
-  //                   (element) =>
-  //               element.seat.id ==
-  //                   seats[index].id,
-  //             )
-  //                 ? Theme.of(context)
-  //                 .colorScheme
-  //                 .primary
-  //                 : selectedSeat[seats[index]
-  //                 .id] ==
-  //                 true
-  //                 ? Colors.redAccent[200]
-  //                 : Theme.of(context)
-  //                 .colorScheme
-  //                 .secondary,
-  //           ),
-  //         ),
-  //         Text("${seats[index].col}${seats[index].row}")
-  //       ],
-  //     ),
-  //   );
-  // }
-
-  int getSize(Map<String, Map<int, Seat>> seats, Car car) {
-    return seats.length * car.width;
+    state.whenOrNull(
+      loaded: (seats, selectedSeat, soldTickets, userId, totalCost) async {
+        log("Starting Booking...", name: "Booking");
+        emit(TicketBookingTabState.booking());
+        log("Calling API...", name: "Booking");
+        await BookingAPI(await ApiHelper.getDioInstance())
+            .create(TicketBookingRequest(
+                accountId: userId,
+                tripId: tripId,
+                selectedSeatId:
+                    selectedSeat.entries.map((entry) => entry.key).toList()))
+            .then(
+          (value) {
+            log("Booking successfully", name: "Booking");
+            emit(TicketBookingTabState.bookingSucceed(value));
+          },
+          onError: (error) {
+            log("Booking failed", name: "Booking", error: error);
+            emit(
+              TicketBookingTabState.bookingFailed(
+                error is DioException
+                    ? error.response.toString().replaceAll('"', '')
+                    : error.toString(),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }

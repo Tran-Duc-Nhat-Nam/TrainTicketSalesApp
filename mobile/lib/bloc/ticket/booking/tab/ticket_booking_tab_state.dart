@@ -7,6 +7,6 @@ class TicketBookingTabState with _$TicketBookingTabState {
   const factory TicketBookingTabState.loaded(List<Seat?> seats, Map<int, bool> selectedSeat, List<Ticket> soldTickets, int userId, int totalCost) = _Loaded;
   const factory TicketBookingTabState.failed(String message) = _Failed;
   const factory TicketBookingTabState.booking() = _Booking;
-  const factory TicketBookingTabState.bookingSucceed(List<Ticket> tickets) = _BookingSucceed;
+  const factory TicketBookingTabState.bookingSucceed(Booking booking) = _BookingSucceed;
   const factory TicketBookingTabState.bookingFailed(String message) = _BookingFailed;
 }

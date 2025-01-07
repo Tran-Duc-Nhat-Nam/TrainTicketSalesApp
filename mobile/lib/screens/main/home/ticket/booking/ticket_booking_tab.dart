@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile/api/ticket/booking_web_socket.dart';
+import 'package:mobile/api/booking/web_socket/booking_web_socket.dart';
 import 'package:mobile/bloc/ticket/booking/tab/ticket_booking_tab_cubit.dart';
 import 'package:mobile/widgets/app_button.dart';
 import 'package:mobile/widgets/app_error_widget.dart';

@@ -25,7 +25,7 @@ mixin _$TicketBookingTabState {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ mixin _$TicketBookingTabState {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ mixin _$TicketBookingTabState {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) =>
@@ -162,7 +162,7 @@ class _$InitialImpl implements _Initial {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return initial();
@@ -178,7 +178,7 @@ class _$InitialImpl implements _Initial {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return initial?.call();
@@ -194,7 +194,7 @@ class _$InitialImpl implements _Initial {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
@@ -303,7 +303,7 @@ class _$LoadingImpl implements _Loading {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return loading();
@@ -319,7 +319,7 @@ class _$LoadingImpl implements _Loading {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return loading?.call();
@@ -335,7 +335,7 @@ class _$LoadingImpl implements _Loading {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
@@ -539,7 +539,7 @@ class _$LoadedImpl implements _Loaded {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return loaded(seats, selectedSeat, soldTickets, userId, totalCost);
@@ -555,7 +555,7 @@ class _$LoadedImpl implements _Loaded {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return loaded?.call(seats, selectedSeat, soldTickets, userId, totalCost);
@@ -571,7 +571,7 @@ class _$LoadedImpl implements _Loaded {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
@@ -724,7 +724,7 @@ class _$FailedImpl implements _Failed {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return failed(message);
@@ -740,7 +740,7 @@ class _$FailedImpl implements _Failed {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return failed?.call(message);
@@ -756,7 +756,7 @@ class _$FailedImpl implements _Failed {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
@@ -873,7 +873,7 @@ class _$BookingImpl implements _Booking {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return booking();
@@ -889,7 +889,7 @@ class _$BookingImpl implements _Booking {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return booking?.call();
@@ -905,7 +905,7 @@ class _$BookingImpl implements _Booking {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
@@ -972,7 +972,9 @@ abstract class _$$BookingSucceedImplCopyWith<$Res> {
           $Res Function(_$BookingSucceedImpl) then) =
       __$$BookingSucceedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Ticket> tickets});
+  $Res call({Booking booking});
+
+  $BookingCopyWith<$Res> get booking;
 }
 
 /// @nodoc
@@ -988,33 +990,38 @@ class __$$BookingSucceedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tickets = null,
+    Object? booking = null,
   }) {
     return _then(_$BookingSucceedImpl(
-      null == tickets
-          ? _value._tickets
-          : tickets // ignore: cast_nullable_to_non_nullable
-              as List<Ticket>,
+      null == booking
+          ? _value.booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as Booking,
     ));
+  }
+
+  /// Create a copy of TicketBookingTabState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BookingCopyWith<$Res> get booking {
+    return $BookingCopyWith<$Res>(_value.booking, (value) {
+      return _then(_value.copyWith(booking: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$BookingSucceedImpl implements _BookingSucceed {
-  const _$BookingSucceedImpl(final List<Ticket> tickets) : _tickets = tickets;
+  const _$BookingSucceedImpl(this.booking);
 
-  final List<Ticket> _tickets;
   @override
-  List<Ticket> get tickets {
-    if (_tickets is EqualUnmodifiableListView) return _tickets;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tickets);
-  }
+  final Booking booking;
 
   @override
   String toString() {
-    return 'TicketBookingTabState.bookingSucceed(tickets: $tickets)';
+    return 'TicketBookingTabState.bookingSucceed(booking: $booking)';
   }
 
   @override
@@ -1022,12 +1029,11 @@ class _$BookingSucceedImpl implements _BookingSucceed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingSucceedImpl &&
-            const DeepCollectionEquality().equals(other._tickets, _tickets));
+            (identical(other.booking, booking) || other.booking == booking));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
+  int get hashCode => Object.hash(runtimeType, booking);
 
   /// Create a copy of TicketBookingTabState
   /// with the given fields replaced by the non-null parameter values.
@@ -1048,10 +1054,10 @@ class _$BookingSucceedImpl implements _BookingSucceed {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
-    return bookingSucceed(tickets);
+    return bookingSucceed(this.booking);
   }
 
   @override
@@ -1064,10 +1070,10 @@ class _$BookingSucceedImpl implements _BookingSucceed {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
-    return bookingSucceed?.call(tickets);
+    return bookingSucceed?.call(this.booking);
   }
 
   @override
@@ -1080,12 +1086,12 @@ class _$BookingSucceedImpl implements _BookingSucceed {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
     if (bookingSucceed != null) {
-      return bookingSucceed(tickets);
+      return bookingSucceed(this.booking);
     }
     return orElse();
   }
@@ -1138,10 +1144,9 @@ class _$BookingSucceedImpl implements _BookingSucceed {
 }
 
 abstract class _BookingSucceed implements TicketBookingTabState {
-  const factory _BookingSucceed(final List<Ticket> tickets) =
-      _$BookingSucceedImpl;
+  const factory _BookingSucceed(final Booking booking) = _$BookingSucceedImpl;
 
-  List<Ticket> get tickets;
+  Booking get booking;
 
   /// Create a copy of TicketBookingTabState
   /// with the given fields replaced by the non-null parameter values.
@@ -1225,7 +1230,7 @@ class _$BookingFailedImpl implements _BookingFailed {
         loaded,
     required TResult Function(String message) failed,
     required TResult Function() booking,
-    required TResult Function(List<Ticket> tickets) bookingSucceed,
+    required TResult Function(Booking booking) bookingSucceed,
     required TResult Function(String message) bookingFailed,
   }) {
     return bookingFailed(message);
@@ -1241,7 +1246,7 @@ class _$BookingFailedImpl implements _BookingFailed {
         loaded,
     TResult? Function(String message)? failed,
     TResult? Function()? booking,
-    TResult? Function(List<Ticket> tickets)? bookingSucceed,
+    TResult? Function(Booking booking)? bookingSucceed,
     TResult? Function(String message)? bookingFailed,
   }) {
     return bookingFailed?.call(message);
@@ -1257,7 +1262,7 @@ class _$BookingFailedImpl implements _BookingFailed {
         loaded,
     TResult Function(String message)? failed,
     TResult Function()? booking,
-    TResult Function(List<Ticket> tickets)? bookingSucceed,
+    TResult Function(Booking booking)? bookingSucceed,
     TResult Function(String message)? bookingFailed,
     required TResult orElse(),
   }) {
