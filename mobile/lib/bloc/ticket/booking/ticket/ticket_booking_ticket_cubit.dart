@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../api/booking/booking_api.dart';
 import '../../../../api/ticket/ticket_api.dart';
 import '../../../../core/api/api_helper.dart';
 import '../../../../models/ticket/ticket.dart';
@@ -53,7 +54,7 @@ class TicketBookingTicketCubit extends Cubit<TicketBookingTicketState> {
     List<Ticket> tickets = GoRouterState.of(context).extra != null
         ? GoRouterState.of(context).extra as List<Ticket>
         : [];
-    await TicketAPI(await ApiHelper.getDioInstance()).delete(
+    await BookingAPI(await ApiHelper.getDioInstance()).delete(
       {
         "ticketIds": tickets
             .map(

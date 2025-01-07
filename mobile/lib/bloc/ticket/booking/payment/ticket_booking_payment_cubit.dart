@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile/api/booking/booking_api.dart';
 
 import '../../../../api/ticket/ticket_api.dart';
 import '../../../../core/api/api_helper.dart';
@@ -39,7 +40,7 @@ class TicketBookingPaymentCubit extends Cubit<TicketBookingPaymentState> {
             .get(tickets[0].id)
             .then(
           (value) async =>
-              await TicketAPI(await ApiHelper.getDioInstance()).pay({
+              await BookingAPI(await ApiHelper.getDioInstance()).pay({
             'ticketIds': tickets.map((e) => e.id).toList(),
           }).then(
             (value) {
