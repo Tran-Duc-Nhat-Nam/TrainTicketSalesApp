@@ -78,33 +78,33 @@ void startLocationService() {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Permission.location.onDeniedCallback(() {}).onGrantedCallback(() async {
-    log("Permission granted", name: "Background locator");
-    // if (Platform.isAndroid) {
-    //   IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
-    //   port.listen((dynamic data) {
-    //     log("Port listened", name: "Background locator");
-    //     log("Data: ${data.toString()}", name: "Background locator");
-    //   });
-    //   initPlatformState();
-    //   startLocationService();
-    // } else if (Platform.isIOS) {
-    //   l.Location location = l.Location();
-    //   location.enableBackgroundMode(enable: true);
-    //   location.onLocationChanged.listen((l.LocationData currentLocation) async {
-    //     log(currentLocation.longitude.toString(), name: "Background locator");
-    //     CustomerAPI(await ApiHelper.getDioInstance()).get(((currentLocation.longitude ?? 0) * 1000000).toInt());
-    //   });
-    // }
-  }).onPermanentlyDeniedCallback(() {
-    log("Permission granted", name: "Background locator");
-  }).onRestrictedCallback(() {
-    log("Restricted permission granted", name: "Background locator");
-  }).onLimitedCallback(() {
-    log("Limited permission granted", name: "Background locator");
-  }).onProvisionalCallback(() {
-    log("Provisional permission granted", name: "Background locator");
-  }).request();
+  // await Permission.location.onDeniedCallback(() {}).onGrantedCallback(() async {
+  //   log("Permission granted", name: "Background locator");
+  //   // if (Platform.isAndroid) {
+  //   //   IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
+  //   //   port.listen((dynamic data) {
+  //   //     log("Port listened", name: "Background locator");
+  //   //     log("Data: ${data.toString()}", name: "Background locator");
+  //   //   });
+  //   //   initPlatformState();
+  //   //   startLocationService();
+  //   // } else if (Platform.isIOS) {
+  //   //   l.Location location = l.Location();
+  //   //   location.enableBackgroundMode(enable: true);
+  //   //   location.onLocationChanged.listen((l.LocationData currentLocation) async {
+  //   //     log(currentLocation.longitude.toString(), name: "Background locator");
+  //   //     CustomerAPI(await ApiHelper.getDioInstance()).get(((currentLocation.longitude ?? 0) * 1000000).toInt());
+  //   //   });
+  //   // }
+  // }).onPermanentlyDeniedCallback(() {
+  //   log("Permission granted", name: "Background locator");
+  // }).onRestrictedCallback(() {
+  //   log("Restricted permission granted", name: "Background locator");
+  // }).onLimitedCallback(() {
+  //   log("Limited permission granted", name: "Background locator");
+  // }).onProvisionalCallback(() {
+  //   log("Provisional permission granted", name: "Background locator");
+  // }).request();
 
   runApp(
     EasyLocalization(

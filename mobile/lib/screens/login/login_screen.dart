@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               if (mounted) {
                 AppToast.showSuccessToast(context,
                     text: context.tr("loginSucceed"));
-                context.go("/");
+                context.pop();
               }
             },
             loginFailed: (message) {
